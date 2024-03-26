@@ -7,6 +7,7 @@ import TextGradient from '../textGradient/TextGradient';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import Logo from '../logo/Logo';
 
 
 export default function Header() {
@@ -44,12 +45,7 @@ export default function Header() {
         <>
             <div className="header primaryfont" style={{ borderRadius: scroll > 50 || isPhone ? '0' : '0px 0px 40px 40px' }}>
                 <div className="container mx-auto flex justify-between items-center">
-                    <div className={`logo ${isPhone ?  'order-2' : ''}`}>
-                        <Link to='/' className='flex items-center'>
-                            <img src={logo} alt="logo" />
-                            <TextGradient text='WorkWave' size='20px' weight='700' />
-                        </Link>
-                    </div>
+                    <Logo className={isPhone ? 'order-2' : ''} />
                     {!isPhone ? (
                         <>
                             <div className="nav">
@@ -63,7 +59,7 @@ export default function Header() {
                         </>
                     ) :
                         <>
-                            <FontAwesomeIcon onClick={shNavbar} icon={faBars} className='text-3xl p-5 order-1 cursor-pointer' style={{}} />
+                            <FontAwesomeIcon onClick={shNavbar} icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' style={{}} />
                             <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={`${primaryColor}`} border />
                         </>
                     }

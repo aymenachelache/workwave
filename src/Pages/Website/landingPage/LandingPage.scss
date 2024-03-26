@@ -1,3 +1,8 @@
+// Globa Class
+.border-3 {
+    border-width: 3px !important;
+}
+// Landing Style
 .landing {
     .hero {
         width: 100%;
@@ -5,32 +10,70 @@
         background-image: url('../../../assets/Hero\ section\ bg.png');
         background-size: cover;
         border-radius: 0px 0px 40px 40px;
+
         .container {
             .text {
                 @media (min-width: 768px) {
-                    width: 45%;
+                    width: 50%;
                 }
+
                 h1 {
-                    font-weight: 800;
-                    span {
-                        line-height: 37.2px;
-                        text-align: left;
-                        margin-left: 4px;
-                        background: linear-gradient(90deg, #37B778 0%, #00AEEF 100%);
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                    }
+                    line-height: 50px;
                 }
             }
         }
     }
 
     .advantages {
+        &.advantages1 {
+            .container {
+                .boxes {
+                    @media (min-width: 1024px) {
+                        .box {
+                            height: 155px;
+                        }
+                    }
+                }
+            }
+        }
+
         .container {
             .boxes {
                 .box {
                     border-radius: 40px;
                     overflow: hidden;
+                }
+            }
+        }
+        &.advantages2 {
+            .container {
+                .box {
+                    background-repeat: no-repeat;
+                    background-position: 85%;
+                }
+                .box1 {
+                    background-image: url('../../../assets/1.svg');
+                    background-size: 100px;
+                }
+                .box2 {
+                    background-image: url('../../../assets/2.svg');
+                    background-size: 150px;
+                }
+                .box3 {
+                    background-image: url('../../../assets/3.svg');
+                    background-size: 150px;
+                }
+                .box4 {
+                    background-image: url('../../../assets/1-Blue.svg');
+                    background-size: 100px;
+                }
+                .box5 {
+                    background-image: url('../../../assets/2-Blue.svg');
+                    background-size: 150px;
+                }
+                .box6 {
+                    background-image: url('../../../assets/3-Blue.svg');
+                    background-size: 150px;
                 }
             }
         }
@@ -45,13 +88,32 @@
                 .box {
                     background-color: rgb(249 247 243 / 5%);
                     border-radius: 40px;
+                    transition: all 0.3s ease;
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+
                     &:last-child {
-                        background-color: transparent; 
+                        background-color: transparent;
+                    }
+
+                    &:hover:not(:last-child) {
+                        background-color: #fff;
+                        transform: translateY(-5px);
+                        h5 {
+                            color: var(--primary-color);
+                        }
+                    }
+                    h5 {
+                        font-size: 0.66rem;
                     }
                 }
             }
+
             .cont {
-                background-image: url('../../../assets/background.png');
+                background-image: url('../../../assets/background.svg');
+
                 .box {
                     background-color: #f9f7f322;
                     border-radius: 40px;

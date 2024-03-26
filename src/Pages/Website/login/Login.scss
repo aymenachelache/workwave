@@ -1,0 +1,157 @@
+.login {
+    background-image: url('../../../assets/login/pexels-andrea-piacquadio-840996\ 1.jpg');
+    background-size: contain;
+    background-position: 100%;
+    background-repeat: no-repeat;
+
+    .box {
+        background-color: #F8F7F2;
+        left: 0;
+        top: 0;
+        width: 50%;
+        border-radius: 0 40px 40px 0;
+
+        .top {
+            .logo {
+                img {
+                    width: 30px;
+                }
+
+                a {
+                    span {
+                        margin-bottom: 2px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            .back {
+                svg {
+                    transition: all 0.3s ease;
+                }
+
+                &:hover {
+                    svg {
+                        transform: scale(1.5, 1);
+                    }
+                }
+            }
+        }
+
+        .contain {
+            form {
+                input {
+                    display: block;
+                    margin: auto;
+                    border-radius: 15px;
+                    margin: 20px auto;
+                    background-color: var(--white-color);
+                    border: 1px solid #1F1F1F1A;
+
+                    &:focus::placeholder {
+                        transition: all 0.3s ease;
+                        opacity: 0;
+                    }
+                }
+
+                .btn {
+                    color: #fff;
+                    background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
+                    padding: 12px 0;
+                    border-radius: 15px;
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+                    &:hover {
+                        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
+                    }
+                }
+            }
+
+            .forget {
+                a {
+                    transition: all 0.3s ease;
+                    font-weight: 400;
+
+                    &:hover {
+                        color: black;
+                    }
+                }
+            }
+
+            .other {
+                .line {
+                    flex-grow: 1;
+                    height: 1px;
+                    background-color: #1F1F1F1A;
+                }
+            }
+
+            .social-media {
+                .social {
+                    padding: 12px 16px;
+                    border-radius: 20px;
+                }
+
+                .google {
+                    span {
+                        display: none;
+                    }
+
+                    &:hover {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 100%;
+
+                        span {
+                            display: block;
+                        }
+                    }
+                }
+
+                .google:hover+.facebook,
+                .google:hover+.facebook+.apple,
+                .google:hover+.facebook+.apple+.linkedin {
+                    display: none;
+                }
+
+                .facebook {}
+
+                .apple {}
+
+                .linkedin {}
+            }
+        }
+    }
+
+    @media (max-width: 1040px) {
+        & {
+            background-size: cover;
+
+            .box {
+                width: 70%;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border-radius: 40px;
+            }
+        }
+    }
+    @media (max-width: 767px) {
+        & {
+            .box {
+                width: 100%;
+                border-radius: 0;
+            }
+        }
+    }
+    @media (max-width: 639px) {
+        & {
+            .box {
+                .contain {
+                    width: 80%;
+                }
+            }
+        }
+    }
+}
