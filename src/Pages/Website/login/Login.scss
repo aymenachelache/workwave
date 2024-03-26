@@ -123,11 +123,9 @@
             }
         }
     }
-
     @media (max-width: 1040px) {
         & {
             background-size: cover;
-
             .box {
                 width: 70%;
                 left: 50%;
@@ -145,11 +143,20 @@
             }
         }
     }
-    @media (max-width: 639px) {
+    @media (max-width: 600px) {
         & {
             .box {
                 .contain {
                     width: 80%;
+                }
+            }
+        }
+    }
+    @media (max-width: 450px) {
+        & {
+            .box {
+                .contain {
+                    width: 95%;
                 }
             }
         }
