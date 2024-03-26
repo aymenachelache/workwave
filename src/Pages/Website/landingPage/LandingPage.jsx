@@ -22,7 +22,7 @@ import categorie4hover from '../../../assets/categorie4-hover.png'
 import categorie5hover from '../../../assets/categorie5-hover.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 

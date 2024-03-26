@@ -7,11 +7,14 @@
     .hero {
         width: 100%;
         height: 100vh;
-        background-image: url('../../../assets/Hero\ section\ bg.png');
+        background-image: url('/src/assets/bghero1.jpg');
         background-size: cover;
         border-radius: 0px 0px 40px 40px;
-
+        position: relative;
+        z-index: 999;
+        animation: ChangeBackground 20s infinite ease-in-out forwards;
         .container {
+            z-index: 5;
             .text {
                 @media (min-width: 768px) {
                     width: 50%;
@@ -21,6 +24,39 @@
                     line-height: 50px;
                 }
             }
+        }
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 40%);
+            z-index: -1;
+        }
+    }
+    @keyframes ChangeBackground {
+        0% {
+            background-image: url('/src/assets/bghero1.jpg');
+        }
+        16% {
+            background-image: url('/src/assets/bghero1.jpg');
+        }
+        32% {
+            background-image: url('/src/assets/bghero2.jpg');
+        }
+        48% {
+            background-image: url('/src/assets/bghero2.jpg');
+        }
+        64% {
+            background-image: url('/src/assets/bghero3.jpg');
+        }
+        80% {
+            background-image: url('/src/assets/bghero3.jpg');
+        }
+        100% {
+            background-image: url('/src/assets/bghero1.jpg');
         }
     }
 
