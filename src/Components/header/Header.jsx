@@ -2,18 +2,18 @@ import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/Logo.png'
 import './Header.scss'
 import Button from '../Button/Button';
-import { primaryColor } from '../Variables/VariablesColors';
+import { primaryColor, secondaryColor } from '../Variables/VariablesColors';
 import TextGradient from '../textGradient/TextGradient';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../logo/Logo';
 
 
-export default function Header() {
-    const [isPhone, setIsPhone] = useState(true);
+export default function Header(props) {
+    const [isPhone, setIsPhone] = useState(false);
     const [scroll, setScroll] = useState(0);
-
+    const navbar = useRef(null);
 
     useEffect(() => {
         window.innerWidth < 768 ? setIsPhone(true) : setIsPhone(false);
@@ -38,7 +38,7 @@ export default function Header() {
     }, []);
 
     function shNavbar() {
-        console.log('red');
+        navbar.current.classList.toggle("hidden");
     }
 
     return (
@@ -50,20 +50,31 @@ export default function Header() {
                         <>
                             <div className="nav">
                                 <NavLink to={"/"} className='link'>I want to work</NavLink>
-                                <NavLink to={"/hire"} className='link'>I want to hire</NavLink>
+                                <NavLink to={"/hire"} className='link hire'>I want to hire</NavLink>
                             </div>
                             <div className='flex gap-2'>
-                                <Button link={'/login'} text="Login" clicked={true} color={`${primaryColor}`} border />
-                                <Button link={'/register'} text="Register" clicked={false} color={`${primaryColor}`} border />
+                                <Button link={'/login'} text="Login" clicked={true} color={props.hire ? secondaryColor : primaryColor} border />
+                                <Button link={'/register'} text="Sign Up" clicked={false} color={props.hire ? secondaryColor : primaryColor} border/>
                             </div>
                         </>
                     ) :
                         <>
-                            <FontAwesomeIcon onClick={shNavbar} icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' style={{}} />
-                            <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={`${primaryColor}`} border />
+                            <span onClick={shNavbar} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
+                            <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={props.hire ? secondaryColor : primaryColor} border />
                         </>
                     }
                 </div>
+                {isPhone && 
+                <div className="navbar hidden" ref={navbar}>
+                    <ul className=''>
+                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Home</Link></li>
+                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Services</Link></li>
+                        <li className='py-5 text-center cursor-pointer'><Link to='/'>I want to work</Link></li>
+                        <li className='py-5 text-center cursor-pointer'><Link to='/'>I want to hire</Link></li>
+                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Contact Us</Link></li>
+                    </ul>
+                </div>
+                }
             </div>
         </>
     );

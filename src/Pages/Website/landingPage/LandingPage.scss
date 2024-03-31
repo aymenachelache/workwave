@@ -2,6 +2,31 @@
 .border-3 {
     border-width: 3px !important;
 }
+// Animation
+@keyframes ChangeBackground {
+    0% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+    16% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+    32% {
+        background-image: url('/src/assets/bghero2.jpg');
+    }
+    48% {
+        background-image: url('/src/assets/bghero2.jpg');
+    }
+    64% {
+        background-image: url('/src/assets/bghero3.jpg');
+    }
+    80% {
+        background-image: url('/src/assets/bghero3.jpg');
+    }
+    100% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+}
+
 // Landing Style
 .landing {
     .hero {
@@ -15,6 +40,7 @@
         animation: ChangeBackground 20s infinite ease-in-out forwards;
         .container {
             z-index: 5;
+
             .text {
                 @media (min-width: 768px) {
                     width: 50%;
@@ -25,6 +51,7 @@
                 }
             }
         }
+
         &::after {
             content: '';
             position: absolute;
@@ -36,29 +63,7 @@
             z-index: -1;
         }
     }
-    @keyframes ChangeBackground {
-        0% {
-            background-image: url('/src/assets/bghero1.jpg');
-        }
-        16% {
-            background-image: url('/src/assets/bghero1.jpg');
-        }
-        32% {
-            background-image: url('/src/assets/bghero2.jpg');
-        }
-        48% {
-            background-image: url('/src/assets/bghero2.jpg');
-        }
-        64% {
-            background-image: url('/src/assets/bghero3.jpg');
-        }
-        80% {
-            background-image: url('/src/assets/bghero3.jpg');
-        }
-        100% {
-            background-image: url('/src/assets/bghero1.jpg');
-        }
-    }
+
 
     .advantages {
         &.advantages1 {
@@ -81,32 +86,39 @@
                 }
             }
         }
+
         &.advantages2 {
             .container {
                 .box {
                     background-repeat: no-repeat;
                     background-position: 85%;
                 }
+
                 .box1 {
                     background-image: url('../../../assets/1.svg');
                     background-size: 100px;
                 }
+
                 .box2 {
                     background-image: url('../../../assets/2.svg');
                     background-size: 150px;
                 }
+
                 .box3 {
                     background-image: url('../../../assets/3.svg');
                     background-size: 150px;
                 }
+
                 .box4 {
                     background-image: url('../../../assets/1-Blue.svg');
                     background-size: 100px;
                 }
+
                 .box5 {
                     background-image: url('../../../assets/2-Blue.svg');
                     background-size: 150px;
                 }
+
                 .box6 {
                     background-image: url('../../../assets/3-Blue.svg');
                     background-size: 150px;
@@ -116,15 +128,23 @@
     }
 
     .categories {
+        &.hire {
+            .container {
+                background: linear-gradient(99.7deg, #00AEEF 0%, #0D5773 100%);
+            }
+        }
         .container {
             background: linear-gradient(99.7deg, #37B778 0%, #206A45 100%);
             overflow: hidden;
             border-radius: 40px;
+            
+
             .right {
                 .box {
                     background-color: rgb(249 247 243 / 5%);
                     border-radius: 40px;
                     transition: all 0.3s ease;
+
                     img {
                         width: 80px;
                         height: 80px;
@@ -137,10 +157,12 @@
                     &:hover:not(:last-child) {
                         background-color: #fff;
                         transform: translateY(-5px);
+
                         h5 {
                             color: var(--primary-color);
                         }
                     }
+
                     h5 {
                         font-size: 0.66rem;
                     }
@@ -155,6 +177,17 @@
                     border-radius: 40px;
                 }
             }
+        }
+    }
+    .btn-hover-white {
+        transition: all 0.4s ease;
+        &:hover {
+            color: var(--primary-color) !important;
+            background-color: #fff !important;
+        }
+        &.hire:hover {
+            color: var(--secondary-color) !important;
+            background-color: #fff !important;
         }
     }
 }

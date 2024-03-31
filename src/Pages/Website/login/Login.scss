@@ -10,7 +10,6 @@
         top: 0;
         width: 50%;
         border-radius: 0 40px 40px 0;
-
         .top {
             .logo {
                 img {
@@ -24,36 +23,13 @@
                     }
                 }
             }
-
-            .back {
-                svg {
-                    transition: all 0.3s ease;
-                }
-
-                &:hover {
-                    svg {
-                        transform: scale(1.5, 1);
-                    }
-                }
-            }
         }
 
         .contain {
+            h2 {
+                font-size: 1.6em;
+            }
             form {
-                input {
-                    display: block;
-                    margin: auto;
-                    border-radius: 15px;
-                    margin: 20px auto;
-                    background-color: var(--white-color);
-                    border: 1px solid #1F1F1F1A;
-
-                    &:focus::placeholder {
-                        transition: all 0.3s ease;
-                        opacity: 0;
-                    }
-                }
-
                 .btn {
                     color: #fff;
                     background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
@@ -91,35 +67,6 @@
                     padding: 12px 16px;
                     border-radius: 20px;
                 }
-
-                .google {
-                    span {
-                        display: none;
-                    }
-
-                    &:hover {
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        width: 100%;
-
-                        span {
-                            display: block;
-                        }
-                    }
-                }
-
-                .google:hover+.facebook,
-                .google:hover+.facebook+.apple,
-                .google:hover+.facebook+.apple+.linkedin {
-                    display: none;
-                }
-
-                .facebook {}
-
-                .apple {}
-
-                .linkedin {}
             }
         }
     }
@@ -155,8 +102,14 @@
     @media (max-width: 450px) {
         & {
             .box {
+                background-color: #fff;
                 .contain {
                     width: 95%;
+                    form {
+                        input {
+                            background-color: #fff;
+                        }
+                    }
                 }
             }
         }

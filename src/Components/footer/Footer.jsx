@@ -9,7 +9,7 @@ export default function Footer() {
                 <div className="boxes grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <div className="box box1 w-full sm:w-fit text-center sm:text:left m-10 lg:mx-10">
                         <img src={logo} alt="" className='mx-auto' style={{width: '80%'}} />
-                        <p className='copyright text-center mt-4'>Copyright © 2024</p>
+                        <p className='copyright text-xs text-center mt-4'>Copyright © 2024</p>
                     </div>
                     <div className="box box2 w-full sm:w-fit text-center md:text-left m-10 lg:mx-10">
                         <h4 className='text-sm font-bold mb-4'>Freelancer</h4>

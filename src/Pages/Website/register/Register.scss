@@ -1,0 +1,53 @@
+.register {
+    .logo {
+        img {
+            width: 30px;
+        }
+    }
+    .box {
+        
+    }
+    .cont {
+        .left {
+            .hire {
+                padding: 30px 20px;
+                border: 1px solid #c9c7c786;
+                border-radius: 40px;
+                width: 70%;
+                margin-left: auto;
+                transition: all 0.3s ease;
+                h3 {
+                    color: var(--secondary-color);
+                    transition: all 0.3s ease;
+                }
+                &:hover {
+                    color: #FFF;
+                    background-color: #00AEEF;
+                    h3 {
+                        color: #FFF;
+                    }
+                }
+
+            }
+        }
+        .right {
+            .work {
+                padding: 30px 20px;
+                border: 1px solid #c9c7c786;
+                border-radius: 40px;
+                width: 70%;
+                h3 {
+                    color: var(--primary-color);
+                    transition: all 0.3s ease;
+                }
+                &:hover {
+                    color: #FFF;
+                    background-color: #37B778;
+                    h3 {
+                        color: #FFF;
+                    }
+                }
+            }
+        }
+    }
+}

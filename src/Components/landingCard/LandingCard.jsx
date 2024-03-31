@@ -6,6 +6,7 @@ export default function LandingCard(props) {
             <div className={props.classes} style={{backgroundColor: props.background}}>
                 <h3 className="mb-3" style={{color: props.color, fontSize: '25px', fontWeight: '800'}}>{props.title}</h3>
                 <p style={{fontSize: '13px'}}>{props.desc}</p>
+                <p className='mt-5 mx-auto'>{props.object}</p>
             </div>
         </>
     );
