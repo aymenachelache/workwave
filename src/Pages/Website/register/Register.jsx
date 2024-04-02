@@ -18,9 +18,9 @@ export default function Register() {
             <p className='text-sm text-center text-[#777775] mb-10'>What brings you here?</p>
           </div>
         </div>
-        <div className="cont flex items-center justify-center gap-10 mt-20">
+        <div className="cont flex items-center justify-center gap-10 mt-10">
           <div className="left">
-            <Link to='hire'>
+            <Link to='hire/createaccount'>
               <div className="hire cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to hire</h3>
                 <p className='text-sm'>Hire reliable freelancers from around the globe to work on your projects.</p>
@@ -28,7 +28,7 @@ export default function Register() {
             </Link>
           </div>
           <div className="right">
-            <Link to='work'>
+            <Link to='work/createaccount'>
               <div className="work cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to work</h3>
                 <p className='text-sm'>Work as a freelancer on a projects of various categories and get paid.</p>

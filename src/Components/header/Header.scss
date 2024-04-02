@@ -1,3 +1,9 @@
+// disable scrolling
+.remove-scrolling { 
+    height: 100%; 
+    overflow: hidden; 
+}
+// Header
 .header {
     background-color: #fff;
     position: fixed;

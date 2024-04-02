@@ -14,6 +14,7 @@ export default function Header(props) {
     const [isPhone, setIsPhone] = useState(false);
     const [scroll, setScroll] = useState(0);
     const navbar = useRef(null);
+   
 
     useEffect(() => {
         window.innerWidth < 768 ? setIsPhone(true) : setIsPhone(false);
@@ -40,6 +41,10 @@ export default function Header(props) {
     function shNavbar() {
         navbar.current.classList.toggle("hidden");
     }
+    function disableEnableScroll() { 
+        document.body.classList.toggle("remove-scrolling"); 
+      } 
+      
 
     return (
         <>
@@ -59,7 +64,7 @@ export default function Header(props) {
                         </>
                     ) :
                         <>
-                            <span onClick={shNavbar} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
+                            <span onClick={() => {shNavbar();disableEnableScroll()}} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
                             <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={props.hire ? secondaryColor : primaryColor} border />
                         </>
                     }
@@ -67,11 +72,12 @@ export default function Header(props) {
                 {isPhone && 
                 <div className="navbar hidden" ref={navbar}>
                     <ul className=''>
-                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Home</Link></li>
-                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Services</Link></li>
-                        <li className='py-5 text-center cursor-pointer'><Link to='/'>I want to work</Link></li>
-                        <li className='py-5 text-center cursor-pointer'><Link to='/'>I want to hire</Link></li>
-                        <li className='py-5 text-center cursor-pointer'><Link to='/'>Contact Us</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/'>Home</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/services'>Services</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/'>I want to work</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/hire'>I want to hire</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/register'>Sign Up</Link></li>
+                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/contact'>Contact Us</Link></li>
                     </ul>
                 </div>
                 }
