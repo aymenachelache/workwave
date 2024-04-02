@@ -40,11 +40,8 @@ export default function Header(props) {
 
     function shNavbar() {
         navbar.current.classList.toggle("hidden");
+        navbar.current.classList.contains('hidden') ? document.body.classList.remove("remove-scrolling") : document.body.classList.add("remove-scrolling");
     }
-    function disableEnableScroll() { 
-        document.body.classList.toggle("remove-scrolling"); 
-      } 
-      
 
     return (
         <>
@@ -64,7 +61,7 @@ export default function Header(props) {
                         </>
                     ) :
                         <>
-                            <span onClick={() => {shNavbar();disableEnableScroll()}} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
+                            <span onClick={shNavbar} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
                             <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={props.hire ? secondaryColor : primaryColor} border />
                         </>
                     }
@@ -72,12 +69,12 @@ export default function Header(props) {
                 {isPhone && 
                 <div className="navbar hidden" ref={navbar}>
                     <ul className=''>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/'>Home</Link></li>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/services'>Services</Link></li>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/'>I want to work</Link></li>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/hire'>I want to hire</Link></li>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/register'>Sign Up</Link></li>
-                        <li className='py-5 text-center cursor-pointer' onClick={disableEnableScroll}><Link to='/contact'>Contact Us</Link></li>
+                        <Link to='/' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >Home</li></Link>
+                        <Link to='/services' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >Services</li></Link>
+                        <Link to='/' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >I want to work</li></Link>
+                        <Link to='/hire' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >I want to hire</li></Link>
+                        <Link to='/register' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >Sign Up</li></Link>
+                        <Link to='/contact' onClick={shNavbar}><li className='py-5 text-center cursor-pointer' >Contact Us</li></Link>
                     </ul>
                 </div>
                 }
