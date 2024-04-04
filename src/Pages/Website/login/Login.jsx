@@ -8,6 +8,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../../Components/logo/Logo';
 import InputComp from '../../../Components/input/InputComp';
 import BackButton from '../../../Components/backButton/BackButton';
+import ButtonGradient from '../../../Components/buttonGradient/ButtonGradient';
 
 
 export default function Login() {
@@ -25,7 +26,7 @@ export default function Login() {
                         <form action="">
                             <InputComp type="email" name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' />
                             <InputComp type="password" name="pass" id="pass" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' />
-                            <Link className={'btn block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Log In</span></Link>
+                            <ButtonGradient text='Log In' to='/login' />
                         </form>
                         <div className="forget flex justify-between mt-2">
                             <Link to={'/register'} className='text-xs font-thin cursor-pointer text-[#777775]'>New to WorkWave?</Link>

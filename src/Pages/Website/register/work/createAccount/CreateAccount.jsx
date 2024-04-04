@@ -7,11 +7,18 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
+import ButtonGradient from '../../../../../Components/buttonGradient/ButtonGradient';
+import {motion} from 'framer-motion';
+
 export default function CreateAccount() {
     return (
         <>
-            <div className="create-account-work w-full relative">
-                <div className="contain mx-auto text-center">
+            <motion.div 
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            transition={{duration: 1}}
+            className="create-account-work w-full relative">
+                <div className="contain w-2/4 mx-auto text-center">
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Your personal informations.</p>
                     <form action="">
@@ -25,7 +32,7 @@ export default function CreateAccount() {
                             <option value="italy">Italy</option>
                             <option value="maroc">Maroc</option>
                         </select>
-                        <Link to={'phoneandpassword'} className={'btn block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
+                        <Link to={'phoneandpassword'} className={'btn-gradient block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
                     </form>
                     <div className="other flex items-center justify-between gap-3 text-[#1F1F1F1A] my-8">
                         <span className="line"></span>
@@ -48,7 +55,7 @@ export default function CreateAccount() {
                             </div>
                         </div>
                 </div>
-            </div >
+            </motion.div >
         </>
     )
 }

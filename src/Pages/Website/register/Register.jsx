@@ -37,7 +37,7 @@ export default function Register() {
           </div>
         </div>
         <div className="note sm:w-8/12 md:w-7/12 mx-auto">
-          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'>Log in</span></p>
+          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'><Link to='/login'>Log in</Link></span></p>
         </div>
 
       </div>

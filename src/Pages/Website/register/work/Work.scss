@@ -1,5 +1,5 @@
 .create-work {
-    background-image: url('../../../assets/register/work/bg1.jpg'), url('../../../assets/register/work/bg2.jpg');
+    background-image: url('../../../../assets/register/work/bg1.jpg'), url('../../../../assets/register/work/bg2.jpg');
     background-position: left bottom, right top;
     background-size: contain;
     background-repeat: no-repeat, no-repeat;
@@ -28,19 +28,17 @@
             h2 {
                 font-size: 1.6em;
             }
-            form {
-                .btn {
-                    color: #fff;
-                    background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
-                    padding: 12px 0;
-                    border-radius: 15px;
-                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+            .btn-gradient {
+                color: #fff;
+                background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
+                padding: 12px 0;
+                border-radius: 15px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
 
-                    &:hover {
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
-                    }
+                &:hover {
+                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
                 }
-            }
+            }   
 
             .forget {
                 a {
