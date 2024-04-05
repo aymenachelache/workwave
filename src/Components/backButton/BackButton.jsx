@@ -13,7 +13,7 @@ export default function BackButton() {
         <div className={`back text-xs font-bold cursor-pointer text-[${greyColor}]`}>
             <span onClick={rtn} className='flex items-center relative'>
                 <FontAwesomeIcon icon={faArrowLeft} />
-                <span className='ml-2 primaryfont'>Back</span>
+                <span className='ml-2 primaryfont select-none'>Back</span>
             </span>
         </div>
     )

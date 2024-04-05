@@ -44,7 +44,7 @@ export default function AddCertificate() {
                 }
               }}
                     className='text-sm text-[#777775] mb-10'>Certify your skills.</motion.p>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-4">
                         <div className="text-center">
                             <span className='text-xs font-bold primaryfont'>Skill 1</span>
                             <div className='add-box cursor-pointer global-radius my-border mt-3 px-8 pt-6 pb-4'>
@@ -53,14 +53,14 @@ export default function AddCertificate() {
                             </div>
                         </div>
                         <div className="text-center">
-                            <span className='text-xs font-bold primaryfont'>Skill 1</span>
+                            <span className='text-xs font-bold primaryfont'>Skill 2</span>
                             <div className='add-box cursor-pointer global-radius my-border mt-3 px-8 pt-6 pb-4'>
                                 <p className='text-8xl text-[#E4E2DE] primaryfont'><FontAwesomeIcon icon={faPlus} /></p>
                                 <span className="upload opacity-0 text-xs text-[#A3A19F] secondaryfont">Upload certificate</span>
                             </div>
                         </div>
                         <div className="text-center">
-                            <span className='text-xs font-bold primaryfont'>Skill 1</span>
+                            <span className='text-xs font-bold primaryfont'>Skill 3</span>
                             <div className='add-box cursor-pointer global-radius my-border mt-3 px-8 pt-6 pb-4'>
                                 <p className='text-8xl text-[#E4E2DE] primaryfont'><FontAwesomeIcon icon={faPlus} /></p>
                                 <span className="upload opacity-0 text-[#A3A19F] secondaryfont">Upload certificate</span>
