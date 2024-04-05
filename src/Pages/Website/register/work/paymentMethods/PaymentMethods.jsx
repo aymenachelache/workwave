@@ -29,11 +29,11 @@ export default function PaymentMethods() {
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Payment methods.</p>
                     <div className="contain flex justify-between gap-5 mb-5">
-                        <div onMouseEnter={(e) => changeImageHover(e.target)}  onMouseLeave={(e) => changeImage(e.target)} className="methode paypal global-radius my-border cursor-pointer flex items-center justify-between">
-                            <img src={require('../../../../../assets/register/PayPal-Logo.png')} style={{width: '300px'}} alt="" />
+                        <div className="methode paypal global-radius my-border cursor-pointer flex items-center justify-between">
+                            <Link onMouseEnter={(e) => changeImageHover(e.target)}  onMouseLeave={(e) => changeImage(e.target)} to='/'><img src={require('../../../../../assets/register/PayPal-Logo.png')} style={{width: '300px'}} alt="" /></Link>
                         </div>
-                        <div onMouseEnter={(e) => changeImageHover(e.target)}  onMouseLeave={(e) => changeImage(e.target)}  className="methode credit-card global-radius my-border cursor-pointer flex items-center justify-between">
-                            <img src={require('../../../../../assets/register/CreditCard-Logo.png')} style={{width: '300px'}} alt="" />
+                        <div className="methode credit-card global-radius my-border cursor-pointer flex items-center justify-between">
+                            <Link onMouseEnter={(e) => changeImageHover(e.target)}  onMouseLeave={(e) => changeImage(e.target)}  to='creditcardinformation'><img src={require('../../../../../assets/register/CreditCard-Logo.png')} style={{width: '300px'}} alt="" /></Link>
                         </div>
                     </div>
                     <div className='text-right'>

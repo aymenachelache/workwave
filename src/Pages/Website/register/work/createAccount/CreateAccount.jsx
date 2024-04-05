@@ -22,16 +22,11 @@ export default function CreateAccount() {
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Your personal informations.</p>
                     <form action="">
-                        <InputComp type="text" name="firstName" id="firstName" className='w-2/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='First Name' />
-                        <InputComp type="text" name="lastName" id="lastName" className='w-2/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='Last Name' />
+                        <div className="flex gap-2">
+                        <InputComp type="text" name="firstName" id="firstName" className='w-2/4 text-sm outline-none px-4 py-3 my-2' placeholder='First Name' />
+                        <InputComp type="text" name="lastName" id="lastName" className='w-2/4 text-sm outline-none px-4 py-3 my-2' placeholder='Last Name' />
+                        </div>
                         <InputComp type="email" name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' />
-                        <select name="country" id="country" className='w-full cursor-pointer text-sm outline-none px-4 py-3 mb-4'>
-                            <option value='country'>Country</option>
-                            <option value="algerie">Algerie</option>
-                            <option value="france">France</option>
-                            <option value="italy">Italy</option>
-                            <option value="maroc">Maroc</option>
-                        </select>
                         <Link to={'phoneandpassword'} className={'btn-gradient block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
                     </form>
                     <div className="other flex items-center justify-between gap-3 text-[#1F1F1F1A] my-8">

@@ -21,8 +21,10 @@ export default function PhoneAndPassword() {
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Your personal informations.</p>
                     <form action="">
-                        <InputComp value='+213' type="text" name="firstName" id="firstName" className='w-1/4 inline-block text-sm outline-none px-4 py-3 my-2' />
-                        <InputComp type="number" name="phone" id="phone" className='w-3/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='Phone Number' />
+                        <div className="flex gap-2">
+                        <InputComp value='+213' type="text" name="firstName" id="firstName" className='w-1/4 text-sm outline-none px-4 py-3 my-2' />
+                        <InputComp type="number" name="phone" id="phone" className='w-3/4 text-sm outline-none px-4 py-3 my-2' placeholder='Phone Number' />
+                        </div>
                         <InputComp type="password" name="password" id="password" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' />
                         <InputComp type="password" name="ConfirmPassword" id="ConfirmPassword" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Confirm Password' />
                         <Link to={'paymentmethods'} className={'btn-gradient block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>

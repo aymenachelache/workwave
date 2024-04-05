@@ -1,13 +1,15 @@
 .create-account-work {
     .payment-methode {
         .methode {
-            padding: 40px 40px;
             border: 1px solid #1F1F1F1A;
             transition: all 0.3s ease;
             &:hover {
                 background-color: #fff;
                 transform: translateY(-10px);
                 box-shadow: 0px 10px 30px 0px #0000001A;
+            }
+            a {
+                padding: 40px 40px;
             }
         }
     }

@@ -1,0 +1,23 @@
+.add-certificate {
+    .add-box {
+        transition: all 0.3s ease;
+        p {
+            transition: all 0.3s ease;
+        }
+        .upload {
+            transition: all 0.3s ease;
+            font-size: 10px;
+        }
+        &:hover {
+            background-color: #fff;
+            box-shadow: 0px 10px 30px 0px #0000001A;
+            transform: translateY(-3px);
+            p {
+                color: #A3A19F;
+            }
+            .upload {
+                opacity: 1;
+            }
+        }
+    }
+}

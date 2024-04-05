@@ -49,7 +49,7 @@ export default function WelcomePage() {
                         Your account has been created successfully!<br></br>
                         In order to start working, we need to set up your profile.
                     </p>
-                    <Link to={'/'} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Set up my profile!</span></Link>
+                    <Link to={'addskills'} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Set up my profile!</span></Link>
                 </div>
             </motion.div >
         </>

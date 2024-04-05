@@ -1,0 +1,21 @@
+.add-skills {
+    a.domain,
+    a.skill {
+        font-size: 10px;
+        transition: all 0.3s ease;
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
+        }
+        &.active {
+            color: var(--primary-color);
+            background-color: #37B77826;
+            box-shadow: none;
+        }
+        &.skill.active {
+            color: #fff;
+            background: linear-gradient(90deg, #37B778 0%, #206A45 100%);
+            box-shadow: none;
+        }
+    }
+}

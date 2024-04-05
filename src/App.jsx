@@ -12,6 +12,11 @@ import CreateAccount from './Pages/Website/register/work/createAccount/CreateAcc
 import PhoneAndPassword from './Pages/Website/register/work/phoneAndPassword/PhoneAndPassword'
 import PaymentMethods from './Pages/Website/register/work/paymentMethods/PaymentMethods'
 import WelcomePage from './Pages/Website/register/work/welcomePage/WelcomePage'
+import CreditCardInfo from './Pages/Website/register/work/creditCard/CreditCardInfo'
+import AddSkills from './Pages/Website/register/work/addSkills/AddSkills'
+import AddCertificate from './Pages/Website/register/work/addCertificate/AddCertificate'
+import ProfileDetails from './Pages/Website/register/work/profileDetails/ProfileDetails'
+import CongratulationsPage from './Pages/Website/register/work/congratulationsPage/CongratulationsPage'
 
 function App() {
 
@@ -27,6 +32,12 @@ function App() {
           <Route path='createaccount/phoneandpassword' element={<PhoneAndPassword />} />
           <Route path='createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
           <Route path='createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills' element={<AddSkills />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate' element={<AddCertificate />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails' element={<ProfileDetails />} />
+          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails/congratulations' element={<CongratulationsPage />} />
         </Route>
       </Routes>
     </>
