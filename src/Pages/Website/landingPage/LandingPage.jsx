@@ -1,4 +1,4 @@
-import Button from "../../../Components/Button/Button";
+ import Button from "../../../Components/Button/Button";
 import Footer from "../../../Components/footer/Footer";
 import Header from "../../../Components/header/Header";
 import './LandingPage.scss';

@@ -25,7 +25,7 @@ export default function Work() {
                         <p className='text-sm text-[#CDCCC9]'>&copy; WorkWave 2024</p>
                     </div>
                 </div>
-            </div >
+            </div>
 
         </>
     )
