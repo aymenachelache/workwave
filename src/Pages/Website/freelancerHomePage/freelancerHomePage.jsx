@@ -1,15 +1,15 @@
 import Header from "../../../Components/header/Header"
 import { Link } from "react-router-dom";
-import "./ClientNeeds.scss"
+import "./freelancerHomePage.scss"
 import FilterBar from "../../../Components/filterBar/FilterBar";
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useLayoutEffect} from "react";
 import FreelanceCard from "../../../Components/FreelanceCard/FreelanceCard";
-import { PaginationItem } from "@mui/material";
 import Footer from "../../../Components/footer/Footer"
-import Pagination from '@mui/material/Pagination';
+import Pagination from "../../../Components/pagination/Pagination";
 import Stack from '@mui/material/Stack';
 
-const ClientNeeds = () => {
+const FreelancerHomePage = () => {
+    //const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isSlides , setIsSlides] = useState(true); //flex or grid
     const [projects, setProjects] = useState([]);
 
@@ -41,17 +41,32 @@ const ClientNeeds = () => {
     // Generate multiple random projects
     useEffect(() => {
         const newProjects = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 9; i++) {
             newProjects.push(generateRandomProject());
         }
         setProjects(newProjects);
     }, []);
 
+    // Set window width state
+    // useEffect(() => {
+    //     const handleResize = () => {
+    //         setWindowWidth(window.innerWidth);
+    //     };
+    //     window.addEventListener("resize", handleResize);
+    //     handleResize(); // Call initially to set the correct value
+    //     return () => {
+    //         window.removeEventListener("resize", handleResize);
+    //     };
+    // }, []);
+
+    // useEffect(() => {
+    //     setIsSlides(windowWidth <= 768);
+    // }, [windowWidth]);
     return(
-        <div id="ClientNeeds" className="flex flex-col items-center justify-center relative">
+        <div id="ClientNeeds" className="flex flex-col items-center justify-center relative transition-all duration-300">
             <Header />
             <FilterBar />
-            <div id="wrapper" className="fixed right-[6%] top-[11%] scale-75">
+            <div id="wrapper" className="fixed right-[5%] top-[11%] scale-[60%] max-md:hidden">
                 <div id="slides" className={`px-3 py-1 rounded-xl transition-all duration-300 ${isSlides ? "bg-white drop-shadow-xl" : "opacity-40 giveBorder cursor-pointer"} `} onClick={() => setIsSlides(true)}>
                     <div id="icon" className="rounded-md"></div>
                     <div id="icon" className="rounded-md"></div>
@@ -66,16 +81,16 @@ const ClientNeeds = () => {
                 </div>
             </div>
 
-            <div className ={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-3 gap-10 mx-36"} mt-44`}>
+            <div className ={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-3 gap-10 mx-36"} mt-44 max-md:flex max-md:flex-col`}>
                 {projects.map((project, index) => (
                     <FreelanceCard key={index} props={project} isSlides={isSlides} />
                 ))}
             </div>
 
-            <Pagination count={10} shape="rounded" className="mt-20" />
+            <Pagination />
             <Footer />
         </div>
     )
 }
 
-export default ClientNeeds
+export default FreelancerHomePage

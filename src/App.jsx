@@ -11,7 +11,8 @@ import Work from './Pages/Website/register/Work'
 import CreateAccount from './Pages/Website/register/work/createAccount/CreateAccount'
 import PhoneAndPassword from './Pages/Website/register/work/phoneAndPassword/PhoneAndPassword'
 import PaymentMethods from './Pages/Website/register/work/paymentMethods/PaymentMethods'
-import ClientNeeds from './Pages/Website/clientNeeds/ClientNeeds'
+import FreelancerHomePage from './Pages/Website/freelancerHomePage/freelancerHomePage'
+import ClientHomePage from './Pages/Website/clientHomePage/ClientHomePage'
 
 function App() {
 
@@ -19,7 +20,8 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<LandingPage />} />
-        <Route path='/hire' element={<LandingHire />} />
+        <Route path='/hire' element={<LandingHire />} /> 
+        <Route path='/hire/home' element={<ClientHomePage />} />
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/register/work' element={<Work />}>
@@ -27,7 +29,7 @@ function App() {
           <Route path='createaccount/phoneandpassword' element={<PhoneAndPassword />} />
           <Route path='createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
         </Route>
-        <Route path='/work/clientneeds' element={<ClientNeeds />} />
+        <Route path='/work/home' element={<FreelancerHomePage />} />
       </Routes>
     </>
   )

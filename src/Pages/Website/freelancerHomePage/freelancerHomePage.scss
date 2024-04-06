@@ -1,7 +1,9 @@
 #ClientNeeds{
     #wrapper{
         #slides{
-            
+            #icon, #grid{
+                border: 2px white solid;
+            }
             #icon{
                 background-color: #37B778;
                 height: 16px;
@@ -18,8 +20,6 @@
             #icon{
                 background-color: #37B778;
                 height: 12px;
-               
-                
             }
         }
         .giveBorder{
