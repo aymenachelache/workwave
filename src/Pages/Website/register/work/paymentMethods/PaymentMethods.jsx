@@ -37,7 +37,7 @@ export default function PaymentMethods() {
                         </div>
                     </div>
                     <div className='text-right'>
-                    <Button link='welcome' text='Skip for now' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px'}} />} clicked />
+                    <Button link='creditcardinformation/welcome' text='Skip for now' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px'}} />} clicked />
                     </div>
                 </div>
             </motion.div >

@@ -17,6 +17,11 @@ import AddSkills from './Pages/Website/register/work/addSkills/AddSkills'
 import AddCertificate from './Pages/Website/register/work/addCertificate/AddCertificate'
 import ProfileDetails from './Pages/Website/register/work/profileDetails/ProfileDetails'
 import CongratulationsPage from './Pages/Website/register/work/congratulationsPage/CongratulationsPage'
+import ForgetPassword from './Pages/Website/login/forgetPassword/ForgetPassword'
+import AddInformation from './Pages/Website/login/forgetPassword/addInformation/AddInformation'
+import VerificationCode from './Pages/Website/login/forgetPassword/verificationCode/VerificationCode'
+import HelloAgain from './Pages/Website/login/forgetPassword/helloAgain/HelloAgain'
+import HireSecondWelcome from './Pages/Website/register/work/HireSecondWelcome/HireSecondWelcome'
 
 function App() {
 
@@ -26,18 +31,33 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/login/forgetpassword' element={<ForgetPassword />}>
+          <Route path='/login/forgetpassword/addinformation' element={<AddInformation />} />
+          <Route path='/login/forgetpassword/addinformation/verificationcode' element={<VerificationCode />} />
+          <Route path='/login/forgetpassword/addinformation/verificationcode/helloagain' element={<HelloAgain />} />
+        </Route>
         <Route path='/register' element={<Register />} />
-        <Route path='/register/work' element={<Work />}>
-          <Route path='createaccount' element={<CreateAccount />} />
-          <Route path='createaccount/phoneandpassword' element={<PhoneAndPassword />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills' element={<AddSkills />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate' element={<AddCertificate />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails' element={<ProfileDetails />} />
-          <Route path='createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails/congratulations' element={<CongratulationsPage />} />
+        <Route path='/register' element={<Work />}>
+          {/* I Wnat to Work */}
+          <Route path='work/createaccount' element={<CreateAccount />} />
+          <Route path='work/createaccount/phoneandpassword' element={<PhoneAndPassword />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills' element={<AddSkills />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate' element={<AddCertificate />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails' element={<ProfileDetails />} />
+          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails/congratulations' element={<CongratulationsPage />} />
+          {/* I Wnat to Hire */}
+          <Route path='hire/createaccount' element={<CreateAccount />} />
+          <Route path='hire/createaccount/phoneandpassword' element={<PhoneAndPassword />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/profiledetails' element={<ProfileDetails />} />
+          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/profiledetails/congratulations' element={<HireSecondWelcome />} />
         </Route>
       </Routes>
     </>

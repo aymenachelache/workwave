@@ -45,7 +45,7 @@ export default function ProfileDetails() {
                     </div>
                     <form action="">
                         <InputComp type="text" name="aboutMe" id="aboutMe" className='w-full text-sm outline-none px-4 pt-3 pb-10 my-4 mx-auto' placeholder='About Me' />
-                        <InputComp type="text" name="portfolio" id="portfolio" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Portfolio Link' />
+                        {window.location.pathname.split('/')[2] === 'work' && <InputComp type="text" name="portfolio" id="portfolio" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Portfolio Link' />}
                         <Link to={'congratulations'} className={'btn-gradient block w-full mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Finish</span></Link>
                     </form>
                     <div className='text-right mt-4'>

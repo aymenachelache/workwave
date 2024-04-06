@@ -80,7 +80,7 @@ export default function LandingPage() {
         <>
             <Header />
             <div className="landing">
-                <div className="hero">
+                <div className="hero hero-work">
                     <div className="container mx-auto pt-16 w-full h-screen flex flex-col justify-center">
                         <div className="text text-center md:text-left">
                             <h1 className="text-white font-extrabold text-3xl lg:text-4xl">Ride the WorkWave and Catch the Perfect <TextGradient text='Wave of Opportunities!' /></h1>

@@ -30,7 +30,7 @@ export default function Login() {
                         </form>
                         <div className="forget flex justify-between mt-2">
                             <Link to={'/register'} className='text-xs font-thin cursor-pointer text-[#777775]'>New to WorkWave?</Link>
-                            <Link className='text-xs font-thin cursor-pointer text-[#777775]'>Forgot password?</Link>
+                            <Link to='forgetpassword/addinformation' className='text-xs font-thin cursor-pointer text-[#777775]'>Forgot password?</Link>
                         </div>
                         <div className="other flex items-center justify-between gap-3 text-[#1F1F1F1A] my-8">
                             <span className="line"></span>
