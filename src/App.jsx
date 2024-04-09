@@ -22,14 +22,16 @@ import AddInformation from './Pages/Website/login/forgetPassword/addInformation/
 import VerificationCode from './Pages/Website/login/forgetPassword/verificationCode/VerificationCode'
 import HelloAgain from './Pages/Website/login/forgetPassword/helloAgain/HelloAgain'
 import HireSecondWelcome from './Pages/Website/register/work/HireSecondWelcome/HireSecondWelcome'
+import Categories from './Pages/Website/landingPage/categories/Categories'
 
 function App() {
-
+  
   return (
     <>
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/hire' element={<LandingHire />} />
+        <Route path='/categories' element={<Categories />} />
         <Route path='/login' element={<Login />} />
         <Route path='/login/forgetpassword' element={<ForgetPassword />}>
           <Route path='/login/forgetpassword/addinformation' element={<AddInformation />} />

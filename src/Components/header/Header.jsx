@@ -61,7 +61,7 @@ export default function Header(props) {
                         </>
                     ) :
                         <>
-                            <span onClick={shNavbar} style={{width: '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
+                            <span onClick={shNavbar} style={{width: window.innerWidth < 300 && '67px'}}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
                             <Button classes='primaryfont order-3' link={'/login'} text="Login" clicked={true} color={props.hire ? secondaryColor : primaryColor} border />
                         </>
                     }

@@ -7,6 +7,7 @@ import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
 
 export default function Register() {
+  const data = fetch('http://127.0.0.1:5000/api/auth/logout').then(data => data.json()).then(data => console.log(data));
   return (
     <>
       <div className="register p-5">
@@ -18,7 +19,7 @@ export default function Register() {
             <p className='text-sm text-center text-[#777775] mb-10'>What brings you here?</p>
           </div>
         </div>
-        <div className="cont flex items-center justify-center gap-10 mt-10">
+        <div className="cont flex flex-col lg:flex-row items-center justify-center gap-10 mt-10">
           <div className="left">
             <Link to='hire/createaccount'>
               <div className="hire cursor-pointer">

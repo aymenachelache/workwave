@@ -13,32 +13,30 @@ export default function Footer() {
                         <p className='copyright text-xs text-center mt-4'>Copyright © 2024</p>
                     </div>
                     <div className="box box2 w-full sm:w-fit text-center md:text-left m-10 lg:mx-10">
-                        <h4 className='text-sm font-bold mb-4'>Freelancer</h4>
+                        <h4 className='text-sm font-bold mb-5'>Freelancer</h4>
                         <ul>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>How to start working</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>View categories</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Get your skills certified</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Get verified</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Find freelance jobs</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Share a service offer</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>How to start working</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/categories'>View categories</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>Get your skills certified</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/register'>Find freelance jobs</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/register'>Share a service offer</Link></li>
                         </ul>
                     </div>
                     <div className="box box3 w-full sm:w-fit text-center md:text-left m-10 lg:mx-10">
-                        <h4 className='text-sm font-bold mb-4'>Client</h4>
+                        <h4 className='text-sm font-bold mb-5'>Client</h4>
                         <ul>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>How to hire</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>View categories</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Get verified</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Find freelance services</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Share a need</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>How to hire</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/categories'>View categories</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/register'>Find freelance services</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/register'>Share a need</Link></li>
                         </ul>
                     </div>
                     <div className="box box4 w-full sm:w-fit text-center md:text-left m-10 lg:mx-10">
-                        <h4 className='text-sm font-bold mb-4'>Help</h4>
+                        <h4 className='text-sm font-bold mb-5'>Help</h4>
                         <ul>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>About us</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>How it works</Link></li>
-                            <li className='text-sm font-normal my-2 text-[#777775]'><Link to=''>Help & support</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>About us</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>How it works</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>Help & support</Link></li>
                         </ul>
                     </div>
                 </div>

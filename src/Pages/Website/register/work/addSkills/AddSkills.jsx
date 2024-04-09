@@ -28,8 +28,6 @@ export default function AddSkills() {
     const skillsDomain = skills.map((el, key) => <Link to={``} onClick={(e) => choseSkill(e)} key={key} className={'skill inline-block w-fit text-xs font-bold primaryfont my-border global-radius px-2 py-1 my-1 mr-1'}>{el}</Link>)
     function choseSkill(e) {
         e.target.classList.add('active');
-
-
     }
     function showSkills(e) {
         console.log(e.target.innerText);
