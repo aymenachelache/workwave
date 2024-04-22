@@ -1,12 +1,10 @@
-import Header from "../../../Components/header/Header"
-import { Link } from "react-router-dom";
+import Header from "../../../../Components/header/Header"
 import "./freelancerHomePage.scss"
-import FilterBar from "../../../Components/filterBar/FilterBar";
-import React, {useState, useEffect, useLayoutEffect} from "react";
-import FreelanceCard from "../../../Components/FreelanceCard/FreelanceCard";
-import Footer from "../../../Components/footer/Footer"
-import Pagination from "../../../Components/pagination/Pagination";
-import Stack from '@mui/material/Stack';
+import FilterBar from "../../../../Components/filterBar/FilterBar";
+import {useState, useEffect} from "react";
+import FreelanceCard from "../../../../Components/FreelanceCard/FreelanceCard";
+import Footer from "../../../../Components/footer/Footer"
+import Pagination from "../../../../Components/pagination/Pagination";
 
 const FreelancerHomePage = () => {
     //const [windowWidth, setWindowWidth] = useState(window.innerWidth);

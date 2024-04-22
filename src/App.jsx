@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.scss'
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './Pages/Website/landingPage/LandingPage'
@@ -11,8 +8,11 @@ import Work from './Pages/Website/register/Work'
 import CreateAccount from './Pages/Website/register/work/createAccount/CreateAccount'
 import PhoneAndPassword from './Pages/Website/register/work/phoneAndPassword/PhoneAndPassword'
 import PaymentMethods from './Pages/Website/register/work/paymentMethods/PaymentMethods'
-import FreelancerHomePage from './Pages/Website/freelancerHomePage/freelancerHomePage'
+import FreelancerHomePage from './Pages/Website/freelancer/freelancerHomePage/freelancerHomePage'
 import ClientHomePage from './Pages/Website/clientHomePage/ClientHomePage'
+import FDashboard from './Pages/Website/freelancer/freelancerDashboard/FDashboard'
+import FPersonalSpace from './Pages/Website/freelancer/personalspace/FPersonalSpace'
+
 
 function App() {
 
@@ -30,6 +30,9 @@ function App() {
           <Route path='createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
         </Route>
         <Route path='/work/home' element={<FreelancerHomePage />} />
+        <Route path='/work/personalspace' element={<FPersonalSpace />} >
+          <Route path='dashboard' element={<FDashboard/>} /> 
+        </Route>
       </Routes>
     </>
   )

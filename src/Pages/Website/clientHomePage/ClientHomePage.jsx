@@ -1,12 +1,10 @@
 import Header from "../../../Components/header/Header"
-import { Link } from "react-router-dom";
 import "./ClientHomePage.scss"
 import FilterBar from "../../../Components/filterBar/FilterBar";
-import React, {useState, useEffect, useLayoutEffect} from "react";
+import {useState, useEffect} from "react";
 import Footer from "../../../Components/footer/Footer"
 import ClientCard from "../../../Components/clientCard/ClientCard"
 import Pagination from "../../../Components/pagination/Pagination";
-import Stack from '@mui/material/Stack';
 
 const ClientHomePage = () => {
     //const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -48,22 +46,6 @@ const ClientHomePage = () => {
         }
         setProjects(newProjects);
     }, []);
-
-    // Set window width state
-    // useEffect(() => {
-    //     const handleResize = () => {
-    //         setWindowWidth(window.innerWidth);
-    //     };
-    //     window.addEventListener("resize", handleResize);
-    //     handleResize(); // Call initially to set the correct value
-    //     return () => {
-    //         window.removeEventListener("resize", handleResize);
-    //     };
-    // }, []);
-
-    // useEffect(() => {
-    //     setIsSlides(windowWidth <= 768);
-    // }, [windowWidth]);
     return(
         <div id="ClientNeeds" className="flex flex-col items-center justify-center relative transition-all duration-300">
             <Header />
@@ -83,7 +65,7 @@ const ClientHomePage = () => {
                 </div>
             </div>
 
-            <div className ={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-3 gap-10 mx-36"} mt-44 max-md:flex max-md:flex-col`}>
+            <div className ={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10 mx-36"} mt-44 max-md:flex-col`}>
                 {projects.map((project, index) => (
                     <ClientCard key={index} props={project} isSlides={isSlides} />
                 ))}

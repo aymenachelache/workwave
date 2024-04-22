@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./ClientCard.scss"
@@ -5,7 +6,7 @@ import { faCircleExclamation, faUser } from "@fortawesome/free-solid-svg-icons"
 
 
 
-const FreelanceCard = ({props, isSlides}) => {
+const ClientCard = ({props, isSlides}) => {
     return (
         <div id="container" className={`max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
             <div className="flex justify-between h-[30%] max-sm:flex-col">
@@ -22,10 +23,10 @@ const FreelanceCard = ({props, isSlides}) => {
                     <div id="age" className="opacity-65 text-sm"> {props.age} </div>
                 </div>
             </div>
-            <div id="description" className={`${isSlides ? "mt-8" : "text-sm mt-8"} h-[14%]`}>
+            <div id="description" className={`${isSlides ? "mt-8" : "text-sm mt-6"} h-[14%]`}>
                 {props.description}
             </div>
-            <div className="flex justify-between mt-12">
+            <div className={`flex justify-between mt-12 ${isSlides ? "mt-12" : "mt-20"}`}>
                 <div id="client" className="flex items-center">
                     <FontAwesomeIcon icon={faUser} className="border-2 mr-1 p-2 h-6 border-gray-300 text-gray-400 rounded-full" />
                     <div className="text">
@@ -48,4 +49,4 @@ const FreelanceCard = ({props, isSlides}) => {
 }
 
 
-export default FreelanceCard
+export default ClientCard

@@ -1,0 +1,37 @@
+.button{
+    border: 1px solid hsl(150, 54%, 47%, 0.5);
+    margin: 8px 0;
+    &:hover{
+        background-color: hsl(150, 54%, 47%, 0.3);
+        border: transparent;
+    }
+    
+}
+.icon1{
+    fill: hsl(150, 54%, 47%);
+}
+
+.none{
+    &:hover{
+        background-color: hsl(150, 54%, 47%);
+        border: 1px solid hsl(150, 54%, 47%);
+    }
+}
+
+.active{
+    .button{
+        background-color: hsla(150, 71%, 23%);
+        color: white;
+    }
+}
+
+.sublist{
+    background-color: hsl(150, 54%, 47%, 0.15);
+    div{
+        &:hover{
+            background-color: hsl(150, 54%, 47%, 0.25);
+            transition: all;
+            transition-duration: 500ms;
+        }
+    }
+}
