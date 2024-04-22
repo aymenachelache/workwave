@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Login.scss';
 import logo from '../../../assets/Logo.png'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -9,9 +9,30 @@ import Logo from '../../../Components/logo/Logo';
 import InputComp from '../../../Components/input/InputComp';
 import BackButton from '../../../Components/backButton/BackButton';
 import ButtonGradient from '../../../Components/buttonGradient/ButtonGradient';
+import axios from 'axios';
 
 
 export default function Login() {
+    const [form, setForm] = useState({
+        email: "",
+        password: "",
+    });
+    const navigate = useNavigate();
+
+    console.log(form);
+    function handleChange(e) {
+        setForm(form => ({...form, [e.target.name]: e.target.value}));
+    }
+    const  handleSubmit = async (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        try {
+            const data = await axios.post("http://127.0.0.1:5000/api/auth/sign-in", form).then(res => console.log(res));
+            navigate('/');
+        } catch(err) {
+            console.log("Error Create Account");
+            console.log(err);
+        }
+      };
     return (
         <>
             <div className="login w-full h-screen relative">
@@ -23,10 +44,10 @@ export default function Login() {
                     <div className="contain w-2/4 mx-auto text-center">
                         <h2 className='font-black mb-1'>Welcome back!</h2>
                         <p className='text-sm text-[#777775] mb-10'>Sign in to continue to WorkWave.</p>
-                        <form action="">
-                            <InputComp type="email" name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' />
-                            <InputComp type="password" name="pass" id="pass" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' />
-                            <ButtonGradient text='Log In' to='/login' />
+                        <form action="" onSubmit={handleSubmit}>
+                            <InputComp onchange={(e) => handleChange(e)} type="email" value={form.email} name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' required />
+                            <InputComp onchange={(e) => handleChange(e)} type="password" value={form.password} name="password" id="pass" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' required />
+                            <button type='submit' className={'btn-gradient block w-full'}><span className='text-lg font-extrabold primaryfont block'>log In</span></button>
                         </form>
                         <div className="forget flex justify-between mt-2">
                             <Link to={'/register'} className='text-xs font-thin cursor-pointer text-[#777775]'>New to WorkWave?</Link>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Work.scss';
 import logo from '../../../../assets/Logo.png'
 import { Link, Outlet } from 'react-router-dom';
@@ -11,6 +11,14 @@ import BackButton from '../../../../Components/backButton/BackButton';
 
 
 export default function Work() {
+    const [formData,setFormData]= useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        mobile: "",
+        password: "",
+        confirmPassword: ""
+    });
     return (
         <>
             <div className="create-work w-full h-screen relative">
@@ -20,7 +28,7 @@ export default function Work() {
                         <BackButton />
                     </div>
                     <div className="contain mx-auto sm:m-0 text-center">
-                        <Outlet />
+                        <Outlet context={{formData, setFormData}} />
                     </div>
                 </div>
                 <div className='copy absolute ml-5 mb-5 z-10 bottom-0'>
