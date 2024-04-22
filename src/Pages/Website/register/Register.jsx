@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Register.scss';
 import Logo from '../../../Components/logo/Logo';
 import Button from './../../../Components/Button/Button';
 import BackButton from '../../../Components/backButton/BackButton';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
+import { StepContext } from '../../Context/Context';
 
 export default function Register() {
-  const data = fetch('http://127.0.0.1:5000/api/auth/logout').then(data => data.json()).then(data => console.log(data));
+  const user = useContext(StepContext);
   return (
     <>
       <div className="register p-5">

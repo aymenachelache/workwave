@@ -1,3 +1,8 @@
-import { createContext } from "react";
+import React, { createContext, useState } from 'react';
+import Register from '../Website/register/Register';
 
-export const role = createContext(null);
+export const StepContext = createContext(null);
+function Context() {
+    
+}
+export default Context;

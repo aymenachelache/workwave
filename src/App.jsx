@@ -25,7 +25,6 @@ import HireSecondWelcome from './Pages/Website/register/work/HireSecondWelcome/H
 import Categories from './Pages/Website/landingPage/categories/Categories'
 
 function App() {
-  
   return (
     <>
       <Routes>
