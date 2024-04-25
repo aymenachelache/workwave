@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 const Card = ({profit}) => {
 
     return (
-        <div className="hover:-translate-y-3 cursor-pointer shadow-xl transition-all duration-300 w-full h-fit hover:shadow-emerald-200 rounded-2xl p-8">
+        <div className="hover:-translate-y-3 cursor-pointer shadow-xl transition-all duration-300 w-full lg:mt-4 h-fit hover:shadow-emerald-200 rounded-2xl p-8">
             <div id="head" className="flex items-center justify-between">
                 <p className="text-PrimColor text-opacity-60 font-semibold px-1">Profit</p>
                 <select name="" id="" className="text-gray-400 outline-none hover:text-gray-600 cursor-pointer text-xs">

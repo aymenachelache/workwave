@@ -8,6 +8,9 @@ export default {
       colors:{
         "PrimColor" : "#37B778",
         "SecColor" : "#00AEEF"
+      },
+      fontFamily:{
+        "Unbounded" : "Unbounded"
       }
     },
   },

@@ -1,5 +1,5 @@
 import './App.scss'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom'
 import LandingPage from './Pages/Website/landingPage/LandingPage'
 import Login from './Pages/Website/login/Login'
 import Register from './Pages/Website/register/Register'
@@ -10,8 +10,10 @@ import PhoneAndPassword from './Pages/Website/register/work/phoneAndPassword/Pho
 import PaymentMethods from './Pages/Website/register/work/paymentMethods/PaymentMethods'
 import FreelancerHomePage from './Pages/Website/freelancer/freelancerHomePage/freelancerHomePage'
 import ClientHomePage from './Pages/Website/clientHomePage/ClientHomePage'
-import FDashboard from './Pages/Website/freelancer/freelancerDashboard/FDashboard'
+import FDashboard from './Pages/Website/freelancer/personalspace/freelancerDashboard/FDashboard'
 import FPersonalSpace from './Pages/Website/freelancer/personalspace/FPersonalSpace'
+import WorkingOn from './Pages/Website/freelancer/personalspace/Projects/WorkingOn/WorkingOn'
+import { useEffect } from 'react'
 
 
 function App() {
@@ -31,7 +33,9 @@ function App() {
         </Route>
         <Route path='/work/home' element={<FreelancerHomePage />} />
         <Route path='/work/personalspace' element={<FPersonalSpace />} >
-          <Route path='dashboard' element={<FDashboard/>} /> 
+          <Route index path='dashboard' element={<FDashboard />} /> 
+          <Route  path='myprojects/workingon' element={<WorkingOn />} /> 
+          <Route  path='myprojects/history' element={<WorkingOn />} /> 
         </Route>
       </Routes>
     </>

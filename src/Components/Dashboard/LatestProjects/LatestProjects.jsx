@@ -53,7 +53,7 @@ const LatestProjects = () => {
                 <p className="font-semibold text-gray-400 text-xs mb-2 px-1 ">Status</p>
                 {projects.map((project, index) => {
                     return(
-                        <p key={index} className={`font-bold text-white hover:bg-PrimColor text-sm hover:bg-opacity-25 text-center px-1 rounded-xl ${project[1] == "Pending" ? "bg-yellow-400" : "bg-PrimColor"}`}>{project[1]}</p> 
+                        <p key={index} className={`font-bold text-white text-sm hover:bg-opacity-55 text-center px-1 rounded-xl ${project[1] == "Pending" ? "bg-yellow-400" : "bg-PrimColor"}`}>{project[1]}</p> 
                     )
                 })}
             </div>
