@@ -42,7 +42,7 @@ const Sidebar = () => {
                                         <h4 className="">Working On</h4>
                                     </div>
                                 </Link>
-                                <Link to='/myprojects/history'>
+                                <Link to='myprojects/history'>
                                     <div className="flex p-3 items-center transition-all duration-300">
                                         <FontAwesomeIcon icon={faClock} className="mr-3" />
                                         <h4 className="">History</h4>

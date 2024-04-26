@@ -2,7 +2,14 @@
 export default {
   content: [
     "./src/**/*.{html,js,jsx,ts,tsx}",
+    'node_modules/flowbite-react/lib/esm/**/*.js'
   ],
+  plugins: [
+    require('flowbite/plugin')({
+      charts: true,
+  }),
+  ],
+
   theme: {
     extend: {
       colors:{

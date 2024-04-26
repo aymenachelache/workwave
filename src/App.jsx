@@ -14,6 +14,7 @@ import FDashboard from './Pages/Website/freelancer/personalspace/freelancerDashb
 import FPersonalSpace from './Pages/Website/freelancer/personalspace/FPersonalSpace'
 import WorkingOn from './Pages/Website/freelancer/personalspace/Projects/WorkingOn/WorkingOn'
 import { useEffect } from 'react'
+import ProjectsHistory from './Pages/Website/freelancer/personalspace/Projects/History/ProjectsHistory'
 
 
 function App() {
@@ -33,9 +34,9 @@ function App() {
         </Route>
         <Route path='/work/home' element={<FreelancerHomePage />} />
         <Route path='/work/personalspace' element={<FPersonalSpace />} >
-          <Route index path='dashboard' element={<FDashboard />} /> 
+          <Route  path='dashboard' element={<FDashboard />} /> 
           <Route  path='myprojects/workingon' element={<WorkingOn />} /> 
-          <Route  path='myprojects/history' element={<WorkingOn />} /> 
+          <Route  path='myprojects/history' element={<ProjectsHistory />} /> 
         </Route>
       </Routes>
     </>
