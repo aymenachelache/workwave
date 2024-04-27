@@ -9,8 +9,12 @@ import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
 import { greyColor } from '../../../../../Components/Variables/VariablesColors';
 import { motion } from 'framer-motion';
+import Cookie from 'cookie-universal';
+
 
 export default function HireSecondWelcome() {
+    const cookie = Cookie();
+    const firstName = cookie.get("firstName");
     return (
         <>
             <motion.div
@@ -29,7 +33,7 @@ export default function HireSecondWelcome() {
                 viewport={{ once: true }}
                 className="create-account-work w-full relative">
                 <div className="contain payment-methode w-3/4 mx-auto text-center">
-                    <TextGradient size='25px' weight='800' text='Welcome Hamza!' />
+                    <span className='capitalize'><TextGradient size='25px' weight='800' text={`Welcome ${firstName}!`} /></span>
                     <motion.p
                         initial={{
                             opacity: 0,
@@ -51,7 +55,7 @@ export default function HireSecondWelcome() {
                     </p>
                     <Link to={'/'} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Consult Services</span></Link>
                     <div className='text-right mt-14'>
-                    <Button link='/' text='Post your first need' color={greyColor} classes='font-bold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px'}} />} clicked />
+                        <Button link='/' text='Post your first need' color={greyColor} classes='font-bold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
                     </div>
                 </div>
             </motion.div >

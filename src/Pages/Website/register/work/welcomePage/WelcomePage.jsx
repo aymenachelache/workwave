@@ -9,8 +9,12 @@ import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
 import { greyColor } from '../../../../../Components/Variables/VariablesColors';
 import {motion} from 'framer-motion';
+import Cookie from 'cookie-universal';
 
 export default function WelcomePage() {
+    const cookie = Cookie();
+    const firstName = cookie.get("firstName");
+    const role = cookie.get("role");
     return (
         <>
             <motion.div
@@ -29,7 +33,7 @@ export default function WelcomePage() {
               viewport={{ once: true }}
              className="create-account-work w-full relative">
                 <div className="contain payment-methode w-3/4 mx-auto text-center">
-                    <TextGradient size='25px' weight='800' text='Welcome Hamza!' />
+                    <span className='capitalize'><TextGradient size='25px' weight='800' text={`Welcome ${firstName}!`} /></span>
                     <motion.p
                     initial={{
                 opacity: 0,
@@ -49,7 +53,7 @@ export default function WelcomePage() {
                         Your account has been created successfully!<br></br>
                         In order to start working, we need to set up your profile.
                     </p>
-                    <Link to={window.location.pathname.split('/')[2] === 'work' ? 'addskills' : 'profiledetails'} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Set up my profile!</span></Link>
+                    <Link to={role === "freelancer" ? 'addskills' : role == "user" ? 'profiledetails' : "/"} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Set up my profile!</span></Link>
                 </div>
             </motion.div >
         </>

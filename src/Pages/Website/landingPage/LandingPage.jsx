@@ -75,7 +75,6 @@ export default function LandingPage() {
         }
         e.target.children[0].src = require(urll);
     }
-
     return (
         <>
             <Header />

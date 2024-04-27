@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Login.scss';
-import logo from '../../../assets/Logo.png'
 import { Link, useNavigate } from 'react-router-dom';
-import TextGradient from '../../../Components/textGradient/TextGradient';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../../../Components/logo/Logo';
 import InputComp from '../../../Components/input/InputComp';
 import BackButton from '../../../Components/backButton/BackButton';
-import ButtonGradient from '../../../Components/buttonGradient/ButtonGradient';
 import axios from 'axios';
+import Cookie from 'cookie-universal';
+import {motion} from 'framer-motion';
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { LOGIN, VERIFICATION, baseURL } from '../../../Components/Variables/VariablesColors';
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -18,27 +18,50 @@ export default function Login() {
         password: "",
     });
     const navigate = useNavigate();
+    const cookie = Cookie();
+    const [invalidData, setInvalidaDta] = useState(false);
 
-    console.log(form);
+    const notify = () => {
+        if (!invalidData) {
+            toast.error("Email or Password incorrect!");
+        }
+    };
+
+
     function handleChange(e) {
-        setForm(form => ({...form, [e.target.name]: e.target.value}));
+        setForm(form => ({ ...form, [e.target.name]: e.target.value }));
     }
-    const  handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault(); // Prevent default form submission behavior
         try {
-            const data = await axios.post("http://127.0.0.1:5000/api/auth/sign-in", form).then(res => console.log(res));
-            navigate('/');
-        } catch(err) {
-            console.log("Error Create Account");
+            const data = await axios.post(`${baseURL}/${LOGIN}`, form, {
+                withCredentials: true,
+            }).then(res => {
+                console.log(res.data);
+                if (res.data.Success !== undefined && res.data.Success !== null) {
+                    setInvalidaDta(true);
+                    return;
+                }
+                cookie.set("email", res.data.email);
+                cookie.set("firstName", res.data.firstName);
+                cookie.set("lastName", res.data.lastName);
+                cookie.set("mobile", res.data.mobile);
+                cookie.set("verified", res.data.verified);
+                navigate('/');
+
+            });
+        } catch (err) {
+            setInvalidaDta(true);
+            console.log("login Error");
             console.log(err);
         }
-      };
+    };
     return (
         <>
             <div className="login w-full h-screen relative">
                 <div className="box absolute flex flex-col justify-between bg-white h-screen py-4 px-5">
                     <div className="top flex justify-between items-center">
-                        <Logo className='font-bold'/>
+                        <Logo className='font-bold' />
                         <BackButton />
                     </div>
                     <div className="contain w-2/4 mx-auto text-center">
@@ -47,7 +70,8 @@ export default function Login() {
                         <form action="" onSubmit={handleSubmit}>
                             <InputComp onchange={(e) => handleChange(e)} type="email" value={form.email} name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' required />
                             <InputComp onchange={(e) => handleChange(e)} type="password" value={form.password} name="password" id="pass" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' required />
-                            <button type='submit' className={'btn-gradient block w-full'}><span className='text-lg font-extrabold primaryfont block'>log In</span></button>
+                            <button onClick={notify} type='submit' className={'btn-gradient block w-full'}><span className='text-lg font-extrabold primaryfont block'>log In</span></button>
+                            <ToastContainer position='bottom-left' />
                         </form>
                         <div className="forget flex justify-between mt-2">
                             <Link to={'/register'} className='text-xs font-thin cursor-pointer text-[#777775]'>New to WorkWave?</Link>

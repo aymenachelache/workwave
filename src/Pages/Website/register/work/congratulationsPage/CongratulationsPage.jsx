@@ -9,8 +9,12 @@ import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
 import { greyColor } from '../../../../../Components/Variables/VariablesColors';
 import { motion } from 'framer-motion';
+import Cookie from 'cookie-universal';
+
 
 export default function CongratulationsPage() {
+    const cookie = Cookie();
+    const firstName = cookie.get("firstName");
     return (
         <>
             <motion.div
@@ -29,7 +33,7 @@ export default function CongratulationsPage() {
                 viewport={{ once: true }}
                 className="create-account-work w-full relative">
                 <div className="contain payment-methode w-3/4 mx-auto text-center">
-                    <TextGradient size='25px' weight='800' text='Congratulations Hamza!' />
+                    <span className='capitalize'><TextGradient size='25px' weight='800' text={`Welcome ${firstName}!`} /></span>
                     <motion.p
                         initial={{
                             opacity: 0,
@@ -51,7 +55,7 @@ export default function CongratulationsPage() {
                     </p>
                     <Link to={'/'} className={'btn-gradient block w-3/4 mx-auto mt-5 capitalize'} ><span className='text-lg font-extrabold primaryfont block'>Post your first service</span></Link>
                     <div className='text-right mt-8'>
-                    <Button link='/' text='Proceed to WorkWave' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px'}} />} clicked />
+                        <Button link='/' text='Proceed to WorkWave' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
                     </div>
                 </div>
             </motion.div >

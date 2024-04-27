@@ -23,6 +23,15 @@ import VerificationCode from './Pages/Website/login/forgetPassword/verificationC
 import HelloAgain from './Pages/Website/login/forgetPassword/helloAgain/HelloAgain'
 import HireSecondWelcome from './Pages/Website/register/work/HireSecondWelcome/HireSecondWelcome'
 import Categories from './Pages/Website/landingPage/categories/Categories'
+import RequireAuth from './Pages/Auth/RequireAuth'
+import Page404 from './Pages/Auth/Page404'
+import ContactUs from './Pages/Website/contactUs/ContactUs'
+import Setting from './Pages/Website/setting/Setting'
+import RequireBack from './Pages/Auth/RequireBack'
+import PubicProfile from './Pages/Website/setting/PubicProfile'
+import AccountSetting from './Pages/Website/setting/AccountSetting'
+import VerificationEmail from './Pages/Website/verificationEmail/VerificationEmail'
+import RequireEmail from './Pages/Auth/RequireEmail'
 
 function App() {
   return (
@@ -31,35 +40,46 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/categories' element={<Categories />} />
-        <Route path='/login' element={<Login />} />
+        <Route element={<RequireBack />}>
+          <Route path='/login' element={<Login />} />
+        </Route>
+        <Route path='/choice' element={<Register />} />
+        <Route path='emailverfication' element={<VerificationEmail />} />
+        <Route path='/register' element={<Work />}>
+          <Route path='' element={<CreateAccount />} />
+          <Route path='phoneandpassword' element={<PhoneAndPassword />} />
+          <Route path='welcome' element={<WelcomePage />} />
+          <Route path='welcome/addskills' element={<AddSkills />} />
+          <Route path='welcome/addskills/addcertificate' element={<AddCertificate />} />
+          <Route path='welcome/addskills/addcertificate/profiledetails' element={<ProfileDetails />} />
+          <Route path='welcome/addskills/addcertificate/profiledetails/congratulations' element={<CongratulationsPage />} />
+          <Route path='welcome/profiledetails' element={<ProfileDetails />} />
+          <Route path='welcome/profiledetails/congratulations' element={<HireSecondWelcome />} />
+        </Route>
+
         <Route path='/login/forgetpassword' element={<ForgetPassword />}>
           <Route path='/login/forgetpassword/addinformation' element={<AddInformation />} />
           <Route path='/login/forgetpassword/addinformation/verificationcode' element={<VerificationCode />} />
           <Route path='/login/forgetpassword/addinformation/verificationcode/helloagain' element={<HelloAgain />} />
         </Route>
-        <Route path='/register' element={<Register />} />
-        <Route path='/register' element={<Work />}>
-          {/* I Wnat to Work */}
-          <Route path='work/createaccount' element={<CreateAccount />} />
-          <Route path='work/createaccount/phoneandpassword' element={<PhoneAndPassword />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills' element={<AddSkills />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate' element={<AddCertificate />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails' element={<ProfileDetails />} />
-          <Route path='work/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/addskills/addcertificate/profiledetails/congratulations' element={<CongratulationsPage />} />
-          {/* I Wnat to Hire */}
-          <Route path='hire/createaccount' element={<CreateAccount />} />
-          <Route path='hire/createaccount/phoneandpassword' element={<PhoneAndPassword />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods' element={<PaymentMethods />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods/welcome' element={<WelcomePage />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation' element={<CreditCardInfo />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome' element={<WelcomePage />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/profiledetails' element={<ProfileDetails />} />
-          <Route path='hire/createaccount/phoneandpassword/paymentmethods/creditcardinformation/welcome/profiledetails/congratulations' element={<HireSecondWelcome />} />
+
+
+        {/* 404 Not found */}
+        <Route path='/*' element={<Page404 />} />
+
+        {/* Contact US */}
+        <Route path='/contactus' element={<ContactUs />} />
+
+        <Route element={<RequireAuth />}>
+          {/* Setting */}
+          <Route path='/setting' element={<Setting />}>
+            <Route path='publicprofile' element={<PubicProfile />} />
+            <Route path='accountsetting' element={<AccountSetting />} />
+          </Route>
         </Route>
+
+
+
       </Routes>
     </>
   )

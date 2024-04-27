@@ -87,7 +87,7 @@ export default function LandingHire() {
                             <p className="text-white mt-5 tracking-wider text-base">Connect with reliable talented freelances, and grow your business, just from home.</p>
                         </div>
                         <div className="buttons mt-7 flex justify-center items-center md:justify-start flex-col md:flex-row gap-6">
-                            <Button link='register' text='Find freelance services' classes='font-bold text-base tracking-wide' padding='8px 30px' clicked={false} color={secondaryColor} border />
+                            <Button link='/register' text='Find freelance services' classes='font-bold text-base tracking-wide' padding='8px 30px' clicked={false} color={secondaryColor} border />
                             <Button link='/' text='I want to work' color='#fff' classes='font-bold text-base tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '10px' }} />} clicked />
                         </div>
                     </div>

@@ -3,16 +3,20 @@ import './ProfileDetails.scss';
 // import logo from '../../../assets/Logo.png';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import BackButton from '../../../../../Components/backButton/BackButton';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
-import ButtonGradient from '../../../../../Components/buttonGradient/ButtonGradient';
 import { motion } from 'framer-motion';
 import Button from '../../../../../Components/Button/Button';
 import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import Cookie from 'cookie-universal';
+
 
 export default function ProfileDetails() {
+    const cookie = Cookie();
+    const firstName = cookie.get("firstName");
+    const lastName = cookie.get("lastName");
+    const role = cookie.get("role");
     return (
         <>
             <motion.div
@@ -38,14 +42,14 @@ export default function ProfileDetails() {
                             <input type="file" src="" alt="" className='w-20 h-20 rounded-full cursor-pointer text bg-black' />
                         </div>
                         <div className="details text-left">
-                            <h3 className='text-sm md:text-xl text-nowrap font-bold'>AYMEN ACHELACHE</h3>
+                            <h3 className='text-sm md:text-xl text-nowrap font-bold uppercase'>{`${firstName} ${lastName}`}</h3>
                             <p className='text-lg font-normal'>Front-End Web dev</p>
                         </div>
 
                     </div>
                     <form action="">
                         <InputComp type="text" name="aboutMe" id="aboutMe" className='w-full text-sm outline-none px-4 pt-3 pb-10 my-4 mx-auto' placeholder='About Me' />
-                        {window.location.pathname.split('/')[2] === 'work' && <InputComp type="text" name="portfolio" id="portfolio" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Portfolio Link' />}
+                        {role === 'freelancer' && <InputComp type="text" name="portfolio" id="portfolio" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Portfolio Link' />}
                         <Link to={'congratulations'} className={'btn-gradient block w-full mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Finish</span></Link>
                     </form>
                     <div className='text-right mt-4'>

@@ -36,7 +36,7 @@ export default function Footer() {
                         <ul>
                             <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>About us</Link></li>
                             <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>How it works</Link></li>
-                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to=''>Help & support</Link></li>
+                            <li className='text-xs font-normal my-2 text-[#777775]'><Link to='/contactus'>Help & support</Link></li>
                         </ul>
                     </div>
                 </div>
