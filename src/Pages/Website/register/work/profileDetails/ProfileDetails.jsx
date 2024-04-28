@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './ProfileDetails.scss';
 // import logo from '../../../assets/Logo.png';
 import { Link } from 'react-router-dom';
@@ -10,6 +10,8 @@ import { motion } from 'framer-motion';
 import Button from '../../../../../Components/Button/Button';
 import { greyColor } from '../../../../../Components/Variables/VariablesColors';
 import Cookie from 'cookie-universal';
+import defaultAvatar from '../../../../../assets/register/avatar.png';
+
 
 
 export default function ProfileDetails() {
@@ -17,6 +19,14 @@ export default function ProfileDetails() {
     const firstName = cookie.get("firstName");
     const lastName = cookie.get("lastName");
     const role = cookie.get("role");
+    const fileInputRef = useRef(null);
+
+    const handleAddBoxClick = () => {
+        if (fileInputRef.current) {
+            fileInputRef.current.click(); // Trigger the hidden file input
+        }
+    };
+
     return (
         <>
             <motion.div
@@ -38,8 +48,15 @@ export default function ProfileDetails() {
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Credit card informations.</p>
                     <div className="flex items-center gap-8">
-                        <div className="avatar">
-                            <input type="file" src="" alt="" className='w-20 h-20 rounded-full cursor-pointer text bg-black' />
+                        <div
+                            onClick={handleAddBoxClick} // Add the click handler here
+                            className="avatar w-20 h-20 rounded-full cursor-pointer text bg-white" style={{ backgroundImage: `url(${defaultAvatar})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                            {/* Hidden file input */}
+                            <input
+                                type="file"
+                                ref={fileInputRef}
+                                style={{ display: 'none' }} // Hide the file input
+                            />
                         </div>
                         <div className="details text-left">
                             <h3 className='text-sm md:text-xl text-nowrap font-bold uppercase'>{`${firstName} ${lastName}`}</h3>
@@ -53,7 +70,7 @@ export default function ProfileDetails() {
                         <Link to={'congratulations'} className={'btn-gradient block w-full mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Finish</span></Link>
                     </form>
                     <div className='text-right mt-4'>
-                    <Button link='congratulations' text='Skip for now' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px'}} />} clicked />
+                        <Button link='congratulations' text='Skip for now' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
                     </div>
                 </div>
             </motion.div >

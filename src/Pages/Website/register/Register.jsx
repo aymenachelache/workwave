@@ -5,10 +5,16 @@ import Button from './../../../Components/Button/Button';
 import BackButton from '../../../Components/backButton/BackButton';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
-import { StepContext } from '../../Context/Context';
+import Cookie from "cookie-universal";
 
 export default function Register() {
-  const user = useContext(StepContext);
+  const cookie = Cookie();
+  function handleClient() {
+    cookie.set("role", 'user');
+  }
+  function handleFreelancer() {
+    cookie.set("role", 'freelancer');
+  }
   return (
     <>
       <div className="register p-5">
@@ -22,7 +28,7 @@ export default function Register() {
         </div>
         <div className="cont flex flex-col lg:flex-row items-center justify-center gap-10 mt-10">
           <div className="left">
-            <Link to='/register/welcome'>
+            <Link onClick={handleClient} to='/register/welcome'>
               <div className="hire cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to hire</h3>
                 <p className='text-sm'>Hire reliable freelancers from around the globe to work on your projects.</p>
@@ -30,7 +36,7 @@ export default function Register() {
             </Link>
           </div>
           <div className="right">
-            <Link to='/register/welcome'>
+            <Link onClick={handleFreelancer} to='/register/welcome'>
               <div className="work cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to work</h3>
                 <p className='text-sm'>Work as a freelancer on a projects of various categories and get paid.</p>

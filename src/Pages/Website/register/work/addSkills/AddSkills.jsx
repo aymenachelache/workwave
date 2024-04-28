@@ -1,114 +1,138 @@
 import React, { useEffect, useState } from 'react';
-import './AddSkills.scss';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import BackButton from '../../../../../Components/backButton/BackButton';
-import InputComp from '../../../../../Components/input/InputComp';
-import TextGradient from '../../../../../Components/textGradient/TextGradient';
-import Button from "../../../../../Components/Button/Button";
-import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import TextGradient from '../../../../../Components/textGradient/TextGradient';
+import './AddSkills.scss';
 
 export default function AddSkills() {
+    // State to track active domain and selected skills
     const [skills, setSkills] = useState([]);
-    const domains = ['Writing & Translation', 'Design & Creativity', 'Multimedia', 'Development', 'Digital Marketing', 'Administrative Support', 'Consulting & Business', 'Engineering & Architecture'];
+    const [activeDomain, setActiveDomain] = useState(null);
+    const [selectedSkills, setSelectedSkills] = useState([]);
+    const navigate = useNavigate();
+    const [error, setError] = useState(false);
+
+
+    const domains = [
+        'Writing & Translation',
+        'Design & Creativity',
+        'Multimedia',
+        'Development',
+        'Digital Marketing',
+        'Administrative Support',
+        'Consulting & Business',
+        'Engineering & Architecture'
+    ];
+
     const allSkills = [
         ['Article Writing', 'Blogging', 'Copywriting', 'Content Creation', 'Creative Writing', 'Proofreading', 'Technical Writing', 'Ghostwriting', 'Translation', 'Transcription', 'Localization', 'Subtitling', 'Interpretation', 'Academic Writing', 'Resume/CV Writing'],
         ['Logo Design', 'Branding', 'Illustration', 'Infographics', 'UI/UX Design', 'Print Design', 'Packaging Design', 'Digital Art', 'Creative Direction', 'Concept Art', 'Typography Design', 'Fashion Design'],
         ['Animation', 'Video Editing', 'Photography', 'Motion Graphics', 'Audio Editing', 'Music Production', 'Sound Design', 'Voiceover', 'Mixing and Mastering', 'Digital Art'],
-        ['Web Development', 'Scripting', 'Data analytics', 'API Development', 'Mobile Development', 'Software Development', 'Game Development', 'Database Management', 'WordPress Development'],
+        ['Web Development', 'Scripting', 'Data Analytics', 'API Development', 'Mobile Development', 'Software Development', 'Game Development', 'Database Management', 'WordPress Development'],
         ['Search Engine Optimization (SEO)', 'Search Engine Marketing (SEM)', 'Social Media Management', 'Email Marketing', 'Affiliate Marketing', 'Content Marketing', 'PPC Advertising', 'Influencer Marketing'],
         ['Data Entry', 'Virtual Assistance', 'Customer Support', 'Email Management', 'Appointment Setting', 'Research Assistance'],
         ['Legal Consulting', 'HR Consulting', 'Management Consulting', 'Financial Consulting', 'Business Planning', 'Market Research', 'Business Analysis'],
-        ['CAD Design', '3D Modeling', 'Interior Design'],
-
+        ['CAD Design', '3D Modeling', 'Interior Design']
     ];
-    const showDomains = domains.map((el, key) => <Link to={``} onClick={(e) => { showSkills(e) }} key={key} className={'domain w-fit block text-xs font-semibold text-nowrap primaryfont my-border global-radius px-2 py-1 my-2'}>{el}</Link>)
-    const skillsDomain = skills.map((el, key) => <Link to={``} onClick={(e) => choseSkill(e)} key={key} className={'skill inline-block w-fit text-xs font-bold primaryfont my-border global-radius px-2 py-1 my-1 mr-1'}>{el}</Link>)
-    function choseSkill(e) {
-        e.target.classList.add('active');
-    }
-    function showSkills(e) {
-        console.log(e.target.innerText);
-        e.target.classList.add('active');
-        switch (e.target.innerText) {
-            case domains[0]:
-                setSkills(allSkills[0]);
-                break;
-            case domains[1]:
-                setSkills(allSkills[1]);
-                break;
-            case domains[2]:
-                setSkills(allSkills[2]);
-                break;
-            case domains[3]:
-                setSkills(allSkills[3]);
-                break;
-            case domains[4]:
-                setSkills(allSkills[4]);
-                break;
-            case domains[5]:
-                setSkills(allSkills[5]);
-                break;
-            case domains[6]:
-                setSkills(allSkills[6]);
-                break;
-            case domains[7]:
-                setSkills(allSkills[7]);
-                break;
-            default:
-                break;
+
+    const handleDomainClick = (e) => {
+        const domainName = e.target.innerText;
+        setActiveDomain(domainName);
+
+        const domainIndex = domains.indexOf(domainName);
+        if (domainIndex >= 0) {
+            setSkills(allSkills[domainIndex]);
+            // Reset selected skills when changing domain
+            setSelectedSkills([]);
         }
-    }
-    useEffect(() => {
-    }, []);
+    };
+
+    const handleSkillClick = (skill) => {
+        if (selectedSkills.includes(skill)) {
+            // Deselect skill
+            setSelectedSkills(selectedSkills.filter((s) => s !== skill));
+        } else if (selectedSkills.length < 3) {
+            // Select skill
+            setSelectedSkills([...selectedSkills, skill]);
+        }
+    };
+
+    const showDomains = domains.map((domain, key) => (
+        <Link
+            to={``}
+            onClick={handleDomainClick}
+            key={key}
+            className={`domain w-fit block text-xs font-semibold text-nowrap primaryfont my-border global-radius px-2 py-1 my-2 ${
+                activeDomain === domain ? 'active' : ''
+            }`}
+        >
+            {domain}
+        </Link>
+    ));
+
+  
+
+    const skillsDomain = skills.map((skill, key) => (
+        <Link
+            to={``}
+            onClick={() => handleSkillClick(skill)}
+            key={key}
+            className={`skill inline-block w-fit text-xs font-bold primaryfont my-border global-radius px-2 py-1 my-1 mr-1 ${
+                selectedSkills.includes(skill) ? 'active' : ''
+            }`}
+        >
+            {skill}
+        </Link>
+    ));
+
+
+    const checkSkillsNumber = () => {
+        if(selectedSkills.length === 3) {
+            navigate("addcertificate");
+        } else {
+            setError(true);
+        }
+    };
+
     return (
         <>
             <motion.div
-                initial={{
-                    opacity: 0,
-                    // if odd index card,slide from right instead of left
-                    x: -50
-                }}
-                whileInView={{
-                    opacity: 1,
-                    x: 0, // Slide in to its original position
-                    transition: {
-                        duration: 1 // Animation duration
-                    }
-                }}
+                initial={{ opacity: 0, x: -50 }}
+                whileInView={{ opacity: 1, x: 0, transition: { duration: 1 } }}
                 viewport={{ once: true }}
-                className="create-account-work add-skills w-full relative">
-                <div className="contain payment-methode w-3/4 mx-auto text-center">
-                    <TextGradient size='25px' weight='800' text='Setting up your profile' />
+                className="create-account-work add-skills w-full relative"
+            >
+                <div className="contain payment-method w-3/4 mx-auto text-center">
+                    <TextGradient size="25px" weight="800" text="Setting up your profile" />
                     <motion.p
-                        initial={{
-                            opacity: 0,
-                            // if odd index card,slide from right instead of left
-                            x: 100
-                        }}
-                        whileInView={{
-                            opacity: 1,
-                            x: 0, // Slide in to its original position
-                            transition: {
-                                duration: 1 // Animation duration
-                            }
-                        }}
-                        className='text-sm text-[#777775] mb-10'>Choose your skills.</motion.p>
+                        initial={{ opacity: 0, x: 100 }}
+                        whileInView={{ opacity: 1, x: 0, transition: { duration: 1 } }}
+                        className="text-sm text-[#777775] mb-10"
+                    >
+                        Choose your skills.
+                    </motion.p>
 
                     <div className="flex justify-between gap-4">
-                        <div className="domains flex-1 text-left">
-                            {showDomains}
-                        </div>
-                        <div className="skills grow text-left">
-                            {skillsDomain}
-                        </div>
+                        <div className="domains flex-1 text-left">{showDomains}</div>
+                        <div className="skills grow text-left">{skillsDomain}</div>
                     </div>
-
-                    <Link to={'addcertificate'} className={'btn-gradient block w-3/4 mx-auto mt-5 capitalize'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
+                    {error && (
+                                <motion.div
+                                    key="confirm-password-error" // Unique key for AnimatePresence
+                                    initial={{ opacity: 0, y: -10 }} // Initial hidden state
+                                    animate={{ opacity: 1, y: 0 }}   // Animation to visible
+                                    exit={{ opacity: 0, y: -10 }}    // Animation when removed
+                                    transition={{ duration: 0.5 }}  // Duration
+                                    className="error-text text-sm text-[red]">Please select 3 skills.</motion.div>
+                            )}
+                    <button
+                        onClick={checkSkillsNumber}
+                        className="btn-gradient block w-3/4 mx-auto mt-5 capitalize"
+                    >
+                        <span className='text-lg font-extrabold primaryfont block'>Continue</span>
+                    </button>
                 </div>
-            </motion.div >
+            </motion.div>
         </>
-    )
+    );
 }
