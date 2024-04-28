@@ -2,7 +2,7 @@ import { Avatar } from "@mui/material"
 
 const ClientCard = () => {
     return (
-        <div className="hover:-translate-y-3 cursor-pointer w-[40%] shadow-xl transition-all duration-300 lg:mt-4 max-lg:w-fit h-fit hover:shadow-emerald-200 rounded-2xl p-8">
+        <div className="hover:-translate-y-3 cursor-pointer flex-grow w-1/3 shadow-xl transition-all duration-300 lg:mt-4 max-lg:w-fit h-fit hover:shadow-emerald-200 rounded-2xl p-8">
             <h1 className="text-PrimColor text-opacity-60 font-semibold mb-4">Contact Client</h1>
             <div className="flex items-center gap-2">
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/3.jpg" />

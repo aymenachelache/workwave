@@ -15,6 +15,8 @@ import FPersonalSpace from './Pages/Website/freelancer/personalspace/FPersonalSp
 import WorkingOn from './Pages/Website/freelancer/personalspace/Projects/WorkingOn/WorkingOn'
 import { useEffect } from 'react'
 import ProjectsHistory from './Pages/Website/freelancer/personalspace/Projects/History/ProjectsHistory'
+import Services from './Pages/Website/freelancer/personalspace/Services/Services'
+import NotFound from './Components/404Page/NotFound'
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
   return (
     <>
       <Routes>
+        <Route path='*' element={<NotFound />} />
         <Route path='/' element={<LandingPage />} />
         <Route path='/hire' element={<LandingHire />} /> 
         <Route path='/hire/home' element={<ClientHomePage />} />
@@ -34,9 +37,10 @@ function App() {
         </Route>
         <Route path='/work/home' element={<FreelancerHomePage />} />
         <Route path='/work/personalspace' element={<FPersonalSpace />} >
-          <Route  path='dashboard' element={<FDashboard />} /> 
+          <Route  index  path='dashboard' element={<FDashboard />} /> 
           <Route  path='myprojects/workingon' element={<WorkingOn />} /> 
           <Route  path='myprojects/history' element={<ProjectsHistory />} /> 
+          <Route  path='services' element={<Services />} /> 
         </Route>
       </Routes>
     </>

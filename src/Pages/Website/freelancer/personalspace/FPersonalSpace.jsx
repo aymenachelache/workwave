@@ -9,10 +9,12 @@ const FPersonalSpace = () => {
     return (
         <div className="">     
         <Header /> 
-            <div className="flex">
-                    <Sidebar />
-                    <div className="w-2/3">
-                        <Outlet context={<FDashboard />} />
+            <div className="grid grid-cols-12 ">
+                    <div className="col-span-3">
+                        <Sidebar />
+                    </div>
+                    <div className="col-span-9">
+                        <Outlet />
                     </div>
             </div>
         </div>

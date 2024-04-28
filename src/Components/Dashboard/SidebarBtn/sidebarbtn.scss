@@ -1,0 +1,14 @@
+.active{
+    background-color: hsl(150, 54%, 47%);
+    #icon, #title {
+        color: white;
+    }
+}
+
+.subtitle-active{
+    background-color: hsl(150, 54%, 47%);
+    #sub-icon, #sub-title {
+        background-color: hsl(150, 72%, 25%);
+        color: white;
+    }
+}

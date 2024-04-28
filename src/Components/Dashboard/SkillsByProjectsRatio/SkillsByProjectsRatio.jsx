@@ -21,7 +21,7 @@ const SkillsByProjectsRatio = ({isHistory}) => {
 
       return (
         <div className="shadow-xl p-8  rounded-2xl w-fit">
-          <p className="font-semibold text-PrimColor text-opacity-50 mb-4">Skills By Projects Ration</p>
+          <p className="font-semibold text-PrimColor text-opacity-50 mb-4 text-left">Skills By Projects Ratio</p>
           {!isHistory ? (
             <svg xmlns="http://www.w3.org/2000/svg" width="217" height="217" viewBox="0 0 217 217" fill="none">
             <path d="M203.438 108.5C210.928 108.5 217.087 114.596 216.154 122.028C213.881 140.112 207.077 157.411 196.278 172.275C182.81 190.812 163.82 204.609 142.028 211.69C120.237 218.77 96.7632 218.77 74.9716 211.69C57.4985 206.012 41.8262 196.016 29.3578 182.721C24.2339 177.258 25.6341 168.706 31.6939 164.303C37.7538 159.9 46.1666 161.345 51.5137 166.59C60.4493 175.356 71.3333 181.987 83.3537 185.892C99.6974 191.203 117.303 191.203 133.646 185.892C149.99 180.582 164.233 170.234 174.334 156.331C181.763 146.106 186.671 134.344 188.747 122C189.99 114.614 195.947 108.5 203.438 108.5Z" fill="#00AEEF"/>
@@ -36,14 +36,14 @@ const SkillsByProjectsRatio = ({isHistory}) => {
             </div>
           )}
           
-          <ul className="font-semibold mt-6">
+          <ul className="font-semibold mt-10">
               {data.map((dataPiece, index) => {
                 if (index > 0) return (
-                  <li key={index} className="pl-4 items-center flex">
-                    <div className={`h-2 w-2 rounded-full ${colors[index]}`}></div>
-                    <div className="flex justify-between items-center w-full mx-3">
+                  <li key={index} className="items-center flex font-Unbounded my-2">
+                    <div className={`h-2 w-2 rounded-full mr-1 ${colors[index]}`}></div>
+                    <div className="flex justify-between items-center w-full text-xs font-light">
                       <div className="">{dataPiece[0]}</div>
-                      <div className="font-medium text-sm">{dataPiece[1]} Project</div>
+                      <div className=" text-xs">{dataPiece[1]} Project</div>
                     </div>
                   </li>
                   )

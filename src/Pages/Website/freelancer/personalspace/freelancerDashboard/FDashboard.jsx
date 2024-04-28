@@ -8,29 +8,27 @@ import LatestProjects from "../../../../../Components/Dashboard/LatestProjects/L
 
 const FDashboard = () => {
   const profit = {
-    amount : "$1700",
-    gain : "+25%"
-  }
+    amount: "$1700",
+    gain: "+25%"
+  };
   const projects = {
-    amount : "214",
-    gain : "-14%"
-  }
-
-  
+    amount: "214",
+    gain: "-14%"
+  };
 
   return (
-    <div className="mt-24 w-[60%] flex flex-col gap-8">
-      <div className="flex gap-8 max-md:block">
-        <div className="flex flex-col gap-8 w-full min-lg:w-[80%]">
-          <div className="flex gap-6 max-lg:block">
-            <Card profit={profit}/>
-            <Card profit={projects}/>
+    <div className="my-24 flex flex-col gap-8">
+      <div className="flex flex-col lg:flex-row gap-8 max-lg:gap-0">
+        <div className="flex flex-col gap-8 w-full lg:w-4/6">
+          <div className="flex flex-col lg:flex-row gap-6">
+            <Card profit={profit} />
+            <Card profit={projects} />
           </div>
           <MyServices />
         </div>
         <SkillsByProjectsRatio />
       </div>
-      <div className="w-[153%]">
+      <div className="w-full">
         <LatestProjects />
       </div>
     </div>

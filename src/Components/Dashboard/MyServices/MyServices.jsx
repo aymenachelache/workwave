@@ -19,8 +19,8 @@ export const services = [
 const MyServices = () => {
 
     return (
-        <div className="hover:-translate-y-3 cursor-pointer shadow-xl w-full transition-all duration-300 h-fit hover:shadow-emerald-200 rounded-2xl p-8">
-            <p className="font-semibold text-PrimColor text-opacity-50 mb-2 px-1">My Services</p>
+        <div className="hover:-translate-y-3 cursor-pointer shadow-xl w-full transition-all duration-300 hover:shadow-emerald-200 rounded-2xl p-8">
+            <p className="font-semibold font-Unbounded text-PrimColor text-opacity-50 mb-2 px-1">My Services</p>
             <div className="flex gap-8">
                 <div className="Name w-[35%]">
                     <p className="font-semibold text-gray-400 text-xs mb-2 px-1 ">Name</p>
@@ -34,12 +34,12 @@ const MyServices = () => {
                     <p className="font-semibold text-gray-400 text-xs mb-2 px-1">Skill</p>
                     {services.map((service, index) => {
                         return(
-                            <p key={index} className="font-bold text-gray-400 hover:bg-PrimColor hover:bg-opacity-25 py-2 px-1 rounded-xl">{service[1]}</p> 
+                            <p key={index} className=" font-semibold text-gray-400 hover:bg-PrimColor hover:bg-opacity-25 py-2 px-1 rounded-xl">{service[1]}</p> 
                         )
                     })}
                 </div>
                 <div className="Sold">
-                    <p className="font-semibold text-gray-400 text-xs mb-2 px-1">Sold</p>
+                    <p className="font-semibold text-gray-400 text-xs mb-2 mr-4">Sold</p>
                     {services.map((service, index) => {
                         return(
                             <p key={index} className="font-semibold hover:bg-PrimColor hover:bg-opacity-25 py-2 px-1 rounded-xl">{service[2]}</p> 
