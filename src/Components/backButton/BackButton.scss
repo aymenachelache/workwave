@@ -1,0 +1,11 @@
+.back {
+    svg {
+        transition: all 0.3s ease;
+    }
+
+    &:hover {
+        svg {
+            transform: scale(1.5, 1);
+        }
+    }
+}

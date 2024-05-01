@@ -1,0 +1,28 @@
+import React from 'react';
+import './PhoneAndPassword.scss';
+// import logo from '../../../assets/Logo.png';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import BackButton from '../../../../../Components/backButton/BackButton';
+import InputComp from '../../../../../Components/input/InputComp';
+import TextGradient from '../../../../../Components/textGradient/TextGradient';
+export default function PhoneAndPassword() {
+    return (
+        <>
+            <div className="create-account-work w-full relative">
+                <div className="contain mx-auto text-center">
+                    <TextGradient size='25px' weight='800' text='Create an account' />
+                    <p className='text-sm text-[#777775] mb-10'>Your personal informations.</p>
+                    <form action="">
+                        <InputComp value='+213' type="text" name="firstName" id="firstName" className='w-1/4 inline-block text-sm outline-none px-4 py-3 my-2' />
+                        <InputComp type="number" name="phone" id="phone" className='w-3/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='Phone Number' />
+                        <InputComp type="password" name="password" id="password" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Password' />
+                        <InputComp type="password" name="ConfirmPassword" id="ConfirmPassword" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Confirm Password' />
+                        <Link to={'paymentmethods'} className={'btn block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
+                    </form>
+                </div>
+            </div >
+        </>
+    )
+}

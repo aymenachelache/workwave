@@ -1,0 +1,18 @@
+#container{
+    border: 2px solid rgb(242, 242, 242);
+    h1, h2, #price{
+        color: #37B778;
+    }
+    #buttons{
+        #place-a-bid{
+            background-color: #37B778;
+        }
+    }
+    #tag{
+        background-color: hsl(150, 54%, 47%,0.3);
+        &:hover{
+            background-color: hsl(150, 54%, 47%,0.4);
+        }
+    }
+    
+}

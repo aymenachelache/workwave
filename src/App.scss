@@ -1,0 +1,53 @@
+:root {
+    --primary-color: #37B778;
+    --secondary-color: #00AEEF;
+    --white-color: #F9F7F3;
+    --black-color: #1f1f1f;
+    --gradient-color : rgba(0, 0, 0, 0.312);
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    // font-family: "Unbounded", sans-serif;
+}
+@media ((min-width: 1000px) and (max-width: 1300px)) {
+    .container {
+        width: 85% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((max-width: 639px)) {
+    .container {
+        width: 95% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((min-width: 768px)) {
+    .container {
+        width: 90% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+@media ((min-width: 1024px)) {
+    .container {
+        width: 80% !important;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.primaryfont, h1, h2, h3, h4, h5, h6 {
+    font-family: "Unbounded", sans-serif;
+}
+
+.secondaryfont, p {
+    font-family: "Red Hat Display", sans-serif;
+}
+
+.global-radius {
+    border-radius: 20px;
+}
