@@ -5,9 +5,13 @@
     }
 }
 
-.subtitle-active{
+.button{
+    margin: 0;
+}
+
+.active-link {
     background-color: hsl(150, 54%, 47%);
-    #sub-icon, #sub-title {
+    div {
         background-color: hsl(150, 72%, 25%);
         color: white;
     }

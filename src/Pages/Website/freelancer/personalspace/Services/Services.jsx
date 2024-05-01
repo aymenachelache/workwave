@@ -1,5 +1,6 @@
 import Card from "../../../../../Components/Dashboard/Card/Card";
 import ServicesCountSold from "../../../../../Components/Dashboard/Services/ServicesCountSold/ServicesCountSold";
+import ServicesList from "../../../../../Components/Dashboard/Services/ServicesList/ServicesList";
 import SkillsByProjectsRatio from "../../../../../Components/Dashboard/SkillsByProjectsRatio/SkillsByProjectsRatio";
 
 
@@ -16,12 +17,13 @@ const Services = () => {
         Sold : "25"
     }
     return (
-        <div className="mt-28">
+        <div className="">
             <div className="flex gap-5 flex-wrap">
                 <Card profit={profit}/>
                 <SkillsByProjectsRatio isHistory={true} />
                 <ServicesCountSold service={service} />
             </div>
+            <ServicesList  />
         </div>
     )
 }

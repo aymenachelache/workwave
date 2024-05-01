@@ -20,6 +20,9 @@
     "@mui/material": "^5.15.15",
     "@mui/styled-engine-sc": "^6.0.0-alpha.18",
     "@mui/x-date-pickers": "^7.2.0",
+    "@nivo/bar": "^0.85.1",
+    "@nivo/core": "^0.85.1",
+    "@nivo/pie": "^0.85.1",
     "apexcharts": "^3.49.0",
     "axios": "^1.6.8",
     "dayjs": "^1.11.10",
@@ -32,7 +35,8 @@
     "react-router-dom": "^6.22.3",
     "sass": "^1.72.0",
     "styled-components": "^6.1.8",
-    "vite-plugin-require": "^0.0.3"
+    "vite-plugin-require": "^0.0.3",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/react": "^18.2.64",

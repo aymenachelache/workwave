@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import './Sidebar.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faChartSimple, faClock, faClipboardList, faGear, faHourglass2, faPaste, faSliders, faWallet, faInbox, faRightFromBracket, faArrowRightArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faChartSimple, faClock, faClipboardList, faGear, faHourglass2, faPaste, faSliders, faWallet, faInbox, faRightFromBracket, faArrowRightArrowLeft, faUser } from "@fortawesome/free-solid-svg-icons";
 import icon1 from "../../../assets/freelancer/1.svg";
 import Login from "../../../Pages/Website/login/Login";
 import SidebarBtn from "../SidebarBtn/SidebarBtn";
@@ -20,7 +20,7 @@ const Sidebar = () => {
 
 
     return (
-        <div className="p-20 px-10 pl-20 max-lg:pl-20 max-md:pl-10 text-PrimColor flex flex-col justify-between h-screen">
+        <div className="pb-32 px-8 text-PrimColor flex flex-col justify-between h-screen">
 
             <ul>
                 <FontAwesomeIcon icon={faBars} className="hidden max-md:block pt-80" />
@@ -35,7 +35,6 @@ const Sidebar = () => {
                 <li>
                     <SidebarBtn 
                         content={{ title: "My Projects", icon: faPaste, to: "myprojects" }} 
-                        ul={true}
                         subtitles={[ {title : "Working On", icon: faHourglass2, to : "myprojects/workingon" }, {title: "History", icon: faClock, to: "myprojects/history"} ]} 
                     />
                 </li>
@@ -48,38 +47,23 @@ const Sidebar = () => {
                 <li>
                     <SidebarBtn 
                         content={{ title: "My Finances", icon: faWallet }} 
-                        ul={true}
                         subtitles={[ 
                             {title : "Payment Methods", icon: faHourglass2, to : "finances/maymethods" },
                             {title : "Withdraw", icon: faClock, to: "finances/withdraw"},
                             {title : "Movements", icon: faArrowRightArrowLeft, to: "finances/movs"} ]} 
                     />   
                 </li>
+
                 <li>
-                    <div onClick={() => setIsMySettingsOpen(prev => !prev)}>
-                        <div className={`button text-sm font-bold max-lg:text-xs p-3 cursor-pointer whitespace-nowrap flex px-4 py-3 w-full rounded-2xl ${isMySettingsOpen ? "text-white bg-PrimColor bg-opacity-80" : ""}`}>
-                            <FontAwesomeIcon icon={faGear} className="text-lg mr-2 hover:text-white" />
-                            <h3 className="">Account Settings</h3>
-                        </div>
-                        {isMySettingsOpen && (
-                            <ul className="sublist text-xs rounded-xl ml-10">
-                                <Link to='modifyprofile'>
-                                    <div className="flex p-3 items-center">
-                                        <FontAwesomeIcon icon={faUser} className="mr-3" />
-                                        <h4>Modify Profile</h4>
-                                    </div>
-                                </Link>
-                                <Link to='modifyacc'>
-                                    <div className="flex p-3 items-center">
-                                        <FontAwesomeIcon icon={faSliders} className="mr-3" />
-                                        <h4>Modify Account</h4>
-                                    </div>
-                                </Link>
-                            </ul>
-                        )}
-                    </div>
+                    <SidebarBtn 
+                            content={{ title: "Account Settings", icon: faGear }} 
+                            subtitles={[ 
+                                {title : "Modify Profile", icon: faUser, to : "settings/modifyprofile" },
+                                {title : "Modify Account", icon: faSliders, to: "settings/modifyaccount"} ]} 
+                        />   
                 </li>
             </ul>
+
             <ul className="flex flex-col gap-2">
                 <p className="text-gray-300 font-semibold px-4 py-1 ">Insights</p>
 

@@ -1,7 +1,8 @@
-import Chart2 from "../../../../../../Components/Dashboard/Projects/History/Chart/Chart2"
 import Card from "../../../../../../Components/Dashboard/Card/Card"
 import SkillsByProjectsRatio from "../../../../../../Components/Dashboard/SkillsByProjectsRatio/SkillsByProjectsRatio"
 import ProjectsHistoryComp from "../../../../../../Components/Dashboard/Projects/History/ProjectsHistory/ProjectsHistoryComp"
+import ProjectsByMonths from "../../../../../../Components/Dashboard/Projects/History/Chart/ProjectsByMonths"
+import { barsData } from "../../../../../../Components/Dashboard/Projects/History/Chart/dummydata"
 const projects = {
     amount : "214",
     gain : "-14%"
@@ -10,9 +11,9 @@ const projects = {
 const ProjectsHistory = () => {
     return(
             <div className="">
-                <div className="mt-28 flex gap-5">
+                <div className="flex gap-5">
                     <Card profit={projects}/>
-                    <Chart2 />
+                    <ProjectsByMonths data={barsData} />
                     <SkillsByProjectsRatio isHistory={true} />
                 </div> 
                 <ProjectsHistoryComp />

@@ -14,7 +14,8 @@ export default {
     extend: {
       colors:{
         "PrimColor" : "#37B778",
-        "SecColor" : "#00AEEF"
+        "SecColor" : "#00AEEF",
+        "gradientDark" : "rgba(0, 0, 0, 0.512)"
       },
       fontFamily:{
         "Unbounded" : "Unbounded"

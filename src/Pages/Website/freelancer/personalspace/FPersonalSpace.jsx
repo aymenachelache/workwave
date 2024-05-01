@@ -9,7 +9,7 @@ const FPersonalSpace = () => {
     return (
         <div className="">     
         <Header /> 
-            <div className="grid grid-cols-12 ">
+            <div className="grid grid-cols-12 px-20 pt-20">
                     <div className="col-span-3">
                         <Sidebar />
                     </div>

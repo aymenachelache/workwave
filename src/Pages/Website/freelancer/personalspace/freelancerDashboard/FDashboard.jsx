@@ -17,7 +17,7 @@ const FDashboard = () => {
   };
 
   return (
-    <div className="my-24 flex flex-col gap-8">
+    <div className="pb-10 flex flex-col gap-8">
       <div className="flex flex-col lg:flex-row gap-8 max-lg:gap-0">
         <div className="flex flex-col gap-8 w-full lg:w-4/6">
           <div className="flex flex-col lg:flex-row gap-6">
@@ -28,9 +28,7 @@ const FDashboard = () => {
         </div>
         <SkillsByProjectsRatio />
       </div>
-      <div className="w-full">
-        <LatestProjects />
-      </div>
+      <LatestProjects />
     </div>
   );
 };
