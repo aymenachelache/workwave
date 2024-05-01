@@ -10,3 +10,4 @@ export const REGISTER= "api/auth/sign-up";
 export const VERIFICATION= "api/user/send-verification-email";
 export const LOGIN= "api/auth/sign-in";
 export const LOGOUT= "api/auth/logout";
+export const CERTIFICATE= "api/freelencer/certificate/upload";

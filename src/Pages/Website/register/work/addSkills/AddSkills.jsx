@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import './AddSkills.scss';
 
 export default function AddSkills() {
+    const { skillsAndCertificate, setSkillsAndCertificate } = useOutletContext();
     // State to track active domain and selected skills
     const [skills, setSkills] = useState([]);
     const [activeDomain, setActiveDomain] = useState(null);
@@ -62,24 +63,22 @@ export default function AddSkills() {
             to={``}
             onClick={handleDomainClick}
             key={key}
-            className={`domain w-fit block text-xs font-semibold text-nowrap primaryfont my-border global-radius px-2 py-1 my-2 ${
-                activeDomain === domain ? 'active' : ''
-            }`}
+            className={`domain w-fit block text-xs font-semibold text-nowrap primaryfont my-border global-radius px-2 py-1 my-2 ${activeDomain === domain ? 'active' : ''
+                }`}
         >
             {domain}
         </Link>
     ));
 
-  
+
 
     const skillsDomain = skills.map((skill, key) => (
         <Link
             to={``}
             onClick={() => handleSkillClick(skill)}
             key={key}
-            className={`skill inline-block w-fit text-xs font-bold primaryfont my-border global-radius px-2 py-1 my-1 mr-1 ${
-                selectedSkills.includes(skill) ? 'active' : ''
-            }`}
+            className={`skill inline-block w-fit text-xs font-bold primaryfont my-border global-radius px-2 py-1 my-1 mr-1 ${selectedSkills.includes(skill) ? 'active' : ''
+                }`}
         >
             {skill}
         </Link>
@@ -87,7 +86,11 @@ export default function AddSkills() {
 
 
     const checkSkillsNumber = () => {
-        if(selectedSkills.length === 3) {
+        if (selectedSkills.length === 3) {
+            setSkillsAndCertificate((prevState) => ({
+                ...prevState,
+                skills: selectedSkills, // Updating the skills property with new data
+            }));
             navigate("addcertificate");
         } else {
             setError(true);
@@ -117,14 +120,14 @@ export default function AddSkills() {
                         <div className="skills grow text-left">{skillsDomain}</div>
                     </div>
                     {error && (
-                                <motion.div
-                                    key="confirm-password-error" // Unique key for AnimatePresence
-                                    initial={{ opacity: 0, y: -10 }} // Initial hidden state
-                                    animate={{ opacity: 1, y: 0 }}   // Animation to visible
-                                    exit={{ opacity: 0, y: -10 }}    // Animation when removed
-                                    transition={{ duration: 0.5 }}  // Duration
-                                    className="error-text text-sm text-[red]">Please select 3 skills.</motion.div>
-                            )}
+                        <motion.div
+                            key="confirm-password-error" // Unique key for AnimatePresence
+                            initial={{ opacity: 0, y: -10 }} // Initial hidden state
+                            animate={{ opacity: 1, y: 0 }}   // Animation to visible
+                            exit={{ opacity: 0, y: -10 }}    // Animation when removed
+                            transition={{ duration: 0.5 }}  // Duration
+                            className="error-text text-sm text-[red]">Please select 3 skills.</motion.div>
+                    )}
                     <button
                         onClick={checkSkillsNumber}
                         className="btn-gradient block w-3/4 mx-auto mt-5 capitalize"

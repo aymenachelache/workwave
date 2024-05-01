@@ -25,7 +25,6 @@ export default function Header(props) {
     useEffect(() => {
         window.innerWidth < 768 ? setIsPhone(true) : setIsPhone(false);
         cookie.get("email") ? setHasAccount(true) : setHasAccount(false);
-        console.log(cookie.get("token"))
     });
 
 

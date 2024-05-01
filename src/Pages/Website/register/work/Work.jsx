@@ -11,7 +11,7 @@ import BackButton from '../../../../Components/backButton/BackButton';
 
 
 export default function Work() {
-    const [formData,setFormData]= useState({
+    const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
@@ -19,6 +19,10 @@ export default function Work() {
         password: "",
         confirmPassword: ""
     });
+    const [skillsAndCertificate,setSkillsAndCertificate] = useState({
+        certificate: [],
+        skills: [],
+    })
     return (
         <>
             <div className="create-work w-full h-screen relative">
@@ -28,7 +32,7 @@ export default function Work() {
                         <BackButton />
                     </div>
                     <div className="contain mx-auto sm:m-0 text-center">
-                        <Outlet context={{formData, setFormData}} />
+                        <Outlet context={{ formData, setFormData, skillsAndCertificate,setSkillsAndCertificate }} />
                     </div>
                 </div>
                 <div className='copy absolute ml-5 mb-5 z-10 bottom-0'>

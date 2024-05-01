@@ -79,14 +79,18 @@ export default function PhoneAndPassword() {
             const data = await axios.post(`${baseURL}/${REGISTER}`, formData, {
                 withCredentials: true,
             }).then(res => {
-                cookie.set("email", JSON.parse(JSON.stringify(res.data)).email);
-                cookie.set("firstName", JSON.parse(JSON.stringify(res.data)).firstName);
-                cookie.set("lastName", JSON.parse(JSON.stringify(res.data)).lastName);
-                cookie.set("mobile", JSON.parse(JSON.stringify(res.data)).mobile);
-                cookie.set("verified", JSON.parse(JSON.stringify(res.data)).verified);
-                cookie.set("role", "user");
-            });
-            navigate('/emailverfication');
+                if (res.data.message == "User created successfully") {
+                    cookie.set("email", JSON.parse(JSON.stringify(res.data)).email);
+                    cookie.set("firstName", JSON.parse(JSON.stringify(res.data)).firstName);
+                    cookie.set("lastName", JSON.parse(JSON.stringify(res.data)).lastName);
+                    cookie.set("mobile", JSON.parse(JSON.stringify(res.data)).mobile);
+                    cookie.set("verified", JSON.parse(JSON.stringify(res.data)).verified);
+                    cookie.set("role", "user");
+                    navigate('/emailverfication');
+                } else {
+                    console.log("Create account Erorr");
+                }
+            }).catch((err) => console.log(err));
         } catch (err) {
             // setError(err.response.data.error);
             setErrors((prev) => ({ ...prev, form: err.response.data.error }));
