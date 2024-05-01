@@ -1,0 +1,29 @@
+#FilterBar{
+    div{
+        padding: 10px;
+    }
+    .btn {
+        color: #fff;
+        background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
+        padding: 12px 16px;
+        border-radius: 15px;
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+
+        &:hover {
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
+        }
+    }
+    .appearance-none {
+        -webkit-appearance: none !important;
+        -moz-appearance: textfield !important;
+        appearance: none !important;
+      }
+    select {
+        -webkit-appearance: none; /* WebKit/Blink */
+        -moz-appearance: none; /* Gecko */
+        appearance: none; /* Future versions of browsers */
+        background: url('') no-repeat right center; /* Replace with your desired arrow icon or an empty image */
+        padding-right: 1rem; /* Adjust as needed */
+    }
+    
+}
