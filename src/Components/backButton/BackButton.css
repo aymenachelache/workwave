@@ -1,0 +1,6 @@
+.back svg {
+  transition: all 0.3s ease;
+}
+.back:hover svg {
+  transform: scale(1.5, 1);
+}/*# sourceMappingURL=BackButton.css.map */

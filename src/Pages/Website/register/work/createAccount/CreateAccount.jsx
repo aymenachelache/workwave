@@ -1,31 +1,84 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './CreateAccount.scss';
 // import logo from '../../../assets/Logo.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
+import ButtonGradient from '../../../../../Components/buttonGradient/ButtonGradient';
+import { motion } from 'framer-motion';
+
 export default function CreateAccount() {
+    const { formData, setFormData } = useOutletContext();
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+
+
+    const validateFields = () => {
+        let isValid = true;
+        let errors = {};
+
+        if (!formData.firstName || formData.firstName.trim() === "") {
+            errors.firstName = "First name is required.";
+            isValid = false;
+        }
+
+        if (!formData.lastName || formData.lastName.trim() === "") {
+            errors.lastName = "Last name is required.";
+            isValid = false;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(formData.email)) {
+            errors.email = "Invalid email format.";
+            isValid = false;
+        }
+
+        setErrors(errors);
+        return isValid;
+    };
+
+
+    function handleChange(e) {
+        setFormData(formData => ({ ...formData, [e.target.name]: e.target.value }));
+        setErrors((errors) => ({ ...errors, [e.target.name]: undefined })); // Effacer l'erreur une fois le champ modifié
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
+        if (validateFields()) {
+            navigate('phoneandpassword'); // Naviguer si le formulaire est valide
+        }
+    };
     return (
         <>
-            <div className="create-account-work w-full relative">
-                <div className="contain mx-auto text-center">
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 1 }}
+                className="create-account-work w-full relative">
+                <div className="contain w-2/4 mx-auto text-center">
                     <TextGradient size='25px' weight='800' text='Create an account' />
                     <p className='text-sm text-[#777775] mb-10'>Your personal informations.</p>
-                    <form action="">
-                        <InputComp type="text" name="firstName" id="firstName" className='w-2/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='First Name' />
-                        <InputComp type="text" name="lastName" id="lastName" className='w-2/4 inline-block text-sm outline-none px-4 py-3 my-2' placeholder='Last Name' />
-                        <InputComp type="email" name="email" id="email" className='w-full text-sm outline-none px-4 py-3 my-4 mx-auto' placeholder='Email' />
-                        <select name="country" id="country" className='w-full cursor-pointer text-sm outline-none px-4 py-3 mb-4'>
-                            <option value='country'>Country</option>
-                            <option value="algerie">Algerie</option>
-                            <option value="france">France</option>
-                            <option value="italy">Italy</option>
-                            <option value="maroc">Maroc</option>
-                        </select>
-                        <Link to={'phoneandpassword'} className={'btn block w-full'} ><span className='text-lg font-extrabold primaryfont block'>Continue</span></Link>
+                    <form action="" onSubmit={handleSubmit}>
+                        <div className="flex gap-2">
+                            <InputComp onchange={(e) => handleChange(e)} value={formData.firstName} type="text" name="firstName" id="firstName" className='w-2/4 text-sm outline-none px-4 py-3 my-2' placeholder='First Name' />
+                            <InputComp onchange={(e) => handleChange(e)} value={formData.lastName} type="text" name="lastName" id="lastName" className='w-2/4 text-sm outline-none px-4 py-3 my-2' placeholder='Last Name' />
+                        </div>
+                        <InputComp onchange={(e) => handleChange(e)} value={formData.email} type="text" name="email" id="email" className='w-full text-sm outline-none px-4 py-3 mt-4 mx-auto' placeholder='Email' />
+                        <div className='h-5 my-2'>
+                            {(errors.firstName || errors.lastName || errors.email) && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: -10 }}  // Start position (invisible, slightly above)
+                                    animate={{ opacity: 1, y: 0 }}   // End position (visible, move down to align)
+                                    transition={{ duration: 0.5 }}   // Duration of animation
+                                    className="error-text text-sm"
+                                >Data Invalid</motion.div>
+                            )}
+                        </div>
+                        <button type='submit' className={'btn-gradient block w-full'}><span className='text-lg font-extrabold primaryfont block'>Continue</span></button>
                     </form>
                     <div className="other flex items-center justify-between gap-3 text-[#1F1F1F1A] my-8">
                         <span className="line"></span>
@@ -33,22 +86,22 @@ export default function CreateAccount() {
                         <span className="line"></span>
                     </div>
                     <div className="social-media flex justify-between gap-3">
-                            <div className="social google bg-[#fff] cursor-pointer">
-                                <img src={require('../../../../../assets/login/google.png')} alt="" />
-                                <span className='hidden'>Continue with Google</span>
-                            </div>
-                            <div className="social facebook bg-[#1877F2] cursor-pointer">
-                                <img src={require('../../../../../assets/login/facebook.png')} alt="" />
-                            </div>
-                            <div className="social apple bg-[#0D0D0D] cursor-pointer">
-                                <img src={require('../../../../../assets/login/apple.png')} alt="" />
-                            </div>
-                            <div className="social linkedin bg-[#0077B5] cursor-pointer">
-                                <img src={require('../../../../../assets/login/linkedin.png')} alt="" />
-                            </div>
+                        <div className="social google bg-[#fff] cursor-pointer">
+                            <img src={require('../../../../../assets/login/google.png')} alt="" />
+                            <span className='hidden'>Continue with Google</span>
                         </div>
+                        <div className="social facebook bg-[#1877F2] cursor-pointer">
+                            <img src={require('../../../../../assets/login/facebook.png')} alt="" />
+                        </div>
+                        <div className="social apple bg-[#0D0D0D] cursor-pointer">
+                            <img src={require('../../../../../assets/login/apple.png')} alt="" />
+                        </div>
+                        <div className="social linkedin bg-[#0077B5] cursor-pointer">
+                            <img src={require('../../../../../assets/login/linkedin.png')} alt="" />
+                        </div>
+                    </div>
                 </div>
-            </div >
+            </motion.div >
         </>
     )
 }

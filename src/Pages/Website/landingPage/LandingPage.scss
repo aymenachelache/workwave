@@ -26,6 +26,29 @@
         background-image: url('/src/assets/bghero1.jpg');
     }
 }
+@keyframes ChangeBackgroundHire {
+    0% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+    16% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+    32% {
+        background-image: url('/src/assets/bghire2.jpg');
+    }
+    48% {
+        background-image: url('/src/assets/bghire2.jpg');
+    }
+    64% {
+        background-image: url('/src/assets/bghire3.jpg');
+    }
+    80% {
+        background-image: url('/src/assets/bghire3.jpg');
+    }
+    100% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+}
 
 // Landing Style
 .landing {
@@ -37,7 +60,12 @@
         border-radius: 0px 0px 40px 40px;
         position: relative;
         z-index: 999;
-        animation: ChangeBackground 20s infinite ease-in-out forwards;
+        &.hero-work {
+            animation: ChangeBackground 20s infinite ease-in-out forwards;
+        }
+        &.hero-hire {
+            animation: ChangeBackgroundHire 20s infinite ease-in-out forwards;
+        }
         .container {
             z-index: 5;
 
@@ -61,6 +89,7 @@
             height: 100%;
             background-color: rgb(0 0 0 / 40%);
             z-index: -1;
+            border-radius: 0 0 40px 40px;
         }
     }
 

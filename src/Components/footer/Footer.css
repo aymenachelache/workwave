@@ -1,0 +1,11 @@
+.footer {
+  font-optical-sizing: auto;
+  font-style: normal;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.1019607843);
+}
+.footer .container .boxes .box ul li {
+  font-family: "Red Hat Display", sans-serif !important;
+}
+.footer .container .boxes .box ul li:hover {
+  color: #000;
+}/*# sourceMappingURL=Footer.css.map */

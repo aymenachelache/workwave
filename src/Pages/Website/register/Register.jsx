@@ -1,12 +1,20 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Register.scss';
 import Logo from '../../../Components/logo/Logo';
 import Button from './../../../Components/Button/Button';
 import BackButton from '../../../Components/backButton/BackButton';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
+import Cookie from "cookie-universal";
 
 export default function Register() {
+  const cookie = Cookie();
+  function handleClient() {
+    cookie.set("role", 'user');
+  }
+  function handleFreelancer() {
+    cookie.set("role", 'freelancer');
+  }
   return (
     <>
       <div className="register p-5">
@@ -18,9 +26,9 @@ export default function Register() {
             <p className='text-sm text-center text-[#777775] mb-10'>What brings you here?</p>
           </div>
         </div>
-        <div className="cont flex items-center justify-center gap-10 mt-10">
+        <div className="cont flex flex-col lg:flex-row items-center justify-center gap-10 mt-10">
           <div className="left">
-            <Link to='hire/createaccount'>
+            <Link onClick={handleClient} to='/register/welcome'>
               <div className="hire cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to hire</h3>
                 <p className='text-sm'>Hire reliable freelancers from around the globe to work on your projects.</p>
@@ -28,7 +36,7 @@ export default function Register() {
             </Link>
           </div>
           <div className="right">
-            <Link to='work/createaccount'>
+            <Link onClick={handleFreelancer} to='/register/welcome'>
               <div className="work cursor-pointer">
                 <h3 className='text-2xl font-extrabold'>I want to work</h3>
                 <p className='text-sm'>Work as a freelancer on a projects of various categories and get paid.</p>
@@ -37,7 +45,7 @@ export default function Register() {
           </div>
         </div>
         <div className="note sm:w-8/12 md:w-7/12 mx-auto">
-          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'>Log in</span></p>
+          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'><Link to='/login'>Log in</Link></span></p>
         </div>
 
       </div>

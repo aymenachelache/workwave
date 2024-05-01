@@ -7,7 +7,7 @@ import TextGradient from '../textGradient/TextGradient';
 
 export default function Logo(props) {
     return (
-        <div className={`logo ${props.className}`}>
+        <div className={`logo select-none ${props.className}`}>
             <Link to='/' className='flex items-center'>
                 <img src={logo} alt="logo" />
                 <TextGradient text='WorkWave' size='20px' weight='800' />

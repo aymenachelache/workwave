@@ -75,12 +75,11 @@ export default function LandingPage() {
         }
         e.target.children[0].src = require(urll);
     }
-
     return (
         <>
             <Header />
             <div className="landing">
-                <div className="hero">
+                <div className="hero hero-work">
                     <div className="container mx-auto pt-16 w-full h-screen flex flex-col justify-center">
                         <div className="text text-center md:text-left">
                             <h1 className="text-white font-extrabold text-3xl lg:text-4xl">Ride the WorkWave and Catch the Perfect <TextGradient text='Wave of Opportunities!' /></h1>
@@ -122,7 +121,7 @@ export default function LandingPage() {
                         <div className="left w-full lg:w-6/12 p-2 mb-10 lg:mb-0 text-center lg:text-left">
                             <h3 className="text-3xl font-bold mb-5 w-full lg:w-4/5">Many categories just to set you up!</h3>
                             <p className="mb-10">We offer all the categories and fields that are available on the freelance market, you can start working in the field that you are skilled in, in just few clicks.</p>
-                            <Button text="Join us" color='#fff' classes='font-bold text-xl border-3 btn-hover-white' padding='8px 20px' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
+                            <Button link='/register' text="Join us" color='#fff' classes='font-bold text-xl border-3 btn-hover-white' padding='8px 20px' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
                         </div>
                         <div className="right grid grid-cols-2 sm:grid-cols-3 gap-3">
                             <div className="box p-4 text-center cursor-pointer" onMouseEnter={e => changeImage(e, 1)} onMouseLeave={e => changeImageHover(e, 1)}>
@@ -146,7 +145,7 @@ export default function LandingPage() {
                                 <h5 className="mt-4">Development</h5>
                             </div>
                             <div className="box p-4 text-center cursor-pointer flex justify-center items-center">
-                                <Button text='View more' classes='' color='#f9f7f38a' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked />
+                                <Button link='/categories' text='View more' classes='' color='#f9f7f38a' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked />
                             </div>
 
                         </div>
@@ -174,7 +173,7 @@ export default function LandingPage() {
                                 <div className="left w-full mb-10 md:mb-0 md:w-3/6 p-2 text-center md:text-left">
                                     <h3 className="text-3xl font-bold mb-5 w-full md:w-4/5">WorkWave is totally free!</h3>
                                     <p className="mb-10 font-bold">And finally, you don’t have to pay on additional services on WorkWave. Every user gets the full functionalities of WorkWave platform, which means that every user has the same chances, no pay for certification, no advertising services, and more.</p>
-                                    <Button text="Join us now" classes='font-bold text-xl border-3 btn-hover-white' color='#fff' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
+                                    <Button link='/register' text="Join us now" classes='font-bold text-xl border-3 btn-hover-white' color='#fff' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
                                 </div>
                                 <div className="right">
                                     <img src={require('../../../assets/freelogo.png')} className="ml-auto" style={{ width: '80%' }} alt="" />
