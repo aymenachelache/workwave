@@ -11,3 +11,5 @@ export const VERIFICATION= "api/user/send-verification-email";
 export const LOGIN= "api/auth/sign-in";
 export const LOGOUT= "api/auth/logout";
 export const CERTIFICATE= "api/freelencer/certificate/upload";
+export const REGISTER_GOOGLE= "api/auth/sign-up/google";
+export const LOGIN_GOOGLE= "api/auth/sign-in/google";

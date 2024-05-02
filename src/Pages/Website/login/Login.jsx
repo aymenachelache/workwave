@@ -7,10 +7,13 @@ import BackButton from '../../../Components/backButton/BackButton';
 import axios from 'axios';
 import Cookie from 'cookie-universal';
 import {motion} from 'framer-motion';
+import { LOGIN, VERIFICATION,LOGIN_GOOGLE, baseURL } from '../../../Components/Variables/VariablesColors';
 
-import { ToastContainer, toast } from 'react-toastify';
+import { GoogleLogin } from '@react-oauth/google';
+import { jwtDecode } from "jwt-decode";
+import {  ToastContainer,toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { LOGIN, VERIFICATION, baseURL } from '../../../Components/Variables/VariablesColors';
+
 
 export default function Login() {
     const [form, setForm] = useState({
@@ -56,6 +59,53 @@ export default function Login() {
             console.log(err);
         }
     };
+
+
+
+    // Google 
+
+    const [googleForm,setGoogleForm] = useState({})
+
+    const email = localStorage.getItem('email');
+
+    // To prevent problems
+    useEffect(()=>{
+        if(typeof email === 'string'){
+            setTimeout(() => {
+                navigate('/choice')
+            }, 300);
+        }
+    },[email])
+
+
+    const loginAccountWithGoogle = async (formData) => {
+        try {
+            const data = await axios.post(`${baseURL}/${LOGIN_GOOGLE}`, 
+            {
+                googleId:formData.googleId
+            },{
+                withCredentials: true,
+            });
+
+            if (!data) {
+                toast.error('Error login to your account');
+            }
+
+            toast('You have been login successfully');
+            setTimeout(() => {
+                 //  Here remember to add the dashboard when it is ready 
+                // navigate('/choice');
+                const addEmailToLocalStorage = localStorage.setItem('email',formData.email)
+            }, 2500);
+        } catch (err) {
+            toast.error(err?.response?.data?.message || 'Error happend')
+        }
+    };
+
+
+    // Google
+
+
     return (
         <>
             <div className="login w-full h-screen relative">
@@ -82,21 +132,29 @@ export default function Login() {
                             <span className='or text-sm'>Or</span>
                             <span className="line"></span>
                         </div>
-                        <div className="social-media flex justify-between gap-3">
-                            <div className="social google bg-[#fff] cursor-pointer">
-                                <img src={require('../../../assets/login/google.png')} alt="" />
-                                <span className='hidden'>Continue with Google</span>
-                            </div>
-                            <div className="social facebook bg-[#1877F2] cursor-pointer">
-                                <img src={require('../../../assets/login/facebook.png')} alt="" />
-                            </div>
-                            <div className="social apple bg-[#0D0D0D] cursor-pointer">
-                                <img src={require('../../../assets/login/apple.png')} alt="" />
-                            </div>
-                            <div className="social linkedin bg-[#0077B5] cursor-pointer">
-                                <img src={require('../../../assets/login/linkedin.png')} alt="" />
-                            </div>
-                        </div>
+                       
+
+                     {/*  google  */}
+                     <ToastContainer/>
+                    <GoogleLogin
+                        onSuccess={async (credentialResponse) => {
+                            const credentialResponseDecoded = jwtDecode(credentialResponse.credential);
+                            const updatedForm = {
+                                googleId: credentialResponse.clientId,
+                                email: credentialResponseDecoded.email
+                            };
+                            await setGoogleForm(updatedForm);
+                            loginAccountWithGoogle(updatedForm);
+                        }}
+                        onError={() => {
+                            console.log('Login Failed');
+                        }}
+                    />;
+
+
+
+                        {/*  google  */}
+
                     </div>
                     <div className="copyright">
                         <p className='text-sm text-[#CDCCC9]'>&copy; WorkWave 2024</p>
