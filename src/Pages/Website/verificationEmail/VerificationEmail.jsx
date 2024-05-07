@@ -1,26 +1,16 @@
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import Logo from '../../../Components/logo/Logo';
-import Cookie from "cookie-universal";
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { LOGOUT, VERIFICATION, baseURL } from '../../../Components/Variables/VariablesColors';
+import { GETUSER, LOGOUT, VERIFICATION, baseURL } from '../../../Components/Variables/VariablesColors';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 export default function VerificationEmail() {
-    const cookie = Cookie();
-    const email = cookie.get("email");
+    const email = localStorage.getItem("email");
     const [error, setError] = useState(false);
+    const [emailSend, setEmailSend] = useState(false);
     const navigate = useNavigate();
-    
-    const handleCheck = async (e) => {
-        const verified = cookie.get("verified");
-        if(verified) {
-            navigate('/choice');
-        } else {
-            setError(true);
-        }
-    };
 
     const handleLogout = async (e) => {
         try {
@@ -29,24 +19,48 @@ export default function VerificationEmail() {
             }).then(res => {
                 console.log(res.data);
             });
-            cookie.removeAll();
+            localStorage.clear();
             window.location = "/";
         } catch (err) {
             console.log("logOut Error");
             console.log(err);
         }
+
     };
-    // useEffect(() => {
-    //     async function sendEmailVerification() {
-    //         await axios.post(`${baseURL}/${VERIFICATION}`, cookie.get("token"), {
-    //             withCredentials: true,
-    //             headers: {
-    //                 'Authorization': 'Bearer ' + cookie.get("token"),
-    //             }
-    //         }).then(res => console.log(res));
-    //     }
-    //     sendEmailVerification();
-    // }, []);
+
+    // Verification If Email verified or not
+    const checkEmailVerified = async () => {
+        try {
+
+            const data = await axios.get(`${baseURL}/${GETUSER}`, {
+                withCredentials: true,
+            }).then(res => {
+                if (res.data.data.verified) {
+                    localStorage.setItem("verified", "true");
+                    navigate('/choice');
+                } else {
+                    setEmailSend(false);
+                    setError(true);
+                }
+            }).catch(err => {setError(true), setEmailSend(false)});
+        } catch (err) {
+            console.log("Error User Not verified.");
+        }
+    }
+
+    const sendEmailVerification = async () => {
+        try {
+            const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, {
+                withCredentials: true,
+            });
+            setEmailSend(true);
+            setError(false);
+        } catch (err) {
+            console.log("Error Post sendEmailVerification.");
+        }
+    }
+
+
     return (
         <>
             <div className="forget-password p-5">
@@ -68,7 +82,8 @@ export default function VerificationEmail() {
                             "Spam" or "Bulk Email" folder.
                         </p>
                         <div className='flex flex-col items-center gap-5 mt-5 mx-auto w-1/2'>
-                            <button onClick={handleCheck} type='submit' className={'btn-gradient block w-full'}><span className='text-sm font-extrabold primaryfont block'>Check again and continue</span></button>
+                            <button onClick={checkEmailVerified} type='submit' className={'btn-gradient block w-full'}><span className='text-sm font-extrabold primaryfont block'>Check again and continue</span></button>
+                            <button onClick={sendEmailVerification} type='submit' className={'btn-gradient block w-full'}><span className='text-sm font-extrabold primaryfont block'>Send Email Again</span></button>
                             {error && (
                                 <motion.div
                                     key="confirm-password-error" // Unique key for AnimatePresence
@@ -77,6 +92,15 @@ export default function VerificationEmail() {
                                     exit={{ opacity: 0, y: -10 }}    // Animation when removed
                                     transition={{ duration: 0.5 }}  // Duration
                                     className="error-text text-xs mb-5 text-[red]">Email Not Verified.</motion.div>
+                            )}
+                            {emailSend && (
+                                <motion.div
+                                    key="confirm-password-error" // Unique key for AnimatePresence
+                                    initial={{ opacity: 0, y: -10 }} // Initial hidden state
+                                    animate={{ opacity: 1, y: 0 }}   // Animation to visible
+                                    exit={{ opacity: 0, y: -10 }}    // Animation when removed
+                                    transition={{ duration: 0.5 }}  // Duration
+                                    className="error-text text-xs mb-5 text-[#37B778]">The email has been successfully sent</motion.div>
                             )}
                             <button onClick={handleLogout} type='submit' className={'btn text-[red] block w-full'}><span className='text-sm font-extrabold primaryfont block'>Log Out</span></button>
                         </div>

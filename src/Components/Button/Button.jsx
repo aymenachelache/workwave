@@ -20,7 +20,7 @@ export default function Button(props) {
                     padding: props.padding ? `${props.padding}` : "8px 10px",
                     borderRadius: '14px'
                 }
-            }><span>{props.text}</span>{props.object}</Link>
+            } onClick={props.onClick}><span>{props.text}</span>{props.object}</Link>
         </>
     );
 }

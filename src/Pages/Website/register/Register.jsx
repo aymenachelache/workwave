@@ -5,15 +5,13 @@ import Button from './../../../Components/Button/Button';
 import BackButton from '../../../Components/backButton/BackButton';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
-import Cookie from "cookie-universal";
 
 export default function Register() {
-  const cookie = Cookie();
   function handleClient() {
-    cookie.set("role", 'user');
+    localStorage.setItem("role", 'user');
   }
   function handleFreelancer() {
-    cookie.set("role", 'freelancer');
+    localStorage.setItem("role", 'freelancer');
   }
   return (
     <>
@@ -44,9 +42,7 @@ export default function Register() {
             </Link>
           </div>
         </div>
-        <div className="note sm:w-8/12 md:w-7/12 mx-auto">
-          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'><Link to='/login'>Log in</Link></span></p>
-        </div>
+
 
       </div>
     </>

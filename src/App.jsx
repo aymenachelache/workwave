@@ -32,6 +32,16 @@ import PubicProfile from './Pages/Website/setting/PubicProfile'
 import AccountSetting from './Pages/Website/setting/AccountSetting'
 import VerificationEmail from './Pages/Website/verificationEmail/VerificationEmail'
 import RequireEmail from './Pages/Auth/RequireEmail'
+import FreelancerHomePage from './Pages/Website/freelancer/freelancerHomePage/freelancerHomePage'
+import ClientHomePage from './Pages/Website/clientHomePage/ClientHomePage'
+import FDashboard from './Pages/Website/freelancer/personalspace/freelancerDashboard/FDashboard'
+import FPersonalSpace from './Pages/Website/freelancer/personalspace/FPersonalSpace'
+import WorkingOn from './Pages/Website/freelancer/personalspace/Projects/WorkingOn/WorkingOn'
+import { useEffect } from 'react'
+import ProjectsHistory from './Pages/Website/freelancer/personalspace/Projects/History/ProjectsHistory'
+import Services from './Pages/Website/freelancer/personalspace/Services/Services'
+import NotFound from './Components/404Page/NotFound'
+
 
 function App() {
   return (
@@ -65,7 +75,7 @@ function App() {
 
 
         {/* 404 Not found */}
-        <Route path='/*' element={<Page404 />} />
+        <Route path='*' element={<NotFound />} />
 
         {/* Contact US */}
         <Route path='/contactus' element={<ContactUs />} />
@@ -78,6 +88,15 @@ function App() {
           </Route>
         </Route>
 
+
+        <Route path='/hire/home' element={<ClientHomePage />} />
+        <Route path='/work/home' element={<FreelancerHomePage />} />
+        <Route path='/work/personalspace' element={<FPersonalSpace />} >
+          <Route  index  path='dashboard' element={<FDashboard />} /> 
+          <Route  path='myprojects/workingon' element={<WorkingOn />} /> 
+          <Route  path='myprojects/history' element={<ProjectsHistory />} /> 
+          <Route  path='services' element={<Services />} /> 
+        </Route>
 
 
       </Routes>
