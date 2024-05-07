@@ -41,7 +41,7 @@ import { useEffect } from 'react'
 import ProjectsHistory from './Pages/Website/freelancer/personalspace/Projects/History/ProjectsHistory'
 import Services from './Pages/Website/freelancer/personalspace/Services/Services'
 import NotFound from './Components/404Page/NotFound'
-
+import ModifyAccount from './Components/Dashboard/AccountSettings/ModifyAccount/ModifyAccount'
 
 function App() {
   return (
@@ -50,9 +50,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/categories' element={<Categories />} />
-        <Route element={<RequireBack />}>
           <Route path='/login' element={<Login />} />
-        </Route>
         <Route path='/choice' element={<Register />} />
         <Route path='emailverfication' element={<VerificationEmail />} />
         <Route path='/register' element={<Work />}>
@@ -91,11 +89,13 @@ function App() {
 
         <Route path='/hire/home' element={<ClientHomePage />} />
         <Route path='/work/home' element={<FreelancerHomePage />} />
+
         <Route path='/work/personalspace' element={<FPersonalSpace />} >
-          <Route  index  path='dashboard' element={<FDashboard />} /> 
-          <Route  path='myprojects/workingon' element={<WorkingOn />} /> 
-          <Route  path='myprojects/history' element={<ProjectsHistory />} /> 
-          <Route  path='services' element={<Services />} /> 
+          <Route index  path='dashboard' element={<FDashboard />} /> 
+          <Route path='myprojects/workingon' element={<WorkingOn />} /> 
+          <Route path='myprojects/history' element={<ProjectsHistory />} /> 
+          <Route path='services' element={<Services />} /> 
+          <Route  path='settings/modifyaccount' element={<ModifyAccount />} /> 
         </Route>
 
 

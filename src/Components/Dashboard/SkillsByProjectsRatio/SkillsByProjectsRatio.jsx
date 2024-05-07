@@ -21,10 +21,13 @@ export const options = {
 const SkillsByProjectsRatio = ({isHistory}) => {
 
       return (
-        <div className="shadow-xl p-8  rounded-2xl w-fit flex-grow h-[60%]">
+        <div className="shadow-xl p-8  rounded-2xl w-fit flex-grow">
           <p className="font-semibold text-PrimColor text-opacity-50 mb-4 text-left">Skills By Projects Ratio</p>
           {!isHistory ? (
-            <PieChart data={PieData} />
+            <div className="h-1/2 py-2">
+              
+              <PieChart data={PieData} />
+            </div>
           ) : (
             <div className="flex gap-1">
               <span className="bg-PrimColor rounded-full h3  w-1/3"></span>
@@ -33,7 +36,7 @@ const SkillsByProjectsRatio = ({isHistory}) => {
             </div>
           )}
           
-          <ul className="font-semibold mt-10">
+          <ul className="font-semibold pt-16">
               {data.map((dataPiece, index) => {
                 if (index > 0) return (
                   <li key={index} className="items-center flex font-Unbounded my-2">

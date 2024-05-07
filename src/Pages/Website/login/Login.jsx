@@ -5,7 +5,6 @@ import Logo from '../../../Components/logo/Logo';
 import InputComp from '../../../Components/input/InputComp';
 import BackButton from '../../../Components/backButton/BackButton';
 import axios from 'axios';
-import Cookie from 'cookie-universal';
 import {motion} from 'framer-motion';
 
 import { ToastContainer, toast } from 'react-toastify';
@@ -18,7 +17,6 @@ export default function Login() {
         password: "",
     });
     const navigate = useNavigate();
-    const cookie = Cookie();
     const [invalidData, setInvalidaDta] = useState(false);
 
     const notify = () => {
@@ -42,11 +40,12 @@ export default function Login() {
                     setInvalidaDta(true);
                     return;
                 }
-                cookie.set("email", res.data.email);
-                cookie.set("firstName", res.data.firstName);
-                cookie.set("lastName", res.data.lastName);
-                cookie.set("mobile", res.data.mobile);
-                cookie.set("verified", res.data.verified);
+                localStorage.setItem("email", res.data.email);
+                localStorage.setItem("firstName", res.data.firstName);
+                localStorage.setItem("lastName", res.data.lastName);
+                localStorage.setItem("mobile", res.data.mobile);
+                localStorage.setItem("verified", res.data.verified);
+                localStorage.setItem("role", res.data.role);
                 navigate('/');
 
             });

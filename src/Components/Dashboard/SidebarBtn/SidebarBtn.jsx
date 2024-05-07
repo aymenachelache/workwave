@@ -26,7 +26,7 @@ const SidebarBtn = ({ content, subtitles }) => {
           <h3 id="title">{content.title}</h3>
         </div>
         {isOpen && (
-          <ul className={`sublist text-xs rounded-xl ml-10 transition-all duration-400 mb-2 -mt-2 scale-y-0 ease-linear ${isOpen && "delay-500 scale-y-100"} `}>
+          <ul className={`sublist text-xs rounded-xl ml-10 transition-all duration-400 mb-2 scale-y-0 ease-linear ${isOpen && "delay-500 scale-y-100"} `}>
             {subtitles.map((subtitle, index) => (
               <li key={index}>
                 <NavLink to={subtitle.to} className={({ isActive }) => isActive ? 'active-link' : undefined}>

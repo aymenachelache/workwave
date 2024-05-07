@@ -6,7 +6,6 @@ import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBell, faComments } from '@fortawesome/free-solid-svg-icons';
 import Logo from '../logo/Logo';
-import Cookie from 'cookie-universal';
 import axios from 'axios';
 
 
@@ -14,8 +13,7 @@ export default function Header(props) {
     const [isPhone, setIsPhone] = useState(false);
     const [scroll, setScroll] = useState(0);
     const navbar = useRef(null);
-    const cookie = Cookie();
-    const [hasAccount, setHasAccount] = useState(cookie.get("email"));
+    const [hasAccount, setHasAccount] = useState(localStorage.getItem("email"));
     const [open, setOpen] = useState(false);
     const dropdownProfile = useRef();
     const dropdownMessages = useRef();
@@ -24,13 +22,12 @@ export default function Header(props) {
 
     useEffect(() => {
         window.innerWidth < 768 ? setIsPhone(true) : setIsPhone(false);
-        cookie.get("email") ? setHasAccount(true) : setHasAccount(false);
+        localStorage.getItem("email") ? setHasAccount(true) : setHasAccount(false);
     });
 
 
     useEffect(() => {
         
-
         function Resize() {
             window.innerWidth < 768 ? setIsPhone(true) : setIsPhone(false);
         }
@@ -59,15 +56,7 @@ export default function Header(props) {
             }).then(res => {
                 console.log(res.data);
             });
-            // cookie.remove("email");
-            // cookie.remove("firstName");
-            // cookie.remove("lastName");
-            // cookie.remove("mobile");
-            // * cookie.remove("mobile");
-            // ! cookie.remove("mobile");
-            // ? cookie.remove("mobile");
-            // TODO: cookie.remove("mobile");
-            cookie.removeAll();
+            localStorage.clear();
             window.location = "/"  ;
         } catch (err) {
             console.log("logOut Error");
@@ -373,12 +362,12 @@ export default function Header(props) {
                                         }} className="flex justify-center items-center rounded-lg">
                                             <div className={"relative border-b-4 border-transparent border-indigo-700 transform transition duration-300"}  x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100">
                                                 <div className="flex justify-center items-center space-x-3 cursor-pointer">
-                                                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-gray-900">
-                                                    <img src="https://images.unsplash.com/photo-1610397095767-84a5b4736cbd?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80" alt="" className="w-full h-full object-cover" />
+                                                <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#00AEEF]">
+                                                    <img src={localStorage.getItem("picture")} alt="" className="w-full h-full object-cover" />
                                                 </div>
                                                 <div className="text-gray-900 select-none">
-                                                    <div className="cursor-pointer font-semibold text-xs capitalize">{cookie.get("firstName")} {cookie.get("lastName")}</div>
-                                                    <div className="cursor-pointer text-xs font-light">Hiring freelancers</div>
+                                                    <div className="cursor-pointer font-semibold text-xs capitalize">{localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</div>
+                                                    <div className="cursor-pointer text-xs font-light">{localStorage.getItem("role") == "user" ? "CLIENT" : "FREELANCER"}</div>
                                                 </div>
                                                 </div>
                                                 <div ref={dropdownProfile} x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" className="absolute w-60 px-5 py-3 bg-white rounded-lg shadow border mt-5 hidden">
