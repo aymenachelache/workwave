@@ -1,7 +1,7 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss'
 import Button from '../Button/Button';
-import { primaryColor, secondaryColor } from '../Variables/VariablesColors';
+import { baseURL, primaryColor, secondaryColor } from '../Variables/VariablesColors';
 import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faBell, faComments } from '@fortawesome/free-solid-svg-icons';
@@ -51,7 +51,7 @@ export default function Header(props) {
 
     const handleLogout = async (e) => {
         try {
-            const data = await axios.get("http://localhost:4000/api/auth/logout", {
+            const data = await axios.get(`${baseURL}/api/auth/logout`, {
                 withCredentials: true,
             }).then(res => {
                 console.log(res.data);
@@ -70,10 +70,14 @@ export default function Header(props) {
                 <div className="container mx-auto flex justify-between items-center">
                     <Logo className={isPhone ? 'hidden' : ''} />
                         <>
-                            {!isPhone ? <div className="nav">
-                                <NavLink to={"/"} className='link'>I want to work</NavLink>
-                                <NavLink to={"/hire"} className='link hire'>I want to hire</NavLink>
-                            </div>
+                            {!isPhone ? 
+                                !localStorage.getItem("email") != "" ?
+                                <div className="nav">
+                                    <NavLink to={"/"} className='link'>I want to work</NavLink>
+                                    <NavLink to={"/hire"} className='link hire'>I want to hire</NavLink>
+                                </div> 
+                                : 
+                                ""
                             :
                             <span onClick={shNavbar} style={{ width: window.innerWidth < 300 && '67px' }}><FontAwesomeIcon icon={faBars} className='text-3xl py-5 order-1 cursor-pointer' /></span>
                             }

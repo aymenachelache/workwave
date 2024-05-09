@@ -85,7 +85,7 @@ export default function PhoneAndPassword() {
                 localStorage.setItem("verified", res.data.verified);
                 localStorage.setItem("role", "user");
             }).catch((err) => console.log(err));
-            const senEmail = await axios.post(`${baseURL}/${VERIFICATION}`, {
+            const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, "" ,{
                 withCredentials: true,
             }).then(res => console.log(res));
         } catch (err) {

@@ -51,7 +51,7 @@ export default function VerificationEmail() {
 
     const sendEmailVerification = async () => {
         try {
-            const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, {
+            const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, "", {
                 withCredentials: true,
             });
             setEmailSend(true);

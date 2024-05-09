@@ -26,7 +26,7 @@ const Services = () => {
                 <SkillsByProjectsRatio isHistory={true} />
                 <ServicesCountSold service={servicesCountSold} />
             </div>
-            <ServicesList data={existingServices} />
+            <ServicesList data={[]} />
         </div>
     )
 }

@@ -5,7 +5,7 @@ export const blackColor= "#1F1F1F";
 export const greyColor= "#CDCCC9";
 
 // API
-export const baseURL= "http://localhost:4001";
+export const baseURL= "http://localhost:4000";
 export const REGISTER= "api/auth/sign-up";
 export const VERIFICATION= "api/user/send-verification-email";
 export const GETUSER= "api/user/get-single-user";
@@ -17,3 +17,5 @@ export const SENDCERTIFICATE= "api/freelencer/create";
 export const PROFILEPICTURE= "api/user/profile-picture";
 export const UPDATEPROFILE= "api/user/update-profile";
 export const FORGETPASSWORD= "api/auth/forgot-password-token";
+export const CREATE_SERVICE = "api/freelencer/create/service"
+export const GET_SERVICES = "api/freelencer/get/services/all"

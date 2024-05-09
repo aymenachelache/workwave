@@ -54,6 +54,8 @@ export default function AddCertificate() {
 
     const handleFileChange = async (number, e) => {
         formData.append('images', e.target.files[0]); // Append the selected file to the FormData
+        console.log(selectedCertificate);
+        console.log(certificateUploaded);
         if (number == 1) {
             setLoading1(true);
         } else if (number == 2) {
@@ -94,9 +96,9 @@ export default function AddCertificate() {
     };
 
     const sendSkillsAndcertificate = async () => {
-        if (skillsAndCertificate.skills.length) {
+        if (skillsAndCertificate.skills.length!=0) {
             try {
-                const sendEmail = await axios.post(`${baseURL}/${SENDCERTIFICATE}`, {
+                const sendEmail = await axios.post(`${baseURL}/${SENDCERTIFICATE}`, skillsAndCertificate,{
                     withCredentials: true,
                 }).then(res => navigate("profiledetails"));
             } catch (err) {
@@ -161,14 +163,15 @@ export default function AddCertificate() {
                                 style={{ display: 'none' }} // Hide the file input
                             />
                         </div>
+                        
                         <div className="text-center">
                             <span className='text-xs font-bold primaryfont' style={{ color: certificateUploaded.includes(2) ? "#37B778" : "" }}>Skill 2</span>
                             <div
                                 onClick={() => { handleAddBoxClick(2) }} // Add the click handler here
                                 className='add-box cursor-pointer global-radius my-border mt-3 px-8 pt-6 pb-4' style={{ borderColor: certificateUploaded.includes(2) ? "#37b77880" : "" }}>
-                                <p className='text-8xl mx-auto text-[#E4E2DE] primaryfont w-24' style={{ color: certificateUploaded.includes(2) ? "#37B778" : "" }}>{certificateUploaded.includes(2) ? <FontAwesomeIcon icon={faCheck} /> : loading2 ? <img className="w-20 h-20 animate-spin" src="https://www.svgrepo.com/show/70469/loading.svg" alt="Loading icon" />
+                                <p className='text-8xl mx-auto text-[#E4E2DE] primaryfont w-24' style={{ color: certificateUploaded.includes(2) ? "#37B778" : "" }}>{certificateUploaded.includes(2) ? <FontAwesomeIcon icon={faCheck} /> : loading2 ? <img className="w-20 h-20 animate-spin w-24 h-24" src="https://www.svgrepo.com/show/70469/loading.svg" alt="Loading icon" />
                                     : <FontAwesomeIcon icon={faPlus} />}</p>
-                                <span className="upload opacity-0 text-xs text-[#A3A19F] secondaryfont" style={{ color: certificateUploaded.includes(2) ? "#37B778" : "" }}>{certificateUploaded.includes(2) ? "Done!" : loading2 ? "Loading" : "Upload certificate"}</span>
+                                <span className="upload opacity-0 text-xs text-[#A3A19F] secondaryfont" style={{ color: certificateUploaded.includes(2) ? "#37B778" : "" }}>{certificateUploaded.includes(2) ? "Done!" : "Upload certificate"}</span>
                             </div>
                             {/* Hidden file input */}
                             <input
@@ -178,14 +181,16 @@ export default function AddCertificate() {
                                 style={{ display: 'none' }} // Hide the file input
                             />
                         </div>
+
+
                         <div className="text-center">
                             <span className='text-xs font-bold primaryfont' style={{ color: certificateUploaded.includes(3) ? "#37B778" : "" }}>Skill 3</span>
                             <div
                                 onClick={() => { handleAddBoxClick(3) }} // Add the click handler here
                                 className='add-box cursor-pointer global-radius my-border mt-3 px-8 pt-6 pb-4' style={{ borderColor: certificateUploaded.includes(3) ? "#37b77880" : "" }}>
-                                <p className='text-8xl mx-auto text-[#E4E2DE] primaryfont w-24' style={{ color: certificateUploaded.includes(3) ? "#37B778" : "" }}>{certificateUploaded.includes(3) ? <FontAwesomeIcon icon={faCheck} /> : loading3 ? <img className="w-20 h-20 animate-spin" src="https://www.svgrepo.com/show/70469/loading.svg" alt="Loading icon" />
+                                <p className='text-8xl mx-auto text-[#E4E2DE] primaryfont w-24' style={{ color: certificateUploaded.includes(3) ? "#37B778" : "" }}>{certificateUploaded.includes(3) ? <FontAwesomeIcon icon={faCheck} /> : loading3 ? <img className="w-20 h-20 animate-spin w-24 h-24" src="https://www.svgrepo.com/show/70469/loading.svg" alt="Loading icon" />
                                     : <FontAwesomeIcon icon={faPlus} />}</p>
-                                <span className="upload opacity-0 text-xs text-[#A3A19F] secondaryfont" style={{ color: certificateUploaded.includes(3) ? "#37B778" : "" }}>{certificateUploaded.includes(3) ? "Done!" : loading2 ? "Loading" : "Upload certificate"}</span>
+                                <span className="upload opacity-0 text-xs text-[#A3A19F] secondaryfont" style={{ color: certificateUploaded.includes(3) ? "#37B778" : "" }}>{certificateUploaded.includes(3) ? "Done!" : "Upload certificate"}</span>
                             </div>
                             {/* Hidden file input */}
                             <input
@@ -195,6 +200,8 @@ export default function AddCertificate() {
                                 style={{ display: 'none' }} // Hide the file input
                             />
                         </div>
+
+                      
 
                     </div>
                     {error && (

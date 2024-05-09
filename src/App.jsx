@@ -42,6 +42,9 @@ import ProjectsHistory from './Pages/Website/freelancer/personalspace/Projects/H
 import Services from './Pages/Website/freelancer/personalspace/Services/Services'
 import NotFound from './Components/404Page/NotFound'
 import ModifyAccount from './Components/Dashboard/AccountSettings/ModifyAccount/ModifyAccount'
+import addServicePage from './Components/Dashboard/Services/addServicePage/addServicePage'
+import AddServicePage from './Components/Dashboard/Services/addServicePage/addServicePage'
+import CheckEmail from './Pages/Website/login/checkEmail/CheckEmail'
 
 function App() {
   return (
@@ -67,9 +70,10 @@ function App() {
 
         <Route path='/login/forgetpassword' element={<ForgetPassword />}>
           <Route path='/login/forgetpassword/addinformation' element={<AddInformation />} />
-          <Route path='/login/forgetpassword/addinformation/verificationcode' element={<VerificationCode />} />
-          <Route path='/login/forgetpassword/addinformation/verificationcode/helloagain' element={<HelloAgain />} />
-        </Route>
+            <Route path='/login/forgetpassword/addinformation/checkemail' element={<CheckEmail />} />
+            {/* <Route path='/login/forgetpassword/addinformation' element={<HelloAgain />} /> */}
+          </Route>
+        <Route path='/api/user/reset-password/:token' element={<HelloAgain />} />
 
 
         {/* 404 Not found */}
@@ -86,7 +90,7 @@ function App() {
           </Route>
         </Route>
 
-
+        <Route path='/work/addService' element={<AddServicePage />} />
         <Route path='/hire/home' element={<ClientHomePage />} />
         <Route path='/work/home' element={<FreelancerHomePage />} />
 
