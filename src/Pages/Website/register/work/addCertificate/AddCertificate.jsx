@@ -7,7 +7,7 @@ import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
-import { CERTIFICATE, SENDCERTIFICATE, baseURL, greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { CERTIFICATE, SENDCERTIFICATE, baseURL, greyColor } from '../../../../../Components/Variables/Variables';
 import { motion } from 'framer-motion';
 import axios from 'axios';
 

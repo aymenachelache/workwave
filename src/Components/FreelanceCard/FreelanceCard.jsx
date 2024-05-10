@@ -2,45 +2,63 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./FreelanceCard.scss"
 import { faCircleExclamation, faUser } from "@fortawesome/free-solid-svg-icons"
+import { formatDistanceToNow } from 'date-fns';
+import axios from "axios";
+import { PLACE_A_BILD, baseURL } from "../Variables/Variables";
+import { useEffect } from "react";
 
 
+const FreelanceCard = ({ props, isSlides }) => {
 
-const FreelanceCard = ({props, isSlides}) => {
+    const relativeTime = formatDistanceToNow(new Date(props.createdAt), { addSuffix: true });
+    const handleClick = async () => {
+        try {
+            const data = await axios.put(`${baseURL}/${PLACE_A_BILD}/${props._id}`, {}, {
+                withCredentials: true,
+            })
+                .then((res) => {
+                    console.log(res)
+                });
+        } catch (err) {
+            // console.log(err);
+        }
+    };
+
     return (
         <div id="container" className={`max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
-            <div className="flex justify-between h-[30%] max-sm:flex-col">
-                <div id="text" className={isSlides ? "" : "w-[80%]"}>
-                    <h1 className={`max-md:text-lg text-2xl font-bold ${isSlides ? "" : "text-lg"}`}>
+            <div className="flex justify-between h-[30%] items-start max-sm:flex-col">
+                <div id="text" className={isSlides ? "w-full sm:w-3/4" : "w-[80%]"}>
+                    <h1 className={`text-lg md:text-xl break-all lg:text-xl font-bold ${isSlides ? "" : "text-lg"}`}>
                         {props.title}
                     </h1>
                     <h2 className={`font-light opacity-65 text-sm ${isSlides ? "" : "text-xs mt-1"}`}>
                         {props.type}
                     </h2>
                 </div>
-                <div id="price" className={isSlides ? "mt-2" : "w-[30%]"}>
-                    <div id="price" className="text-xl font-bold"> {props.price} </div>
-                    <div id="age" className="opacity-65 text-sm"> {props.age} </div>
+                <div id="price" className={isSlides ? "" : "w-[30%]"}>
+                    <div id="price" className="text-lg md:text-3xl max-sm:mt-5 font-bold"> {props.amount} DA</div>
+                    <div id="age" className="opacity-65 text-sm"> {relativeTime} </div>
                 </div>
             </div>
-            <div id="description" className={`${isSlides ? "mt-8" : "text-sm mt-8"} h-[14%]`}>
+            <div id="description" className={`${isSlides ? "mt-8" : "text-sm mt-12"} h-[14%] line-clamp-4`}>
                 {props.description}
             </div>
-            <div id="tags" className="flex my-8">
+            {/* <div id="tags" className="flex my-8">
                 {props.tags.map((tag, index) => {
                     return <div id="tag" key={index} className={`px-[2%] py-[0.8%] mx-2 rounded-full text-xs font-semibold cursor-pointer ${index == 0 ? "ml-0" : "mx-2"}`}> {tag} </div>
                 })}
-            </div>
+            </div> */}
             <div className="flex justify-between mt-12">
                 <div id="client" className="flex items-center">
                     <FontAwesomeIcon icon={faUser} className="border-2 mr- p-1 border-gray-300 text-gray-400 rounded-full" />
-                    <div id="client-name" className="mx-2 font-bold"> {props.client} </div>
+                    <div id="client-name" className="mx-2 font-bold"> {props.user.firstName} {props.user.lastName} </div>
                 </div>
                 <div id="buttons" className="flex items-center justify-center">
                     <button id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">
                         {isSlides ? <h3 className='text-sm mr-2 max-md:hidden'>Report</h3> : ""}
                         <FontAwesomeIcon icon={faCircleExclamation} />
                     </button>
-                    <button id="place-a-bid" className="text-gray-50 px-4 py-2 rounded-xl font-semibold ml-3 transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-xl">
+                    <button onClick={handleClick} id="place-a-bid" className="text-gray-50 px-4 py-2 rounded-xl font-semibold ml-3 transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-xl">
                         Place a bid
                     </button>
                 </div>

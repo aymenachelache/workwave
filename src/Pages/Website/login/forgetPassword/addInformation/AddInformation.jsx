@@ -7,7 +7,7 @@ import { Link, useNavigate, useOutletContext } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { FORGETPASSWORD, baseURL } from '../../../../../Components/Variables/VariablesColors';
+import { FORGETPASSWORD, baseURL } from '../../../../../Components/Variables/Variables';
 
 
 export default function AddInformation() {

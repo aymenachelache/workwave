@@ -9,7 +9,7 @@ import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import { motion } from 'framer-motion';
 import Button from '../../../../../Components/Button/Button';
 // import { PROFILEPICTURE, baseURL, greyColor } from '../../../../../Components/Variables/VariablesColors';
-import { PROFILEPICTURE, UPDATEPROFILE, baseURL, greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { PROFILEPICTURE, UPDATEPROFILE, baseURL, greyColor } from '../../../../../Components/Variables/Variables';
 import axios from 'axios';
 
 

@@ -6,44 +6,42 @@ import { faBars, faChartSimple, faClock, faClipboardList, faGear, faHourglass2, 
 import SidebarBtn from "../SidebarBtn/SidebarBtn";
 import SimpleSidebarBtn from "../SidebarBtn/SimpleSidebarBtn";
 
-const Sidebar = () => {
+const Sidebar = ({isClient}) => {
     const location = useLocation();
-    const [isMyProjectsOpen, setIsMyProjectsOpen] = useState(false);
-    const [isMyFinancesOpen, setIsMyFinancesOpen] = useState(false);
-    const [isMySettingsOpen, setIsMySettingsOpen] = useState(false);
-
     const handleToggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
-
-
+    const mainColor = (isClient) => {
+        isClient ? mainColor = "#37b978" : mainColor = "#00AEE"
+    }
     return (
-        <div className="sidebar pb-32 px-8 text-PrimColor flex flex-col justify-between h-screen">
+        <div className={`sidebar pb-28 h-screen max-md:h-min max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 flex-wrap min-lg:h-screen ${isClient && "text-SecColor"}`}>
 
-            <ul>
-                <FontAwesomeIcon icon={faBars} className="hidden max-md:block pt-80" />
-                <p className="text-gray-300 font-semibold px-4 py-1 ">Main</p>
+            <ul className="max-md:flex gap-2">
+                <p className="text-gray-300 font-semibold px-4 py-1 max-md:hidden">Main</p>
 
 
                 <li>
-                    <SimpleSidebarBtn content={ { to:"dashboard" ,icon: faChartSimple, title : "Dashboard"} } />
+                    <SimpleSidebarBtn isClient={true} content={ { to:"dashboard" ,icon: faChartSimple, title : "Dashboard"} } />
                 </li>
 
 
                 <li>
-                    <SidebarBtn 
+                    <SidebarBtn
+                        isClient={true}
                         content={{ title: "My Projects", icon: faPaste, to: "myprojects" }} 
                         subtitles={[ {title : "Working On", icon: faHourglass2, to : "myprojects/workingon" }, {title: "History", icon: faClock, to: "myprojects/history"} ]} 
                     />
                 </li>
 
                 <li>
-                    <SimpleSidebarBtn content={ {to: "services", icon: faClipboardList, title : "My Services"} } />
+                    <SimpleSidebarBtn isClient={isClient} content={ {to: isClient ? "needs" : "services", icon: faClipboardList, title : isClient ? "My Needs" : "My Services"} } />
                 </li>
 
 
                 <li>
-                    <SidebarBtn 
+                    <SidebarBtn
+                        isClient={true}
                         content={{ title: "My Finances", icon: faWallet }} 
                         subtitles={[ 
                             {title : "Payment Methods", icon: faHourglass2, to : "finances/maymethods" },
@@ -53,7 +51,8 @@ const Sidebar = () => {
                 </li>
 
                 <li>
-                    <SidebarBtn 
+                    <SidebarBtn
+                            isClient={true}
                             content={{ title: "Account Settings", icon: faGear }} 
                             subtitles={[ 
                                 {title : "Modify Profile", icon: faUser, to : "settings/modifyprofile" },
@@ -62,8 +61,8 @@ const Sidebar = () => {
                 </li>
             </ul>
 
-            <ul className="flex flex-col gap-2">
-                <p className="text-gray-300 font-semibold px-4 py-1 ">Insights</p>
+            <ul className="flex flex-col gap-2 max-md:hidden">
+                <p className="text-gray-300 font-semibold px-4 py-1 max-md:hidden">Insights</p>
 
                 <li>
                     <Link to='inbox' className={location.pathname === '/services' ? 'active' : ''}>

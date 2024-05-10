@@ -3,7 +3,7 @@ import './BackButton.scss';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { greyColor } from '../Variables/VariablesColors';
+import { greyColor } from '../Variables/Variables';
 
 export default function BackButton() {
     function rtn() {

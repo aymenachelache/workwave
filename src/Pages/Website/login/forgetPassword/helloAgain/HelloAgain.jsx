@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import './HelloAgain.scss';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import InputComp from '../../../../../Components/input/InputComp';
 import { Link, useNavigate } from 'react-router-dom';
@@ -7,7 +6,7 @@ import { useParams } from 'react-router-dom';
 
 
 import { motion } from 'framer-motion';
-import { RESETPASSWORD, baseURL } from '../../../../../Components/Variables/VariablesColors';
+import { RESETPASSWORD, baseURL } from '../../../../../Components/Variables/Variables';
 import axios from 'axios';
 export default function HelloAgain() {
     const [formData, setFormData] = useState({

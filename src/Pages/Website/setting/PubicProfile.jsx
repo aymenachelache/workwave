@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { PROFILEPICTURE, baseURL, primaryColor, secondaryColor } from '../../../Components/Variables/VariablesColors';
+import { PROFILEPICTURE, baseURL, primaryColor, secondaryColor } from '../../../Components/Variables/Variables';
 import Button from '../../../Components/Button/Button';
 import axios from 'axios';
 import InputComp from '../../../Components/input/InputComp';

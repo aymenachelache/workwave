@@ -21,7 +21,7 @@ const MyServices = () => {
     return (
         <div className="hover:-translate-y-3 cursor-pointer shadow-xl w-full transition-all duration-300 hover:shadow-emerald-200 rounded-2xl p-8">
             <p className="font-semibold font-Unbounded text-PrimColor text-opacity-50 mb-2 px-1">My Services</p>
-            <div className="flex gap-8">
+            <div className="flex gap-8 max-md:gap-2 max-md:text-sm">
                 <div className="Name w-[35%]">
                     <p className="font-semibold text-gray-400 text-xs mb-2 px-1 ">Name</p>
                     {services.map((service, index) => {

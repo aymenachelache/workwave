@@ -1,13 +1,24 @@
-.sideBarBtn{
-    
-    .button{
-       
+.sideBarBtn {
+  .active-link {
+    .Freelancer {
+      background-color: hsl(148, 78%, 20%);
+      color: white;
     }
-    
-    .active-link {
-        div {
-            background-color: hsl(149, 72%, 11%);
-            color: white;
-        }
+    .Client{
+        background-color: #007dab;
+        color: white;
     }
+  }
 }
+
+.active-link {
+  .Freelancer {
+    background-color: hsl(148, 78%, 20%);
+    color: white;
+  }
+  .Client{
+    background-color: #007dab;
+    color: white;
+  }
+}
+

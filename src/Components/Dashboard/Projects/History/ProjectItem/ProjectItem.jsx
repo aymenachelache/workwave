@@ -9,19 +9,17 @@ const ProjectItem = ({project}) => {
 
 
     return (
-       <div className=" my-2">
-            <div className={`flex justify-around gap-6 hover:bg-PrimColor items-center hover:bg-opacity-25 p-2 rounded-full font-Unbounded ${isOpenMoreInfo && "bg-PrimColor bg-opacity-25"}`} onClick={() => setIsOpenMoreInfo(pv => !pv)}>
-                <p className="truncate w-[15%] font-semibold text-sm text-center px-1 rounded-xl">{project[0]}</p>
-                <p className={`font-bold text-white text-sm hover:bg-opacity-55 text-center px-1 w-[8%] rounded-xl ${project[1] == "Pending" ? "bg-yellow-400" : "bg-PrimColor"}`}>{project[1]}</p>
-                <p className=" text-gray-500 text-sm text-center px-1 w-[15%] rounded-xl">{project[2]}</p>
-                <p className="font-semibold text-center px-1 rounded-xl w-[15%] text-sm">{project[3]}</p>
-                <p className="font-semibold text-center px-1 rounded-xl w-[15%] text-sm">{project[4]}</p>
-                <p className="text-PrimColor font-semibold font-Unbounded w-[15%] text-sm text-center px-1 -my-[2px] rounded-xl">+${project[5]}</p>
+       <div className="">
+            <div 
+            className={`grid grid-cols-8 min-w-[700px] overflow-auto max-md:text-xs gap-1 hover:bg-PrimColor items-center hover:bg-opacity-25 p-2 rounded-full font-Unbounded ${isOpenMoreInfo && "bg-PrimColor bg-opacity-25"}`} onClick={() => setIsOpenMoreInfo(pv => !pv)}>
+                <p className=" col-span-2 truncate font-semibold text-sm px-1 rounded-xl">{project[0]}</p>
+                <p className={`font-bold text-white text-sm hover:bg-opacity-55 text-center px-1 col-span-1 rounded-xl ${project[1] == "Pending" ? "bg-yellow-400" : "bg-PrimColor"}`}>{project[1]}</p>
+                <p className="font-semibold text-center px-1 rounded-xl col-span-1 text-sm">{project[3]}</p>
+                <p className="font-semibold text-center px-1 rounded-xl col-span-1 text-sm">{project[4]}</p>
+                <p className="text-PrimColor font-semibold font-Unbounded col-span-1 text-sm text-center px-1 -my-[2px] rounded-xl">+${project[5]}</p>
                 <div className="flex gap-1 -my-[2px]">
-                    <div className="flex justify-center items-start relative w-6 h-6 overflow-hidden  bg-gray-100 rounded-full dark:bg-gray-600">
-                        <svg className="absolute w-7 h-7 text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path></svg>
-                    </div>
-                    <p className="text-SecColor truncate font-extrabold hover:bg-PrimColor hover:bg-opacity-25 text-center px-1 rounded-xl">{project[6]}</p>
+                    <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="Rounded avatar" />
+                    <p className="text-SecColor font-extrabold text-center px-1 text-sm rounded-xl mx-2">{project[6]}</p>
                 </div>
             </div>
             {/*the div under*/} 

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import InputComp from '../../../../Components/input/InputComp';
 import { Link, useOutletContext } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FORGETPASSWORD, baseURL, greyColor } from '../../../../Components/Variables/VariablesColors';
+import { FORGETPASSWORD, baseURL, greyColor } from '../../../../Components/Variables/Variables';
 import axios from 'axios';
 import TextGradient from '../../../../Components/textGradient/TextGradient';
 export default function CheckEmail() {

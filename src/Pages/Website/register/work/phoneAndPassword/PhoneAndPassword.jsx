@@ -6,7 +6,7 @@ import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
-import { REGISTER, VERIFICATION, baseURL } from '../../../../../Components/Variables/VariablesColors';
+import { REGISTER, VERIFICATION, baseURL } from '../../../../../Components/Variables/Variables';
 
 export default function PhoneAndPassword() {
     const { formData, setFormData } = useOutletContext();

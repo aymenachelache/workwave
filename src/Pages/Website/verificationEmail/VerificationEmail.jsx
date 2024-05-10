@@ -2,7 +2,7 @@ import TextGradient from '../../../Components/textGradient/TextGradient';
 import Logo from '../../../Components/logo/Logo';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { GETUSER, LOGOUT, VERIFICATION, baseURL } from '../../../Components/Variables/VariablesColors';
+import { GETUSER, LOGOUT, VERIFICATION, baseURL } from '../../../Components/Variables/Variables';
 import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 

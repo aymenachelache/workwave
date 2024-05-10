@@ -4,9 +4,8 @@ import { faAdd } from "@fortawesome/free-solid-svg-icons"
 import { Link } from "react-router-dom"
 import AddService from "../addService/AddService"
 import { useEffect, useState } from "react"
-import { baseURL, GET_SERVICES } from "../../../Variables/VariablesColors"
+import { baseURL, GET_SERVICES } from "../../../Variables/Variables"
 import axios from "axios"
-
 
 const ServicesList = () => {
     const [servicesList, setServicesList] = useState([]);
@@ -17,7 +16,6 @@ const ServicesList = () => {
                 const response = await axios.get(`${baseURL}/${GET_SERVICES}`, {
                     withCredentials: true,
                 }).then((res) => {
-                    console.log(res.data.services);
                     setServicesList(res.data.services);
                 });
             } catch (error) {

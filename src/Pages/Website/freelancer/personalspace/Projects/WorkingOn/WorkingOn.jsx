@@ -11,11 +11,6 @@ const WorkingOn = () => {
         <div className="gap-8 w-full">
             <div className="flex flex-wrap gap-6 items-center">
                 <ProjectCard />
-                
-                <div className="font-Unbounded w-[25%] flex justify-center items-center border-2 border-PrimColor rounded-3xl h-40">
-                    <Calendar />
-                </div>
-
                 <ClientCard />
             </div>
             <Deliverables />

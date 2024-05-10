@@ -7,7 +7,7 @@ import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
-import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { greyColor } from '../../../../../Components/Variables/Variables';
 import { motion } from 'framer-motion';
 import Cookie from 'cookie-universal';
 

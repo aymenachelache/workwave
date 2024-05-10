@@ -3,7 +3,7 @@ import ServicesCountSold from "../../../../../Components/Dashboard/Services/Serv
 import ServicesList from "../../../../../Components/Dashboard/Services/ServicesList/ServicesList";
 import SkillsByProjectsRatio from "../../../../../Components/Dashboard/SkillsByProjectsRatio/SkillsByProjectsRatio";
 import { existingServices } from "./dummyServicesData";
-
+import { Link } from "react-router-dom";
 
 
 const Services = () => {
@@ -23,10 +23,11 @@ const Services = () => {
         <div className="">
             <div className="flex gap-5 flex-wrap">
                 <Card profit={profit}/>
-                <SkillsByProjectsRatio isHistory={true} />
                 <ServicesCountSold service={servicesCountSold} />
             </div>
-            <ServicesList data={[]} />
+            <Link to={"/work/personalspace/services"}>
+                <ServicesList data={[]} />
+            </Link>
         </div>
     )
 }

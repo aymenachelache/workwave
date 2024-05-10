@@ -1,0 +1,117 @@
+import Card from "../../../../../Components/Dashboard/Card/Card";
+import ServicesCountSold from "../../../../../Components/Dashboard/Services/ServicesCountSold/ServicesCountSold";
+import ServicesList from "../../../../../Components/Dashboard/Services/ServicesList/ServicesList";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  baseURL,
+  DELETE_NEED,
+  GET_PROJECTS_CLIENT,
+} from "../../../../../Components/Variables/Variables";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+const MyNeeds = () => {
+  const [activeNeeds, setActiveNeeds] = useState([]);
+
+  useEffect(() => {
+    const getMyActiveNeeds = async () => {
+      try {
+        const response = await axios
+          .get(`${baseURL}/${GET_PROJECTS_CLIENT}`, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res);
+            setActiveNeeds(res.data.data);
+          });
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    getMyActiveNeeds();
+  }, []);
+
+  const profit = {
+    amount: "$1700",
+    gain: "+25%",
+  };
+
+  const servicesCountSold = {
+    count: "11",
+    Sold: "25",
+  };
+
+  const handleDelete = async (id) => {
+    try {
+      const response = await axios.delete(`${baseURL}/${DELETE_NEED}/${id}`, {
+        withCredentials: true,
+      });
+      const updatedNeeds = activeNeeds.filter((need) => need._id !== id);
+      setActiveNeeds(updatedNeeds); // Update the state with the new array
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  return (
+    <div className="">
+      <div className="flex gap-5 flex-wrap">
+        <Card profit={profit} />
+        <ServicesCountSold service={servicesCountSold} />
+      </div>
+      <div className=" bg-white shadow-xl p-4 my-4 rounded-2xl">
+        <p className="text-SecColor px-2 text-opacity-70 font-Unbounded font-semibold px-1">
+          My active needs
+        </p>
+        <table className="mt-6 w-full">
+          <thead className="text-left">
+            <tr>
+              <th className="p-3 px-5 text-sm text-gray-400">Title</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Created At</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Description</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Reserved Count</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Status</th>
+            </tr>
+          </thead>
+          <tbody className="w-full">
+            {/* Assuming 'data' is your array of objects */}
+            {activeNeeds.map((item, index) => (
+              <tr key={index} className="">
+                <td className="p-3 px-5 font-semibold">{item.title}</td>
+                <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
+                  ${item.amount}
+                </td>
+                <td className="p-3 px-5 font-semibold">
+                  {new Date(item.createdAt).toLocaleDateString()}
+                </td>
+                <td className="p-3 px-5 font-semibold">{item.description}</td>
+                <td className="p-3 px-5 font-semibold">{item.reservedCount}</td>
+                <td className="p-3 px-5 font-semibold text-yellow-400">
+                  {item.status}
+                </td>
+                <td className="">
+                  <Link to={item._id}>
+                    <FontAwesomeIcon
+                      icon={faEdit}
+                      className="bg-SecColor rounded-lg text-white p-2 mx-1"
+                    />
+                  </Link>
+                  <button onClick={() => handleDelete(item._id)}>
+                    <FontAwesomeIcon
+                      icon={faTrash}
+                      className="bg-red-500 rounded-lg text-white p-2 mx-1"
+                    />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
+
+export default MyNeeds;

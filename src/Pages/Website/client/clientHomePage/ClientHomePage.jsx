@@ -1,32 +1,51 @@
-import Header from "../../../../Components/header/Header"
-import "./freelancerHomePage.scss"
+import "./ClientHomePage.scss"
+import Header from "../../../../Components/header/Header";
+import FilterBar from "../../../../Components/filterBar/FilterBar";
 import { useState, useEffect } from "react";
-import FreelanceCard from "../../../../Components/FreelanceCard/FreelanceCard";
 import Footer from "../../../../Components/footer/Footer"
+import ClientCard from "../../../../Components/clientCard/ClientCard"
 import Pagination from "../../../../Components/pagination/Pagination";
-import { GET_ALL_PROJECTS, baseURL } from "../../../../Components/Variables/Variables";
 import axios from "axios";
-import FilterBar from '../../../../Components/filterBar/FilterBar'
-
-
-const FreelancerHomePage = () => {
+import { GET_HOME_SERVICES, baseURL } from "../../../../Components/Variables/Variables";
+const ClientHomePage = () => {
     //const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [isSlides, setIsSlides] = useState(true); //flex or grid
     const [projects, setProjects] = useState([]);
+
+    // Generate multiple random projects
     useEffect(() => {
 
-        const getProjects = async (e) => {
+        const getServices = async (e) => {
             try {
-                const response = await axios.get(`${baseURL}/${GET_ALL_PROJECTS}`, {
+                const response = await axios.get(`${baseURL}/${GET_HOME_SERVICES}`, {
                     withCredentials: true,
-                })
-                setProjects(response.data.projects);
+                });
+                console.log(response.data.services)
+                setProjects(response.data.services);
             } catch (error) {
                 console.error("Error:", error);
             }
         };
-        getProjects();
-    }, [])
+        // console.log(projects)
+        getServices();
+    }, []);
+    useEffect(() => {
+
+        const getServices = async (e) => {
+            try {
+                const response = await axios.get(`${baseURL}/${GET_HOME_SERVICES}`, {
+                    withCredentials: true,
+                });
+                console.log(response.data.services)
+                setProjects(response.data.services);
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        };
+        // console.log(projects)
+        getServices();
+    }, []);
+
     return (
         <div id="ClientNeeds" className="flex flex-col items-center justify-center relative transition-all duration-300">
             <Header />
@@ -46,9 +65,9 @@ const FreelancerHomePage = () => {
                 </div>
             </div>
 
-            <div className={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-3 gap-10 mx-36"} mt-44 max-md:flex max-md:flex-col`}>
+            <div className={`${isSlides ? "flex flex-col items-center w-full" : "grid grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-10 mx-36"} mt-44 max-md:flex-col`}>
                 {projects.map((project, index) => (
-                    <FreelanceCard key={index} props={project} isSlides={isSlides} />
+                    <ClientCard key={index} props={project} isSlides={isSlides} />
                 ))}
             </div>
 
@@ -58,4 +77,4 @@ const FreelancerHomePage = () => {
     )
 }
 
-export default FreelancerHomePage
+export default ClientHomePage

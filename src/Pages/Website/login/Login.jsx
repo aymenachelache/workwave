@@ -13,7 +13,7 @@ import {
   LOGIN,
   VERIFICATION,
   baseURL,
-} from "../../../Components/Variables/VariablesColors";
+} from "../../../Components/Variables/Variables";
 
 export default function Login() {
   const [form, setForm] = useState({

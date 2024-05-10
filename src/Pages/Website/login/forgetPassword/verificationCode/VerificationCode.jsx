@@ -6,7 +6,7 @@ import InputComp from '../../../../../Components/input/InputComp';
 import { Link } from 'react-router-dom';
 
 import { motion } from 'framer-motion';
-import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { greyColor } from '../../../../../Components/Variables/Variables';
 export default function VerificationCode() {
     return (
         <>

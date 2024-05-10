@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { PROFILEPICTURE, UPDATEPROFILE, baseURL, primaryColor } from "../../../Variables/VariablesColors";
 import { useEffect, useRef, useState } from "react";
-import Button from "../../../Button/Button";
-import InputComp from "../../../input/InputComp";
+import InputComp from "../../../../../Components/input/InputComp";
+import { PROFILEPICTURE, UPDATEPROFILE, baseURL, primaryColor } from '../../../../../Components/Variables/Variables';
+import Button from '../../../../../Components/Button/Button';
 
 
 const ModifyAccount = () => {
@@ -45,7 +45,8 @@ const ModifyAccount = () => {
                 withCredentials: true,
             }).then((res) => {
                 localStorage.setItem("picture", res.data.image.url);
-                window.location.reload();
+                // window.location.reload();
+                console.log(res.data.image.url);
             });
         } catch (error) {
             console.error("Error uploading image:", error);
@@ -81,7 +82,7 @@ const ModifyAccount = () => {
                         <input
                             type="file"
                             ref={fileInputRef}
-                            onchange={handleImageChange}
+                            onChange={handleImageChange}
                             style={{ display: 'none' }} // Hide the file input
                         />
                         <div className="flex flex-col space-y-5 sm:ml-8">

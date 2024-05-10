@@ -1,6 +1,6 @@
 const ProjectCard = () => {
     return (
-        <div className="cursor-pointer shadow-xl font-Unbounded transition-all w-[30%] max-lg:w-fit lg:mt-4 h-fit rounded-2xl p-8">
+        <div className="cursor-pointer shadow-xl font-Unbounded transition-all flex-grow max-lg:w-fit lg:mt-4 h-fit rounded-2xl p-8">
             <h1 className="text-PrimColor text-opacity-60 font-semibold px-1">Cost</h1>
             <div className="amount text-5xl font-bold text-PrimColor mb-3 mt-2">$120</div>
             <div className="stats flex items-center justify-between gap-20 mt-4">
