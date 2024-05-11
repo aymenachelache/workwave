@@ -11,9 +11,9 @@ import {
 } from "../../../../../Components/Variables/Variables";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
+import ActiveNeeds from "./ActiveNeeds";
 const MyNeeds = () => {
   const [activeNeeds, setActiveNeeds] = useState([]);
-
   useEffect(() => {
     const getMyActiveNeeds = async () => {
       try {
@@ -56,7 +56,7 @@ const MyNeeds = () => {
 
   return (
     <div className="">
-      <div className="flex gap-5 flex-wrap">
+      <div className="flex gap-5 max-lg:gap-2 flex-wrap">
         <Card profit={profit} />
         <ServicesCountSold service={servicesCountSold} />
       </div>
@@ -76,37 +76,11 @@ const MyNeeds = () => {
             </tr>
           </thead>
           <tbody className="w-full">
-            {/* Assuming 'data' is your array of objects */}
-            {activeNeeds.map((item, index) => (
-              <tr key={index} className="">
-                <td className="p-3 px-5 font-semibold">{item.title}</td>
-                <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
-                  ${item.amount}
-                </td>
-                <td className="p-3 px-5 font-semibold">
-                  {new Date(item.createdAt).toLocaleDateString()}
-                </td>
-                <td className="p-3 px-5 font-semibold">{item.description}</td>
-                <td className="p-3 px-5 font-semibold">{item.reservedCount}</td>
-                <td className="p-3 px-5 font-semibold text-yellow-400">
-                  {item.status}
-                </td>
-                <td className="">
-                  <Link to={item._id}>
-                    <FontAwesomeIcon
-                      icon={faEdit}
-                      className="bg-SecColor rounded-lg text-white p-2 mx-1"
-                    />
-                  </Link>
-                  <button onClick={() => handleDelete(item._id)}>
-                    <FontAwesomeIcon
-                      icon={faTrash}
-                      className="bg-red-500 rounded-lg text-white p-2 mx-1"
-                    />
-                  </button>
-                </td>
-              </tr>
-            ))}
+
+            {activeNeeds.map((item, index) => {
+              return <ActiveNeeds item={item} key={index} />
+            })}
+
           </tbody>
         </table>
       </div>

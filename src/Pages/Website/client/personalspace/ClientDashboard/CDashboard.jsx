@@ -42,13 +42,13 @@ const CDashboard = () => {
 
   return (
     <>
-        <div className="flex gap-4">
+        <div className="flex gap-4 flex-wrap">
             <Card profit={profit} />
             <Card profit={projects} />
             <ClientProjectsCount ActiveNeeds={1} PendingProjects={3} />
         </div>
         <div className=" bg-white shadow-xl p-4 my-4 rounded-2xl">
-            <p className="text-SecColor px-2 text-opacity-70 font-Unbounded font-semibold px-1">My active needs</p>
+            <p className="text-SecColor px-2 text-opacity-70 font-Unbounded font-semibold">My active needs</p>
             <table className="mt-6 w-full">
                 <thead className="text-left">
                     <tr>
@@ -63,7 +63,7 @@ const CDashboard = () => {
                 <tbody className="w-full">
                     {/* Assuming 'data' is your array of objects */}
                     {activeNeeds.map((item, index) => (
-                    <tr key={index} className="">
+                    <tr key={index} className="hover:bg-SecColor hover:bg-opacity-35">
                         <td className="p-3 px-5 font-semibold">{item.title}</td>
                         <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">${item.amount}</td>
                         <td className="p-3 px-5 font-semibold">{new Date(item.createdAt).toLocaleDateString()}</td>

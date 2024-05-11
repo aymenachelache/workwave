@@ -45,17 +45,18 @@ import CDashboard from './Pages/Website/client/personalspace/ClientDashboard/CDa
 import EditService from './Components/Dashboard/Services/deleteService/EditService'
 import MyNeeds from './Pages/Website/client/personalspace/MyNeeds/MyNeeds'
 import EditNeed from './Components/Dashboard/Projects/EditNeed/EditNeed'
+import Chat from './Components/Chat/Chat'
 
 function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={localStorage.getItem("role") == "freelencer" ? <FreelancerHomePage /> : localStorage.getItem("role") == "user" ? <ClientHomePage /> : <LandingPage />} />
+        <Route path='/' element={localStorage.getItem("role") == "freelancer" ? <FreelancerHomePage /> : localStorage.getItem("role") == "user" ? <ClientHomePage /> : <LandingPage />} />
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/login' element={<Login />} />
         <Route path='/choice' element={<Register />} />
-        <Route path='emailverfication' element={<VerificationEmail />} />
+        <Route path='/emailverfication' element={<VerificationEmail />} />
         <Route path='/register' element={<Work />}>
           <Route path='' element={<CreateAccount />} />
           <Route path='phoneandpassword' element={<PhoneAndPassword />} />
@@ -114,7 +115,8 @@ function App() {
           <Route path='settings/modifyaccount' element={<ModifyAccount />} />
         </Route>
 
-
+        {/* CHAT */}
+        <Route path='/chat' element={<Chat  />} />
 
       </Routes>
     </>

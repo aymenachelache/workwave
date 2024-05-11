@@ -10,8 +10,9 @@ import { useEffect } from "react";
 
 const FreelanceCard = ({ props, isSlides }) => {
 
-    const relativeTime = formatDistanceToNow(new Date(props.createdAt), { addSuffix: true });
-    const handleClick = async () => {
+    const createdAtDate = props?.createdAt ? new Date(props.createdAt) : null;
+    const relativeTime = createdAtDate ? formatDistanceToNow(createdAtDate, { addSuffix: true }) : "Unknown";
+        const handleClick = async () => {
         try {
             const data = await axios.put(`${baseURL}/${PLACE_A_BILD}/${props._id}`, {}, {
                 withCredentials: true,
@@ -20,7 +21,7 @@ const FreelanceCard = ({ props, isSlides }) => {
                     console.log(res)
                 });
         } catch (err) {
-            // console.log(err);
+            console.log(err);
         }
     };
 
@@ -51,7 +52,7 @@ const FreelanceCard = ({ props, isSlides }) => {
             <div className="flex justify-between mt-12">
                 <div id="client" className="flex items-center">
                     <FontAwesomeIcon icon={faUser} className="border-2 mr- p-1 border-gray-300 text-gray-400 rounded-full" />
-                    <div id="client-name" className="mx-2 font-bold"> {props.user.firstName} {props.user.lastName} </div>
+                    <div id="client-name" className="mx-2 font-bold"> {props.user?.firstName} {props.user?.lastName} </div>
                 </div>
                 <div id="buttons" className="flex items-center justify-center">
                     <button id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">

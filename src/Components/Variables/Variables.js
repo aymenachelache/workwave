@@ -24,6 +24,12 @@ export const GET_ALL_NOTIFICATION= "api/notification/all";
 
 // TODAY
 
+//get project accepted/canceled
+export const GET_ACCEPTED_PROJECTS = "api/freelencer/get/projects/accepted"
+export const GET_ACCEPTED_CANCELED = "api/freelencer/get/projects/canceled"
+
+//
+
 export const CREATE_PROJECT= "api/client/project/create";
 export const GET_ALL_SERVICES= "api/freelencer/get/services/all";
 export const GET_ALL_PROJECTS= "api/freelencer/get/projects/exists";

@@ -11,9 +11,6 @@ const Sidebar = ({isClient}) => {
     const handleToggleSidebar = () => {
         setIsSidebarOpen((prev) => !prev);
     };
-    const mainColor = (isClient) => {
-        isClient ? mainColor = "#37b978" : mainColor = "#00AEE"
-    }
     return (
         <div className={`sidebar pb-28 h-screen max-md:h-min max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 flex-wrap min-lg:h-screen ${isClient && "text-SecColor"}`}>
 
@@ -22,13 +19,13 @@ const Sidebar = ({isClient}) => {
 
 
                 <li>
-                    <SimpleSidebarBtn isClient={true} content={ { to:"dashboard" ,icon: faChartSimple, title : "Dashboard"} } />
+                    <SimpleSidebarBtn isClient={isClient} content={ { to:"dashboard" ,icon: faChartSimple, title : "Dashboard"} } />
                 </li>
 
 
                 <li>
                     <SidebarBtn
-                        isClient={true}
+                        isClient={isClient}
                         content={{ title: "My Projects", icon: faPaste, to: "myprojects" }} 
                         subtitles={[ {title : "Working On", icon: faHourglass2, to : "myprojects/workingon" }, {title: "History", icon: faClock, to: "myprojects/history"} ]} 
                     />
@@ -41,7 +38,7 @@ const Sidebar = ({isClient}) => {
 
                 <li>
                     <SidebarBtn
-                        isClient={true}
+                        isClient={isClient}
                         content={{ title: "My Finances", icon: faWallet }} 
                         subtitles={[ 
                             {title : "Payment Methods", icon: faHourglass2, to : "finances/maymethods" },
@@ -52,7 +49,7 @@ const Sidebar = ({isClient}) => {
 
                 <li>
                     <SidebarBtn
-                            isClient={true}
+                            isClient={isClient }
                             content={{ title: "Account Settings", icon: faGear }} 
                             subtitles={[ 
                                 {title : "Modify Profile", icon: faUser, to : "settings/modifyprofile" },

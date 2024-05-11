@@ -9,9 +9,9 @@ const FPersonalSpace = () => {
     return (
         <div className="">     
         <Header /> 
-            <div className="grid grid-cols-12 px-20 pt-20 max-lg:px-12 max-md:px-6 max-md:flex max-md:flex-col max-md:px-0 max-md:justify-center">
+            <div className="grid grid-cols-12 px-20 pt-20 max-lg:px-12 max-md:flex max-md:flex-col max-md:px-0 max-md:justify-center">
                     <div className="col-span-3 max-md:flex max-md:justify-center">
-                        <Sidebar />
+                        <Sidebar isClient={false}/>
                     </div>
                     <div className="col-span-9">
                         <Outlet />

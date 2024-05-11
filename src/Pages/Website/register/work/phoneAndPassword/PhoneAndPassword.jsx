@@ -83,14 +83,15 @@ export default function PhoneAndPassword() {
                 localStorage.setItem("lastName", res.data.lastName);
                 localStorage.setItem("mobile", res.data.mobile);
                 localStorage.setItem("verified", res.data.verified);
-                localStorage.setItem("role", "user");
+                localStorage.setItem("role", res?.data?.role ?  res?.data?.role : "user" );
             }).catch((err) => console.log(err));
             const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, "" ,{
-                withCredentials: true,
+                withCredentials: true, 
             }).then(res => console.log(res));
         } catch (err) {
             // setError(err.response.data.error);
-            setErrors((prev) => ({ ...prev, form: err.response.data.error }));
+            // setErrors((prev) => ({ ...prev, form: err.response.data.error }));
+            console.log(err)
         }
     };
     return (
