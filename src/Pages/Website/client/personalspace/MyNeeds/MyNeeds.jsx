@@ -68,10 +68,9 @@ const MyNeeds = () => {
           <thead className="text-left">
             <tr>
               <th className="p-3 px-5 text-sm text-gray-400">Title</th>
+              <th className="p-3 px-5 text-sm text-gray-400">Description</th>
               <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
               <th className="p-3 px-5 text-sm text-gray-400">Created At</th>
-              <th className="p-3 px-5 text-sm text-gray-400">Description</th>
-              <th className="p-3 px-5 text-sm text-gray-400">Reserved Count</th>
               <th className="p-3 px-5 text-sm text-gray-400">Status</th>
             </tr>
           </thead>

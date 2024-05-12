@@ -36,6 +36,12 @@ export const GET_ALL_PROJECTS= "api/freelencer/get/projects/exists";
 export const GET_PROJECTS_CLIENT = "api/client/projects/all";
 // export const GET_PROJCTS_AECCEPTED= "api/freelencer/get/projects/accepted";
 
+
+//Accept/refuse freelancer in project
+export const ACCEPT_FREELANCER = "api/client/project/participants/accept";
+export const REFUSE_FREELANCER = "api/client/project/participants/refuse";
+
+
 //Edit a Need
 export const EDIT_NEED = "api/client/project/update"
 //get single project

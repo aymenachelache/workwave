@@ -12,7 +12,7 @@ const Sidebar = ({isClient}) => {
         setIsSidebarOpen((prev) => !prev);
     };
     return (
-        <div className={`sidebar pb-28 h-screen max-md:h-min max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 flex-wrap min-lg:h-screen ${isClient && "text-SecColor"}`}>
+        <div className={`sidebar pb-28 h-screen max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 max-md:flex-wrap ${isClient && "text-SecColor"}`}>
 
             <ul className="max-md:flex gap-2">
                 <p className="text-gray-300 font-semibold px-4 py-1 max-md:hidden">Main</p>
