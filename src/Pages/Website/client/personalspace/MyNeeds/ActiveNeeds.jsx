@@ -23,11 +23,12 @@ const [singleProject, setSingleProject] = useState({})
       }
     }
 //to accept a freelancer in this need
-    const handleAccept = async(id) => {
+    const handleAccept = async(freelancerId) => {
       try {
         const response = await axios.put(`${baseURL}/${ACCEPT_FREELANCER}/${item._id}`, {
-          "userID" : id,
-          withCredentials: true,
+          "userId" : freelancerId
+        } , {
+          withCredentials : true
         }).then(res => {
           console.log(res);
         })
@@ -36,11 +37,14 @@ const [singleProject, setSingleProject] = useState({})
       }
     }
 
-//to accept a freelancer in this need
-    const handleRefuse = async(id, e) => {
+//to REFUSE a freelancer in this need
+    
+    const handleRefuse = async(freelancerId) => {
       try {
-        const response = await axios.put(`${baseURL}/${REFUSE_FREELANCER}/${id}`, {
-          withCredentials: true,
+        const response = await axios.put(`${baseURL}/${REFUSE_FREELANCER}/${item._id}`, {
+          "userId" : freelancerId
+        } , {
+          withCredentials : true
         }).then(res => {
           console.log(res);
         })
@@ -48,7 +52,6 @@ const [singleProject, setSingleProject] = useState({})
         console.error("Error:", error);
       }
     }
-
 
     return (
         <>

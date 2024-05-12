@@ -37,7 +37,7 @@ export const GET_PROJECTS_CLIENT = "api/client/projects/all";
 // export const GET_PROJCTS_AECCEPTED= "api/freelencer/get/projects/accepted";
 
 
-//Accept/refuse freelancer in project
+//Accept or refuse freelancer in project
 export const ACCEPT_FREELANCER = "api/client/project/participants/accept";
 export const REFUSE_FREELANCER = "api/client/project/participants/refuse";
 
