@@ -2,8 +2,9 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
 import InputComp from "../../../../../Components/input/InputComp";
-import { PROFILEPICTURE, UPDATEPROFILE, baseURL, primaryColor } from '../../../../../Components/Variables/Variables';
+import { DELETE_PICTURE, GETUSER, PROFILEPICTURE, UPDATEPROFILE, baseURL, primaryColor } from '../../../../../Components/Variables/Variables';
 import Button from '../../../../../Components/Button/Button';
+import { AnimatePresence, motion } from 'framer-motion';
 
 
 const ModifyAccount = () => {
@@ -13,19 +14,34 @@ const ModifyAccount = () => {
         email: localStorage.getItem("email"),
         mobile: localStorage.getItem("mobile")
     });
+    const [msgUpdateProfile, setMsgUpdateProfile] = useState(false);
+
     const fileInputRef = useRef(null);
     const [form, setForm] = useState({
         photo: "",
         description: "",
         portfolio_url: ""
     });
+    const [id, setId] = useState();
     useEffect(() => {
+        const getUser = async () => {
+            try {
+                const response = await axios.get(`${baseURL}/${GETUSER}`, {
+                    withCredentials: true,
+                }).then((res) => setId(res.data.data._id));
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        }
+        getUser();
 
 
     }, []);
 
+    //! I Want To get (About Me,  Portfoltio, Profile Picture)
+
     function handleChange(e) {
-        setFormData(formData => ({ ...formData, [e.target.name]: e.target.value }));
+        setForm(form => ({ ...form, [e.target.name]: e.target.value }));
     }
 
 
@@ -37,6 +53,7 @@ const ModifyAccount = () => {
     };
 
 
+
     const formdata = new FormData();
     const handleImageChange = async (e) => {
         formdata.append('image', e.target.files[0]); // Append the selected file to the FormData
@@ -45,8 +62,7 @@ const ModifyAccount = () => {
                 withCredentials: true,
             }).then((res) => {
                 localStorage.setItem("picture", res.data.image.url);
-                // window.location.reload();
-                console.log(res.data.image.url);
+                setForm(form => ({ ...form, photo: res.data.image.url }))
             });
         } catch (error) {
             console.error("Error uploading image:", error);
@@ -58,11 +74,25 @@ const ModifyAccount = () => {
         try {
             const response = await axios.post(`${baseURL}/${UPDATEPROFILE}`, form, {
                 withCredentials: true,
-            }).then((res) => {});
+            }).then((res) => { res.data.message == "User updated successfully" ? setMsgUpdateProfile(true) : "" });
         } catch (error) {
             console.error("Error uploading image:", error);
         }
     };
+
+    const handleDeletePicture = async (id) => {
+        try {
+            const response = await axios.delete(`${baseURL}/${DELETE_PICTURE}/${id}`, {
+                withCredentials: true,
+            }).then((res) => {
+                console.log(res),
+                localStorage.setItem("picture", "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png")
+            });
+        } catch (error) {
+            console.error("Delete Picture Error:", error);
+        }
+    };
+
 
 
 
@@ -87,7 +117,7 @@ const ModifyAccount = () => {
                         />
                         <div className="flex flex-col space-y-5 sm:ml-8">
                             <Button onClick={handleAddBoxClick} padding="15px 25px" text="Change picture" clicked={false} color={primaryColor} border />
-                            <Button padding="15px 25px" text="Delete picture" clicked={true} color={primaryColor} border />
+                            <Button onClick={() => handleDeletePicture(id)} padding="15px 25px" text="Delete picture" clicked={true} color={primaryColor} border />
 
                         </div>
                     </div>
@@ -97,7 +127,7 @@ const ModifyAccount = () => {
                             <div className="flex flex-wrap">
                                 <div className="p-2 w-full">
                                     <div className="relative">
-                                        <InputComp onchange={(e) => handleChange(e)} value={""} type="text" name="description" id="description" className='w-full text-sm outline-none px-4 pt-3 py-3 mx-auto' placeholder='Description' required />
+                                        <InputComp onchange={(e) => handleChange(e)} value={""} type="text" name="description" id="description" className='w-full text-sm outline-none px-4 pt-3 py-3 mx-auto' placeholder='About Me' required />
                                     </div>
                                 </div>
                                 <div className="p-2 w-full">
@@ -108,6 +138,18 @@ const ModifyAccount = () => {
                                 <div className="p-2 w-full">
                                     <button type='submit' className={'btn-gradient block w-full'}><span className='text-lg font-extrabold primaryfont block'>Save</span></button>
                                 </div>
+                                <AnimatePresence> {/* Wrap with AnimatePresence */}
+                                    {msgUpdateProfile && (
+                                        <motion.div
+                                            key="confirm-password-error" // Unique key for AnimatePresence
+                                            initial={{ opacity: 0, y: -10 }} // Initial hidden state
+                                            animate={{ opacity: 1, y: 0 }}   // Animation to visible
+                                            exit={{ opacity: 0, y: -10 }}    // Animation when removed
+                                            transition={{ duration: 0.5 }}  // Duration
+                                            className="error-text text-xs text-green-400">User updated successfully</motion.div>
+                                    )}
+                                </AnimatePresence>
+
                             </div>
                         </div>
                     </form>

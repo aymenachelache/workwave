@@ -41,6 +41,10 @@ export const GET_PROJECTS_CLIENT = "api/client/projects/all";
 export const ACCEPT_FREELANCER = "api/client/project/participants/accept";
 export const REFUSE_FREELANCER = "api/client/project/participants/refuse";
 
+//Accept or refuse Client in Service
+export const ACCEPT_FREELANCER_SERVICE = "api/freelencer/service/accept"
+export const REFUSE_FREELANCER_SERVICE = "api/freelencer/service/refuse"
+export const GET_SINGLE_SERVICE = "api/freelencer/get/service"
 
 //Edit a Need
 export const EDIT_NEED = "api/client/project/update"
@@ -53,6 +57,8 @@ export const PLACE_A_BILD= "api/freelencer/apply";
 // BUTTON Hire FreeLancer
 export const HIRE_FREELANCER= "api/client/service/apply";
 
+//delete profile picture
+export const DELETE_PICTURE = "api/user/delete-image";
 
 export const PROJECT_ACCEPTED = "api/freelencer/get/projects/accepted";
 

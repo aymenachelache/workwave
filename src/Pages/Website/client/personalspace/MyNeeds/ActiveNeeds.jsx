@@ -2,10 +2,10 @@ import { faCheck, faCircleCheck, faEdit, faMessage, faTrash, faX, faXmarkCircle 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react"
 import { Link } from "react-router-dom";
-import { ACCEPT_FREELANCER, GET_SINGLE_NEED, REFUSE_FREELANCER, baseURL } from "../../../../../Components/Variables/Variables";
+import { ACCEPT_FREELANCER, DELETE_NEED, GET_SINGLE_NEED, REFUSE_FREELANCER, baseURL } from "../../../../../Components/Variables/Variables";
 import axios from "axios";
 
-const ActiveNeeds = ({item}) => {
+const ActiveNeeds = ({item, activeNeeds, setActiveNeeds}) => {
 const [isOpen, setIsOpen] = useState(false)
 const [singleProject, setSingleProject] = useState({})
 //to open the list of freelancers that applied to this need
@@ -52,6 +52,20 @@ const [singleProject, setSingleProject] = useState({})
         console.error("Error:", error);
       }
     }
+
+    //to delete a need 
+
+    const handleDelete = async (id) => {
+      try {
+        const response = await axios.delete(`${baseURL}/${DELETE_NEED}/${id}`, {
+          withCredentials: true,
+        });
+        const updatedNeeds = activeNeeds.filter((need) => need._id !== id);
+        setActiveNeeds(updatedNeeds); // Update the state with the new array
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    };
 
     return (
         <>
@@ -103,8 +117,8 @@ const [singleProject, setSingleProject] = useState({})
                                    />
                                   <FontAwesomeIcon icon={faXmarkCircle} id="refuse" 
                                   onClick={(e) => handleRefuse(reserve.user._id, e)}
-                                  className="text-lg text-red-500 transition-all duration-150 mx-1 hover:scale-110 cursor-pointer" />
-                                  <FontAwesomeIcon icon={faMessage} id="send-message" className="text-lg transition-all duration-150 text-gray-500 hover:scale-110 cursor-pointer" />
+                                  className="text-lg text-red-500 z-10 transition-all duration-150 mx-1 hover:scale-110 cursor-pointer" />
+                                  <FontAwesomeIcon icon={faMessage} id="send-message" className="text-lg z-10 transition-all duration-150 text-gray-500 hover:scale-110 cursor-pointer" />
                                 </div>
                             ) 
                           })

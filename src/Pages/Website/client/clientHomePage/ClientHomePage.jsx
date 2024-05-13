@@ -29,22 +29,6 @@ const ClientHomePage = () => {
         // console.log(projects)
         getServices();
     }, []);
-    useEffect(() => {
-
-        const getServices = async (e) => {
-            try {
-                const response = await axios.get(`${baseURL}/${GET_HOME_SERVICES}`, {
-                    withCredentials: true,
-                });
-                console.log(response.data.services)
-                setProjects(response.data.services);
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        };
-        // console.log(projects)
-        getServices();
-    }, []);
 
     return (
         <div id="ClientNeeds" className="flex flex-col items-center justify-center relative transition-all duration-300">

@@ -45,21 +45,28 @@ import CDashboard from './Pages/Website/client/personalspace/ClientDashboard/CDa
 import EditService from './Components/Dashboard/Services/deleteService/EditService'
 import MyNeeds from './Pages/Website/client/personalspace/MyNeeds/MyNeeds'
 import EditNeed from './Components/Dashboard/Projects/EditNeed/EditNeed'
-import Chat from './Components/Chat/Chat'
+import {Chat} from './Components/Chat/Chat'
 
 function App() {
   return (
     <>
       <Routes>
         <Route path='/' element={localStorage.getItem("role") == "freelancer" ? <FreelancerHomePage /> : localStorage.getItem("role") == "user" ? <ClientHomePage /> : <LandingPage />} />
+
+        {/* PUBLIC ROUTES */}
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/login' element={<Login />} />
-        <Route path='/choice' element={<Register />} />
-        <Route path='/emailverfication' element={<VerificationEmail />} />
         <Route path='/register' element={<Work />}>
           <Route path='' element={<CreateAccount />} />
           <Route path='phoneandpassword' element={<PhoneAndPassword />} />
+        </Route>
+
+          {/* PRIVATE ROUTES */}
+        <Route element={<RequireAuth />}>
+        <Route path='/choice' element={<Register />} />
+        <Route path='/emailverfication' element={<VerificationEmail />} />
+        <Route path='/register' element={<Work />}>
           <Route path='welcome' element={<WelcomePage />} />
           <Route path='welcome/addskills' element={<AddSkills />} />
           <Route path='welcome/addskills/addcertificate' element={<AddCertificate />} />
@@ -69,34 +76,20 @@ function App() {
           <Route path='welcome/profiledetails/congratulations' element={<HireSecondWelcome />} />
         </Route>
 
+
+          
+        {/* FORGET PASSWORD */}
         <Route path='/login/forgetpassword' element={<ForgetPassword />}>
-          <Route path='/login/forgetpassword/addinformation' element={<AddInformation />} />
-          <Route path='/login/forgetpassword/addinformation/checkemail' element={<CheckEmail />} />
+          <Route path='addinformation' element={<AddInformation />} />
+          <Route path='addinformation/checkemail' element={<CheckEmail />} />
           {/* <Route path='/login/forgetpassword/addinformation' element={<HelloAgain />} /> */}
         </Route>
         <Route path='/api/user/reset-password/:token' element={<HelloAgain />} />
 
-
-        {/* 404 Not found */}
-        <Route path='*' element={<NotFound />} />
-
-        {/* Contact US */}
-        <Route path='/contactus' element={<ContactUs />} />
-
-        <Route element={<RequireAuth />}>
-          {/* Setting */}
-          <Route path='/setting' element={<Setting />}>
-            <Route path='publicprofile' element={<PubicProfile />} />
-            <Route path='accountsetting' element={<AccountSetting />} />
-          </Route>
-        </Route>
-
+        {/* FREELANCER */}
         <Route path='/work/home' element={<FreelancerHomePage />} />
         <Route path='/work/addService' element={<AddServicePage />} />
         <Route path='/work/editservice/:id' element={<EditService />} />
-        <Route path='/hire/home' element={<ClientHomePage />} />
-        <Route path='/hire/addneed' element={<AddNeed />} />
-
         {/* Freelancer Dashboard */}
         <Route path='/work/personalspace' element={<FPersonalSpace />} >
           <Route path='dashboard' element={<FDashboard />} />
@@ -104,7 +97,12 @@ function App() {
           <Route path='myprojects/history' element={<ProjectsHistory />} />
           <Route path='services' element={<Services />} />
           <Route path='settings/modifyaccount' element={<ModifyAccount />} />
+          <Route path='chat' element={<Chat />} />
         </Route>
+
+        {/* CLIENT */}
+        <Route path='/hire/home' element={<ClientHomePage />} />
+        <Route path='/hire/addneed' element={<AddNeed />} />
         {/* ClientDashboard*/}
         <Route path='/hire/personalspace' element={<CPersonalSpace />} >
           <Route path='dashboard' element={<CDashboard />} />
@@ -113,11 +111,14 @@ function App() {
           <Route path='needs' element={<MyNeeds />} />
           <Route path='needs/:id' element={<EditNeed />} />
           <Route path='settings/modifyaccount' element={<ModifyAccount />} />
+          <Route path='chat' element={<Chat />} />
+        </Route>
         </Route>
 
-        {/* CHAT */}
-        <Route path='/chat' element={<Chat  />} />
-
+        {/* Contact US */}
+        <Route path='/contactus' element={<ContactUs />} />
+        {/* 404 Not found */}
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </>
   )

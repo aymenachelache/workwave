@@ -5,5 +5,5 @@ export default function RequireAuth() {
   const isVerified = localStorage.getItem("verified") === 'true'; // Check for the string 'true'
 
   // Redirect to "/" if user is not found, otherwise check verification status
-  return user ? (isVerified ? <Outlet /> : <Navigate to={'/emailverification'} />) : <Navigate to={'/'} />;
+  return user ? <Outlet /> : <Navigate to="/" />
 }

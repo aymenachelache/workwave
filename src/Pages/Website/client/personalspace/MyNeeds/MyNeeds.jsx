@@ -13,7 +13,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import ActiveNeeds from "./ActiveNeeds";
 const MyNeeds = () => {
+
   const [activeNeeds, setActiveNeeds] = useState([]);
+
   useEffect(() => {
     const getMyActiveNeeds = async () => {
       try {
@@ -23,7 +25,7 @@ const MyNeeds = () => {
           })
           .then((res) => {
             console.log(res);
-            setActiveNeeds(res.data.data);
+            res.data.data.length > 0 ? setActiveNeeds(res.data.data) : console.log(res);;
           });
       } catch (error) {
         console.error(error);
@@ -42,17 +44,7 @@ const MyNeeds = () => {
     Sold: "25",
   };
 
-  const handleDelete = async (id) => {
-    try {
-      const response = await axios.delete(`${baseURL}/${DELETE_NEED}/${id}`, {
-        withCredentials: true,
-      });
-      const updatedNeeds = activeNeeds.filter((need) => need._id !== id);
-      setActiveNeeds(updatedNeeds); // Update the state with the new array
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  
 
   return (
     <div className="">
@@ -77,7 +69,7 @@ const MyNeeds = () => {
           <tbody className="w-full">
 
             {activeNeeds.map((item, index) => {
-              return <ActiveNeeds item={item} key={index} />
+              return <ActiveNeeds item={item} key={index} activeNeeds={activeNeeds} setActiveNeeds={setActiveNeeds} />
             })}
 
           </tbody>

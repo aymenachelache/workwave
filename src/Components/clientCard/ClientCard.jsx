@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import "./ClientCard.scss"
 import { faCircleExclamation, faUser } from "@fortawesome/free-solid-svg-icons"
 import { formatDistanceToNow } from "date-fns";
-
+import { HIRE_FREELANCER, baseURL } from "../Variables/Variables";
+import axios from 'axios'
 
 
 const ClientCard = ({ props, isSlides }) => {
@@ -17,7 +18,7 @@ const ClientCard = ({ props, isSlides }) => {
                     console.log(res)
                 });
         } catch (err) {
-            // console.log(err);
+            console.log(err);
         }
     };
 

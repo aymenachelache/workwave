@@ -28,6 +28,8 @@ import axios from "axios";
 
 
 export default function LandingPage() {
+
+
     function changeImage(e, num) {
         let url;
         switch (num) {
