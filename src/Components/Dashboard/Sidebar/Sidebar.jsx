@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faChartSimple, faClock, faClipboardList, faGear, faHourglass2, faPaste, faSliders, faWallet, faInbox, faRightFromBracket, faArrowRightArrowLeft, faUser } from "@fortawesome/free-solid-svg-icons";
 import SidebarBtn from "../SidebarBtn/SidebarBtn";
 import SimpleSidebarBtn from "../SidebarBtn/SimpleSidebarBtn";
+import { icon } from "@fortawesome/fontawesome-svg-core";
 
 const Sidebar = ({isClient}) => {
     const location = useLocation();
@@ -48,13 +49,8 @@ const Sidebar = ({isClient}) => {
                 </li>
 
                 <li>
-                    <SidebarBtn
-                            isClient={isClient }
-                            content={{ title: "Account Settings", icon: faGear }} 
-                            subtitles={[ 
-                                {title : "Modify Profile", icon: faUser, to : "settings/modifyprofile" },
-                                {title : "Modify Account", icon: faSliders, to: "settings/modifyaccount"} ]} 
-                        />   
+                    <SimpleSidebarBtn content={ {to: "settings/modifyaccount", icon: faSliders, title: "Modify Account" } } isClient={isClient} />
+                     
                 </li>
             </ul>
 
@@ -80,6 +76,7 @@ const Sidebar = ({isClient}) => {
                 </li>
 
             </ul>
+
 
         </div>
     );

@@ -68,3 +68,7 @@ export const DELETE_SERVICE = "api/freelencer/delete/service";
 
 // Get All Services for show to the Client Home (May be Can use get services with filters)
 export const GET_HOME_SERVICES= "api/client/services";
+
+
+//switch account to Client
+export const SWITCH_TO_CLIENT = "api/freelencer/client"
