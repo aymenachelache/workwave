@@ -5,7 +5,7 @@
                 border: 2px white solid;
             }
             #icon{
-                background-color: hsl(150, 54%, 47%);
+                background-color: hsl(150, 54%, 47%) !important;
                 height: 16px;
                 width: 3rem;
                 margin: .4rem 0;
@@ -18,12 +18,12 @@
             grid-auto-rows: auto; /* Automatically sized rows */
             gap: 15px 10px; /* Gap between grid items */
             #icon{
-                background-color: #37B778;
+                background-color: #37B778 !important;
                 height: 12px;
             }
         }
         .giveBorder{
-            border: 2px solid #37B778;
+            border: 2px solid #37B778 !important;
         }
     }
 }

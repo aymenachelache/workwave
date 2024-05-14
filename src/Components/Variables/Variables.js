@@ -72,3 +72,9 @@ export const GET_HOME_SERVICES= "api/client/services";
 
 //switch account to Client
 export const SWITCH_TO_CLIENT = "api/freelencer/client"
+//switch account to Freelancer
+export const SWITCH_TO_FREELANCER = "api/client/freelencer"
+
+//get accepted / refused services
+export const GET_ACCEPTED_SERVICES = "api/client/services/accepted";
+export const GET_REFUSED_SERVICES = "api/client/services/refused";

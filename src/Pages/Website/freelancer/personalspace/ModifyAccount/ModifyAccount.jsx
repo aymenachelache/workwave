@@ -2,9 +2,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
 import InputComp from "../../../../../Components/input/InputComp";
-import { DELETE_PICTURE, GETUSER, PROFILEPICTURE, SWITCH_TO_CLIENT, UPDATEPROFILE, baseURL, primaryColor } from '../../../../../Components/Variables/Variables';
+import { DELETE_PICTURE, GETUSER, PROFILEPICTURE, SWITCH_TO_CLIENT, SWITCH_TO_FREELANCER, UPDATEPROFILE, baseURL, primaryColor } from '../../../../../Components/Variables/Variables';
 import Button from '../../../../../Components/Button/Button';
 import { AnimatePresence, motion } from 'framer-motion';
+import Modal from '../../../../../Components/Modal/Modal';
 
 
 const ModifyAccount = () => {
@@ -95,11 +96,16 @@ const ModifyAccount = () => {
 
     const handleSwitch = async (e) => {
         e.preventDefault();
+        const role = localStorage.getItem('role');
+        let apiEndpoint = role === 'freelancer' ? SWITCH_TO_FREELANCER : SWITCH_TO_CLIENT;
+    
         try {
-            const response = await axios.put(`${baseURL}/${SWITCH_TO_CLIENT}`, {} , {
+            const response = await axios.put(`${baseURL}/${apiEndpoint}`, {}, {
                 withCredentials: true,
             }).then((res) => {
                 console.log(res);
+                localStorage.setItem('role', role === 'freelancer' ? 'user' : 'freelancer');
+                window.location.pathname = "/";
             });
         } catch (error) {
             console.error("Error switching account:", error);
@@ -114,11 +120,11 @@ const ModifyAccount = () => {
         <div className="p-8">
             <div className='flex gap-6 mb-6'>
                 <div id="head" className="shadow-xl p-6 rounded-2xl flex-1">
-                    <p className="text-PrimColor text-opacity-60 font-semibold pb-6">Personal Information</p>
+                    <p className={`text-opacity-60 font-semibold pb-6 ${localStorage.getItem('role') === 'freelancer' ? "text-PrimColor" : "text-SecColor"}`}>Personal Information</p>
                     <div className="mx-auto mt-8">
                         <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
 
-                            <img className="object-cover w-40 h-40 p-1 rounded-full ring-2 ring-[#37B778]"
+                            <img className={`object-cover w-40 h-40 p-1 rounded-full ring-2 ${localStorage.getItem('role') === 'freelancer' ? "ring-PrimColor" : "ring-SecColor"}`}
                                 src={localStorage.getItem("picture")}
                                 alt="Bordered avatar" />
                             <input
@@ -127,9 +133,13 @@ const ModifyAccount = () => {
                                 onChange={handleImageChange}
                                 style={{ display: 'none' }} // Hide the file input
                             />
-                            <div className="flex flex-col space-y-5 sm:ml-8">
-                                <Button onClick={handleAddBoxClick} padding="15px 25px" text="Change picture" clicked={false} color={primaryColor} border />
-                                <Button onClick={() => handleDeletePicture(id)} padding="15px 25px" text="Delete picture" clicked={true} color={primaryColor} border />
+                            <div className="flex flex-col space-y-2 sm:ml-8">
+                                <button onClick={handleAddBoxClick}
+                                className={`p-3 rounded-lg outline-none text-white font-bold ${localStorage.getItem('role') === 'freelancer' ? "bg-PrimColor" : "bg-SecColor"}`}
+                                >Change picture</button>
+                                <button onClick={() => handleDeletePicture(id)}
+                                className='px-3 py-1 text-red-500 outline-none font-bold hover:scale-105 transition-all duration-300'
+                                >Delete picture</button>
 
                             </div>
                         </div>
@@ -170,7 +180,7 @@ const ModifyAccount = () => {
 
                 <div className="flex flex-col gap-4 flex-grow flex-1">
                     <div id="head" className="shadow-xl p-6 rounded-2xl">
-                        <p className="text-PrimColor text-opacity-60 font-semibold pb-6">Change Password</p>
+                        <p className={`text-opacity-60 font-semibold pb-6 ${localStorage.getItem('role') === 'freelancer' ? "text-PrimColor" : "text-SecColor"}`}>Personal Information</p>
                         <div className="items-center mt-8 sm:mt-14 text-[#202142]">
                             <div className="flex flex-wrap -m-2">
                                 <div className="p-2 w-full sm:w-1/2">
@@ -210,12 +220,11 @@ const ModifyAccount = () => {
                 </div>
             </div>
             <div className='flex justify-center'>
-                <button type="button"
-                onClick={handleSwitch}
-                className="hover:-translate-y-2 transition-all duration-500 my-6 bg-gradient-to-r from-SecColor to-PrimColor text-white font-bold font-Unbounded text-xl p-4 rounded-2xl"
-                >
-                Switch Account to {localStorage.getItem('role') == "freelancer" ? "Client" : "Freelancer"}
-                </button>
+                <Modal 
+                handleSwitch={handleSwitch}
+                want={`switch your account to a ${localStorage.getItem('role') == "freelancer" ? "Client" : "Freelancer"} account`}
+                title={`Switch Account to ${localStorage.getItem('role') == "freelancer" ? "Client" : "Freelancer"}`}/>
+                
             </div>
         </div>
     )

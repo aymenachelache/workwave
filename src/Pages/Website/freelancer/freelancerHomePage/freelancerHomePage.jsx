@@ -21,6 +21,7 @@ const FreelancerHomePage = () => {
                     withCredentials: true,
                 })
                 setProjects(response.data.projects);
+                console.log(projects);
             } catch (error) {
                 console.error("Error:", error);
             }

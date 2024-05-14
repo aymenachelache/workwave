@@ -265,13 +265,13 @@ export default function Header(props) {
                                                 </div>
                                                 <div className="text-gray-900 select-none">
                                                     <div className="cursor-pointer font-semibold text-xs capitalize">{localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</div>
-                                                    <div className="cursor-pointer text-xs font-light">{localStorage.getItem("role") == "user" ? "CLIENT" : "FREELANCER"}</div>
+                                                    <div className="cursor-pointer text-xs font-light">{localStorage.getItem("role") == "freelancer" ? "FREELANCER" : "CLIENT"}</div>
                                                 </div>
                                                 </div>
                                                 <div ref={dropdownProfile} x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" className="absolute w-60 px-5 py-3 bg-white rounded-lg shadow border mt-5 hidden">
                                                 <ul className="space-y-3 ">
                                                     <li className="font-medium">
-                                                    <Link to="/account" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#00AEEF]">
+                                                    <Link to="/hire/personalspace/settings/modifyaccount" className="flex items-center transform transition-colors duration-200 border-r-4 border-transparent hover:border-[#00AEEF]">
                                                         <div className="mr-3">
                                                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                                                         </div>

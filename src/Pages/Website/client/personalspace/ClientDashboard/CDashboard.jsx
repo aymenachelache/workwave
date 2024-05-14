@@ -9,6 +9,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTractor, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const CDashboard = () => {
+  const [servicesAccepted, setServicesAccepted] = useState([]);
+  const [servicesRefused, setServicesRefused] = useState([]);
+
   const profit = {
     amount: "$1700",
     gain: "+25%",
@@ -35,6 +38,27 @@ const CDashboard = () => {
       }
     };
     getMyActiveNeeds();
+
+      const getProjectsAccepted = async () => {
+        try {
+            const response = await axios.get(`${baseURL}/${GET_ACCEPTED_SERVICES}`, {
+                withCredentials: true,
+            }).then((res) => setServicesAccepted(res.data.projects));
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+    getProjectsAccepted();
+    const getProjectsRefused = async () => {
+        try {
+            const response = await axios.get(`${baseURL}/${GET_REFUSED_SERVICES}`, {
+                withCredentials: true,
+            }).then((res) => setServicesRefused(res.data.projects));
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    }
+    getProjectsRefused();
   }, []);
 
 
@@ -47,46 +71,41 @@ const CDashboard = () => {
             <Card profit={projects} />
             <ClientProjectsCount ActiveNeeds={1} PendingProjects={3} />
         </div>
-        <div className=" bg-white shadow-xl p-4 my-4 rounded-2xl">
-            <p className="text-SecColor px-2 text-opacity-70 font-Unbounded font-semibold">My active needs</p>
-            <table className="mt-6 w-full">
-                <thead className="text-left">
-                    <tr>
-                    <th className="p-3 px-5 text-sm text-gray-400">Title</th>
-                    <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
-                    <th className="p-3 px-5 text-sm text-gray-400">Created At</th>
-                    <th className="p-3 px-5 text-sm text-gray-400">Description</th>
-                    <th className="p-3 px-5 text-sm text-gray-400">Reserved Count</th>
-                    <th className="p-3 px-5 text-sm text-gray-400">Status</th>
-                    </tr>
-                </thead>
-                <tbody className="w-full">
-                    {/* Assuming 'data' is your array of objects */}
-                    {activeNeeds.map((item, index) => (
-                    <tr key={index} className="hover:bg-SecColor hover:bg-opacity-35">
-                        <td className="p-3 px-5 font-semibold">{item.title}</td>
-                        <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">${item.amount}</td>
-                        <td className="p-3 px-5 font-semibold">{new Date(item.createdAt).toLocaleDateString()}</td>
-                        <td className="p-3 px-5 font-semibold">{item.description}</td>
-                        <td className="p-3 px-5 font-semibold">{item.reservedCount}</td>
-                        <td className="p-3 px-5 font-semibold text-yellow-400">{item.status}</td>
-                        <td className="">
-                            <button>
-                                <FontAwesomeIcon icon={faEdit} className="bg-SecColor rounded-lg text-white p-2 mx-1" />
-                            </button>
-                            <button>
-                                <FontAwesomeIcon icon={faTrash} className="bg-red-500 rounded-lg text-white p-2 mx-1" />
-                            </button>
-                        </td>
-                    </tr>
-                    ))}
-                </tbody>
-            </table>
+       
+        <div className="px-6 mt-10 bg-SecColor bg-opacity-25 py-3 rounded-xl">
+                <div className="font-semibold font-Unbounded text-sm py-1">Accepted Services :</div>
+                <table className="w-full text-center">
+                    <tbody>
+                        {servicesAccepted?.length > 0 ? servicesAccepted?.map((item, index) =>
+                            <tr key={index}>
+                                <td>{item.title}</td>
+                                <td>{item.status}</td>
+                                <td>{item.isPaid ? "Paid" : "Not Paid"}</td>
+                            </tr>) : (
+                            <p className="text-xl font-Unbounded font-semibold">There is no accepted projects yet</p>
+                        )}
+                    </tbody>
+                </table>
+            </div>
+            <div className="px-6 mt-2 bg-SecColor bg-opacity-25 py-3 rounded-xl">
+                <div className="font-semibold font-Unbounded text-sm py-1">Refused Services :</div>
+                <table className="w-full text-center">
+                    <tbody>
+                        {servicesRefused ?.length > 0 ? servicesRefused ?.map((item, index) =>
+                            <tr key={index}>
+                                <td>{item.title}</td>
+                                <td>{item.status}</td>
+                                <td>{item.isPaid ? "Paid" : "Not Paid"}</td>
+                            </tr>) : (
+                            <p className="text-xl font-Unbounded font-semibold">There is no refused projects</p>
+                        )}
+                    </tbody>
+                </table>
+            </div>
 
 
 
 
-        </div>
     </>
   );
 };

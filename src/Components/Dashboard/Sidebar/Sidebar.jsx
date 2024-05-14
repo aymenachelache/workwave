@@ -13,7 +13,7 @@ const Sidebar = ({isClient}) => {
         setIsSidebarOpen((prev) => !prev);
     };
     return (
-        <div className={`sidebar pb-28 h-screen max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 max-md:flex-wrap ${isClient && "text-SecColor"}`}>
+        <div className={`sidebar pb-28 h-screen max-md:h-fit max-md:pb-0 px-8 text-PrimColor flex flex-col justify-between max-sm:px-0 max-md:flex-wrap ${isClient && "text-SecColor"}`}>
 
             <ul className="max-md:flex gap-2">
                 <p className="text-gray-300 font-semibold px-4 py-1 max-md:hidden">Main</p>
@@ -58,7 +58,7 @@ const Sidebar = ({isClient}) => {
                 <p className="text-gray-300 font-semibold px-4 py-1 max-md:hidden">Insights</p>
 
                 <li>
-                    <Link to='inbox' className={location.pathname === '/services' ? 'active' : ''}>
+                    <Link to='chat' >
                         <div className="transition-all duration-200 border text-sm max-lg:text-xs flex font-bold hover:bg-SecColor hover:bg-opacity-15 text-SecColor px-4 py-3 w-full rounded-2xl">
                             <FontAwesomeIcon icon={faInbox} className="text-lg mr-2" />
                             <h3 className="">Inbox</h3>
@@ -67,7 +67,7 @@ const Sidebar = ({isClient}) => {
                 </li>
 
                 <li>
-                    <Link to='inbox' className={location.pathname === '/services' ? 'active' : ''}>
+                    <Link>
                         <div className="transition-all duration-200 border border-red-200 text-sm max-lg:text-xs flex font-bold text-red-500 hover:bg-red-100 px-4 py-3 w-full rounded-2xl">
                             <FontAwesomeIcon icon={faRightFromBracket} className="text-lg mr-2" />
                             <h3 className="">Log Out</h3>
