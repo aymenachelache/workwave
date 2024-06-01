@@ -60,7 +60,6 @@ export const HIRE_FREELANCER= "api/client/service/apply";
 //delete profile picture
 export const DELETE_PICTURE = "api/user/delete-image";
 
-export const PROJECT_ACCEPTED = "api/freelencer/get/projects/accepted";
 
 export const GET_SERVICE = "api/freelencer/get/service";
 export const UPDATE_SERVICE = "api/freelencer/update/service";

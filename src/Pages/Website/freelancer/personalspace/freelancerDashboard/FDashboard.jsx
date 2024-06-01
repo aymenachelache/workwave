@@ -7,6 +7,7 @@ import ServicesList from "../../../../../Components/Dashboard/Services/ServicesL
 import axios from "axios";
 import { GET_ACCEPTED_PROJECTS, baseURL } from "../../../../../Components/Variables/Variables";
 import AcceptedProjects from "../../../../../Components/Dashboard/LatestProjects/LatestProjects";
+import CreateConversation from "../../../../../Components/Chat/CreateConversation/CreateConversation";
 
 const FDashboard = () => {
 
@@ -54,41 +55,8 @@ const FDashboard = () => {
         </div>
         <SkillsByProjectsRatio />
       </div>
-      <div className="bg-white p-4 rounded-xl shadow-xl">
-      <p className="text-PrimColor px-2 text-opacity-70 font-Unbounded font-semibold px-1">
-          Accepted Projects
-        </p>
-
-      <table className="mt-6 w-full">
-          <thead className="text-left">
-            <tr>
-              <th className="p-3 px-5 text-sm text-gray-400">Title</th>
-              <th className="p-3 px-5 text-sm text-gray-400">Description</th>
-              <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
-              <th className="p-3 px-5 text-sm text-gray-400">Status</th>
-              <th className="p-3 px-5 text-sm text-gray-400">userID</th>
-            </tr>
-          </thead>
-          <tbody className="w-full">
-            {/* Assuming 'data' is your array of objects */}
-            {acceptedProjects.map((item, index) => (
-              <tr key={index} className="">
-                <td className="p-3 px-5 font-semibold">{item.title}</td>
-                <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
-                  ${item.description}
-                </td>
-                <td className="p-3 px-5 font-semibold">
-                  {item.amount}
-                </td>
-                <td className="p-3 px-5 font-semibold">{item.status}</td>
-                <td className="p-3 px-5 font-semibold">{item.user}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-      </div>
     </div>
+      
   );
 };
 

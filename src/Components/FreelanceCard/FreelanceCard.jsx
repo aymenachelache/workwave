@@ -1,6 +1,5 @@
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import "./FreelanceCard.scss"
 import { faCircleExclamation, faUser } from "@fortawesome/free-solid-svg-icons"
 import { formatDistanceToNow } from 'date-fns';
 import axios from "axios";
@@ -26,19 +25,19 @@ const FreelanceCard = ({ props, isSlides }) => {
     };
 
     return (
-        <div id="container" className={`max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
+        <div id="container" className={`FreelanceCard border border-gray-300 max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
             <div className="flex justify-between h-[30%] items-start max-sm:flex-col">
-                <div id="text" className={isSlides ? "w-full sm:w-3/4" : "w-[80%]"}>
-                    <h1 className={`text-lg md:text-xl break-all lg:text-xl font-bold ${isSlides ? "" : "text-lg"}`}>
+                <div id="text" className={isSlides ? "w-full sm:w-3/4" : ""}>
+                    <h1 className={`text-lg md:text-xl text-PrimColor break-all lg:text-xl font-bold ${isSlides ? "" : "text-lg"}`}>
                         {props.title}
                     </h1>
                     <h2 className={`font-light opacity-65 text-sm ${isSlides ? "" : "text-xs mt-1"}`}>
                         {props.type}
                     </h2>
                 </div>
-                <div id="price" className={isSlides ? "" : "w-[30%]"}>
+                <div id="price" className={`${isSlides ? "" : "w-[30%]"} text-PrimColor`}>
                     <div id="price" className="text-lg md:text-3xl max-sm:mt-5 font-bold"> {props.amount} DA</div>
-                    <div id="age" className="opacity-65 text-sm"> {relativeTime} </div>
+                    <div id="age" className="opacity-65 text-sm px-1"> {relativeTime} </div>
                 </div>
             </div>
             <div id="description" className={`${isSlides ? "mt-8" : "text-sm mt-12"} h-[14%] line-clamp-4`}>
@@ -59,7 +58,7 @@ const FreelanceCard = ({ props, isSlides }) => {
                         {isSlides ? <h3 className='text-sm mr-2 max-md:hidden'>Report</h3> : ""}
                         <FontAwesomeIcon icon={faCircleExclamation} />
                     </button>
-                    <button onClick={handleClick} id="place-a-bid" className="text-gray-50 px-4 py-2 rounded-xl font-semibold ml-3 transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-xl">
+                    <button onClick={handleClick} id="place-a-bid" className="text-gray-50 px-4 py-2 bg-PrimColor rounded-xl font-semibold ml-3 transition-all duration-300 hover:-translate-y-1 hover:drop-shadow-xl">
                         Place a bid
                     </button>
                 </div>

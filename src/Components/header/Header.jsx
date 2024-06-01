@@ -215,7 +215,7 @@ export default function Header(props) {
                                                                 </button>
                                                     </div>
                                                     {
-                                                        notification.map((item, index) => 
+                                                        notification?.map((item, index) => 
                                                             <div key={index} className={`w-full p-3 mt-4 bg-white rounded shadow flex flex-shrink-0 ${item.checked ? "" : "bg-red-200"}`}>
                                                                 <div tabIndex="0" aria-label="group icon" role="img"
                                                                     className="focus:outline-none w-8 h-8 border rounded-full border-gray-200 flex flex-shrink-0 items-center justify-center">
@@ -261,11 +261,11 @@ export default function Header(props) {
                                             <div className={"relative border-b-4 border-transparent border-indigo-700 transform transition duration-300"}  x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100">
                                                 <div className="flex justify-center items-center space-x-3 cursor-pointer">
                                                 <div className="w-10 h-10 rounded-full overflow-hidden border-2 border-[#00AEEF]">
-                                                    <img src={localStorage.getItem("picture")} alt="" className="w-full h-full object-cover" />
+                                                    <img src={localStorage.getItem("photo") == "" ? "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" : localStorage.getItem("photo")} alt="" className="w-full h-full object-cover" />
                                                 </div>
                                                 <div className="text-gray-900 select-none">
                                                     <div className="cursor-pointer font-semibold text-xs capitalize">{localStorage.getItem("firstName")} {localStorage.getItem("lastName")}</div>
-                                                    <div className="cursor-pointer text-xs font-light">{localStorage.getItem("role") == "freelancer" ? "FREELANCER" : "CLIENT"}</div>
+                                                    <div className="cursor-pointer text-xs font-light">{localStorage.getItem("role") == "freelencer" ? "FREELANCER" : "CLIENT"}</div>
                                                 </div>
                                                 </div>
                                                 <div ref={dropdownProfile} x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" className="absolute w-60 px-5 py-3 bg-white rounded-lg shadow border mt-5 hidden">

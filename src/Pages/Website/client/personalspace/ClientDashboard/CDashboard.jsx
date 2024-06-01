@@ -7,6 +7,7 @@ import AcceptedProjects from "../../../../../Components/Dashboard/LatestProjects
 import ClientProjectsCount from "../../../../../Components/Dashboard/Projects/ClientProjectsCount/ClientProjectsCount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTractor, faTrash } from "@fortawesome/free-solid-svg-icons";
+import CreateConversation from "../../../../../Components/Chat/CreateConversation/CreateConversation";
 
 const CDashboard = () => {
   const [servicesAccepted, setServicesAccepted] = useState([]);
@@ -102,10 +103,6 @@ const CDashboard = () => {
                     </tbody>
                 </table>
             </div>
-
-
-
-
     </>
   );
 };

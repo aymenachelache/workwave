@@ -1,5 +1,4 @@
-import ProjectItem from "../Projects/History/ProjectItem/ProjectItem"
-import { baseURL, PROJECT_ACCEPTED } from "../../Variables/Variables";
+import { baseURL, GET_ACCEPTED_PROJECTS } from "../../Variables/Variables";
 import { useEffect, useState } from "react";
 
 
@@ -11,7 +10,7 @@ const AcceptedProjects = () => {
     useEffect (() => {
         const getAcceptedProjects = async(e) => {
             try {
-                const data = await axios.get(`${baseURL}/${PROJECT_ACCEPTED}`, {
+                const data = await axios.get(`${baseURL}/${GET_ACCEPTED_PROJECTS}`, {
                     withCredentials: true,
                 }).then((res) => {
                         console.log(res);
@@ -23,24 +22,49 @@ const AcceptedProjects = () => {
         getAcceptedProjects()
     } , [])
         
-    return (
-        <div className="cursor-pointer shadow-xl w-full pt-6 transition-all duration-300 max-h-[600px] rounded-3xl p-8 overflow-auto font-Unbounded">
-            <h1 className="text-PrimColor text-opacity-60 font-semibold px-1 mb-6">Accepted Projects</h1>
-            <ul className="lg:grid grid-cols-8 px-3 gap-3 max-lg:hidden text-xs text-gray-400 min-w-[700px] w-full">
-                <li className="col-span-2 pr-1">Project Name</li>
-                <li className="col-span-1 px-1">Status</li>
-                <li className="col-span-1 px-1">Start Date</li>
-                <li className="col-span-1 px-1">Deadline</li>
-                <li className="col-span-1 px-1">Final Cost</li>
-                <li className="col-span-1 px-1">Client</li>
-            </ul>
-            {acceptedProjects.map((project, index) => {
-                return (
-                    <ProjectItem project={project} key={index} />
-                )
-            })}
-        </div>
-    )
+    if (acceptedProjects.length > 0) {
+        return (
+            <div className="bg-white p-4 rounded-xl shadow-xl">
+                <p className="text-PrimColor px-2 text-opacity-70 font-Unbounded font-semibold px-1">
+                    Accepted Projects
+                </p>
+
+                <table className="mt-6 w-full">
+                    <thead className="text-left">
+                    <tr>
+                        <th className="p-3 px-5 text-sm text-gray-400">Title</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Description</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Status</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">userID</th>
+                    </tr>
+                    </thead>
+                    <tbody className="w-full">
+                    {/* Assuming 'data' is your array of objects */}
+                    {acceptedProjects.map((item, index) => (
+                        <tr key={index} className="">
+                        <td className="p-3 px-5 font-semibold">{item.title}</td>
+                        <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
+                            ${item.description}
+                        </td>
+                        <td className="p-3 px-5 font-semibold">
+                            {item.amount}
+                        </td>
+                        <td className="p-3 px-5 font-semibold">{item.status}</td>
+                        <td className="p-3 px-5 font-semibold">{item.user}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        )
+    } else {
+        return (
+            <div className="cursor-pointer shadow-xl w-full pt-6 transition-all duration-300 max-h-[600px] rounded-3xl p-8 overflow-auto font-Unbounded">
+                <p className="font-Unbounded text-lg text-center">There is no accepted projects yet</p>
+            </div>
+        )
+    }
 }
 
 export default AcceptedProjects

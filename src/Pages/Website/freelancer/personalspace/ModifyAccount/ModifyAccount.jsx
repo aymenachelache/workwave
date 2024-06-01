@@ -125,7 +125,7 @@ const ModifyAccount = () => {
                         <div className="flex flex-col items-center space-y-5 sm:flex-row sm:space-y-0">
 
                             <img className={`object-cover w-40 h-40 p-1 rounded-full ring-2 ${localStorage.getItem('role') === 'freelancer' ? "ring-PrimColor" : "ring-SecColor"}`}
-                                src={localStorage.getItem("picture")}
+                                src={localStorage.getItem("photo")}
                                 alt="Bordered avatar" />
                             <input
                                 type="file"

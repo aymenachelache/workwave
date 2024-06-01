@@ -7,16 +7,14 @@ const baseUrl = 'http://localhost:4000' ;
 const socket = io(baseUrl) ;
 
 
-const profilePicture = localStorage.getItem('picture')
+const profilePicture = localStorage.getItem('photo')
 const firstName = localStorage.getItem('firstName')
 const lastName = localStorage.getItem('lastName')
 const role = localStorage.getItem('role') === 'user' ? 'client' : 'freelancer'
 
 
 export const Chat = () =>  {
-    
 
-    
     const [user,setUser] = useState(localStorage.getItem('_id'));
     const [currentChat, setCurrentChat] = useState('');
     const [currentChatDetails, setCurrentChatDetails] = useState('');
@@ -44,10 +42,8 @@ export const Chat = () =>  {
 
 
     useEffect(() => {
-        
         socket.emit('addUser',user)
-        socket.on('getUsers',(users)=>{})  
-        
+        socket.on('getUsers',(users)=>{})   
     }, [user]);
 
     useEffect(() => {
@@ -64,27 +60,19 @@ export const Chat = () =>  {
         });
     }, [currentChatDetails]);
 
-
-
-
-
     const getChat = async () => {
         try {
             const res = await axios.get(baseUrl + `/api/chat/message/get_all/${currentChat}`,{
                 withCredentials:true
             });
-            if (Array.isArray(res.data)) {
-                setMessages(res.data);
-            }
+            setMessages(res.data);
         } catch (error) {
             console.log(error);
         }
     };
 
     useEffect(() => {
-        
         getChat();
-
     }, [currentChat]);
 
 
@@ -149,7 +137,7 @@ export const Chat = () =>  {
                     {allChats && allChats.map((item,key)=>(item.creator._id === user ?
                         <div onClick={()=>{setCurrentChat(item._id)}} key={key} className={` ${currentChat === item._id ?  'bg-slate-100' : ''} rounded-xl p-2 relative cursor-pointer flex items-center space-x-4 `}>
                             <div className="relative">
-                                <span className="absolute sm:hidden text-green-500  right-0 bottom-0">
+                                <span className="absolute sm:hidden text-green-500 right-0 bottom-0">
                                     <svg width={8} height={8}>
                                         <circle cx={4} cy={4} r={4} fill="currentColor" />
                                     </svg>

@@ -51,8 +51,9 @@ export default function Login() {
             localStorage.setItem("lastName", res.data.lastName);
             localStorage.setItem("mobile", res.data.mobile);
             localStorage.setItem("verified", res.data.verified);
+            localStorage.setItem("photo", res.data.photo);
             localStorage.setItem("role", res.data.role);
-            navigate("/");
+            window.location.pathname = '/';
           } else {
             navigate("/emailverfication");
           }

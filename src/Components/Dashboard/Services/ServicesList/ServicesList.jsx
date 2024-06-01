@@ -35,7 +35,7 @@ const ServicesList = () => {
                     </Link>
                 }
             </div>
-            <div className={servicesList.length > 0 ? '' : ''}>
+            <div className={servicesList?.length > 0 ? '' : ''}>
                 {
                     servicesList && servicesList.length > 0 ? servicesList.map((dataPiece, index) => {
                         return (

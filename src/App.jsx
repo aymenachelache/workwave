@@ -46,6 +46,10 @@ import EditService from './Components/Dashboard/Services/deleteService/EditServi
 import MyNeeds from './Pages/Website/client/personalspace/MyNeeds/MyNeeds'
 import EditNeed from './Components/Dashboard/Projects/EditNeed/EditNeed'
 import {Chat} from './Components/Chat/Chat'
+import Admin from './Pages/Website/admin/Admin'
+import Users from './Components/admin/users/Users'
+import AdminFreelancers from './Components/admin/users/AdminFreelancers'
+import AdminClients from './Components/admin/users/AdminClients'
 
 function App() {
   return (
@@ -54,6 +58,7 @@ function App() {
         <Route path='/' element={localStorage.getItem("role") == "freelancer" ? <FreelancerHomePage /> : localStorage.getItem("role") == "user" ? <ClientHomePage /> : <LandingPage />} />
 
         {/* PUBLIC ROUTES */}
+        <Route path='chat' element={<Chat />} />
         <Route path='/hire' element={<LandingHire />} />
         <Route path='/categories' element={<Categories />} />
         <Route path='/login' element={<Login />} />
@@ -61,7 +66,12 @@ function App() {
           <Route path='' element={<CreateAccount />} />
           <Route path='phoneandpassword' element={<PhoneAndPassword />} />
         </Route>
-
+        <Route path='admin' element={<Admin />} >
+          <Route path='users' element={<Users />} >
+            <Route path='freelancers' element={<AdminFreelancers />} />
+            <Route path='clients' element={<AdminClients />} />
+          </Route>
+        </Route>
           {/* PRIVATE ROUTES */}
         <Route element={<RequireAuth />}>
         <Route path='/choice' element={<Register />} />
@@ -97,7 +107,6 @@ function App() {
           <Route path='myprojects/history' element={<ProjectsHistory />} />
           <Route path='services' element={<Services />} />
           <Route path='settings/modifyaccount' element={<ModifyAccount />} />
-          <Route path='chat' element={<Chat />} />
         </Route>
 
         {/* CLIENT */}

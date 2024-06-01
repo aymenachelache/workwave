@@ -26,7 +26,7 @@ const Services = () => {
                 <ServicesCountSold service={servicesCountSold} />
             </div>
             <Link to={"/work/personalspace/services"}>
-                <ServicesList data={[]} />
+                <ServicesList />
             </Link>
         </div>
     )

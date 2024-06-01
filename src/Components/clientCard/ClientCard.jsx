@@ -25,7 +25,7 @@ const ClientCard = ({ props, isSlides }) => {
 
 
     return (
-        <div id="container" className={`max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
+        <div id="container" className={`Client-Card max-md:w-[80%] max-sm:w-[95%] w-[60%] rounded-3xl mt-10 ${isSlides ? "max-sm:p-5 p-10" : "w-full p-5"}`}>
             <div className="flex justify-between h-[30%] max-sm:flex-col">
                 <div id="text" className={isSlides ? "" : "w-[80%]"}>
                     <h1 className={`max-md:text-lg text-2xl font-bold ${isSlides ? "" : "text-lg"}`}>
