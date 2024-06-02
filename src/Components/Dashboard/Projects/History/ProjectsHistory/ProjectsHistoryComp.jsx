@@ -1,3 +1,4 @@
+import AcceptedProjects from "../../../LatestProjects/LatestProjects"
 import ProjectItem from "../ProjectItem/ProjectItem"
 
 
@@ -90,23 +91,7 @@ export const projects = [
 ]
 const ProjectsHistoryComp = () => {
     return (
-        <div className=" cursor-pointer shadow-xl mt-6 transition-all duration-300 h-fitrounded-2xl p-8 overflow-scroll scroll font-Unbounded">
-
-            <ul className="flex px-4 mb-6">
-                <li className="text-xs text-gray-400 ">Project Name</li>
-                <li className="text-xs text-gray-400 ml-16">Status </li>
-                <li className="text-xs text-gray-400 ml-16 ">Skill</li>
-                <li className="text-xs text-gray-400 ml-24 ">Start Date</li>
-                <li className="text-xs text-gray-400 ml-11 ">Deadline</li>
-                <li className="text-xs text-gray-400 ml-10 ">Final Cost</li>
-                <li className="text-xs text-gray-400 ml-16 ">Client</li>
-            </ul>
-            {projects.map((project, index) => {
-                return (
-                    <ProjectItem project={project} key={index} />
-                )
-            })}
-        </div>
+         <AcceptedProjects />
     )
 }
 

@@ -20,7 +20,10 @@
     ::-webkit-scrollbar-thumb:hover {
         background: #0183b3;
     }
-
+    min-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
     position: fixed;
     width: 100%;

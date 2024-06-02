@@ -7,14 +7,21 @@ import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
-import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { greyColor } from '../../../../../Components/Variables/Variables';
 import { motion } from 'framer-motion';
-import Cookie from 'cookie-universal';
 
 
 export default function HireSecondWelcome() {
-    const cookie = Cookie();
-    const firstName = cookie.get("firstName");
+    const firstName = localStorage.getItem("firstName");
+
+    const handleClick = () => {
+        window.location.pathname = "/";
+    }
+
+    const postFirstNeed = () => {
+        window.location.pathname = "/hire/addneed";
+    }
+
     return (
         <>
             <motion.div
@@ -53,9 +60,9 @@ export default function HireSecondWelcome() {
                         Now, you are officially a client at WorkWave!<br></br>
                         Start hiring reliable freelancers by choosing a service offer or posting a need!
                     </p>
-                    <Link to={'/'} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Consult Services</span></Link>
+                    <button onClick={handleClick} className={'btn-gradient block w-3/4 mx-auto mt-5'} ><span className='text-lg font-extrabold primaryfont block'>Consult Services</span></button>
                     <div className='text-right mt-14'>
-                        <Button link='/' text='Post your first need' color={greyColor} classes='font-bold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
+                        <Button onClick={postFirstNeed} text='Post your first need' color={greyColor} classes='font-bold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
                     </div>
                 </div>
             </motion.div >

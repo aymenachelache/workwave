@@ -6,14 +6,12 @@ import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import { AnimatePresence, motion } from 'framer-motion';
 import axios from 'axios';
-import { REGISTER, VERIFICATION, baseURL } from '../../../../../Components/Variables/VariablesColors';
-import Cookie from 'cookie-universal';
+import { REGISTER, VERIFICATION, baseURL } from '../../../../../Components/Variables/Variables';
 
 export default function PhoneAndPassword() {
     const { formData, setFormData } = useOutletContext();
     const [errors, setErrors] = useState({}); // Utilisé pour stocker les erreurs par champ
     const navigate = useNavigate();
-    const cookie = Cookie();
 
 
     // Fonction de validation pour le mot de passe
@@ -79,21 +77,22 @@ export default function PhoneAndPassword() {
             const data = await axios.post(`${baseURL}/${REGISTER}`, formData, {
                 withCredentials: true,
             }).then(res => {
-                if (res.data.message == "User created successfully") {
-                    cookie.set("email", JSON.parse(JSON.stringify(res.data)).email);
-                    cookie.set("firstName", JSON.parse(JSON.stringify(res.data)).firstName);
-                    cookie.set("lastName", JSON.parse(JSON.stringify(res.data)).lastName);
-                    cookie.set("mobile", JSON.parse(JSON.stringify(res.data)).mobile);
-                    cookie.set("verified", JSON.parse(JSON.stringify(res.data)).verified);
-                    cookie.set("role", "user");
-                    navigate('/emailverfication');
-                } else {
-                    console.log("Create account Erorr");
-                }
+                localStorage.setItem("email", res.data.email);
+                localStorage.setItem("firstName", res.data.firstName);
+                localStorage.setItem("lastName", res.data.lastName);
+                localStorage.setItem("mobile", res.data.mobile);
+                localStorage.setItem("verified", res.data.verified);
+                localStorage.setItem("role", res.data.role);
+                localStorage.setItem("photo", res.data.photo);
+                navigate('/emailverfication');
             }).catch((err) => console.log(err));
+            const sendEmail = await axios.post(`${baseURL}/${VERIFICATION}`, "" ,{
+                withCredentials: true, 
+            }).then(res => console.log(res));
         } catch (err) {
             // setError(err.response.data.error);
-            setErrors((prev) => ({ ...prev, form: err.response.data.error }));
+            // setErrors((prev) => ({ ...prev, form: err.response.data.error }));
+            console.log(err)
         }
     };
     return (

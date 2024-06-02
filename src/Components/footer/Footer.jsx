@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
     return (
         <>
-        <div className="footer mt-32 py-4 w-full">
+        <div className="footer mt-32 py-4">
             <div className="container mx-auto">
                 <div className="boxes grid justify-items-center grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
                     <div className="box box1 w-full sm:w-fit text-center sm:text:left m-10 lg:mx-10">

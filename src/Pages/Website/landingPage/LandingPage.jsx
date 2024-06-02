@@ -1,8 +1,8 @@
- import Button from "../../../Components/Button/Button";
+import Button from "../../../Components/Button/Button";
 import Footer from "../../../Components/footer/Footer";
 import Header from "../../../Components/header/Header";
 import './LandingPage.scss';
-import { primaryColor } from "../../../Components/Variables/VariablesColors";
+import { baseURL, primaryColor } from "../../../Components/Variables/Variables";
 import TextGradient from "../../../Components/textGradient/TextGradient";
 import image1 from '../../../assets/mastercard.png'
 import image2 from '../../../assets/pexels-tima-miroshnichenko-6694543 1.png'
@@ -22,11 +22,14 @@ import categorie4hover from '../../../assets/categorie4-hover.png'
 import categorie5hover from '../../../assets/categorie5-hover.png'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import axios from "axios";
 
 
 
 export default function LandingPage() {
+
+
     function changeImage(e, num) {
         let url;
         switch (num) {
@@ -75,6 +78,9 @@ export default function LandingPage() {
         }
         e.target.children[0].src = require(urll);
     }
+
+   
+    
     return (
         <>
             <Header />

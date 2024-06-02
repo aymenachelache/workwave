@@ -10,4 +10,12 @@ export default defineConfig({
   //   host: '127.0.0.1',
   //   port: 5173
   // }
+  optimizeDeps: {
+    esbuildOptions: {
+        // Node.js global to browser globalThis
+        define: {
+            global: 'globalThis',
+        },
+    },
+},
 })

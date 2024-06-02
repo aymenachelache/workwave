@@ -3,7 +3,6 @@
     background-position: left bottom, right top;
     background-size: contain;
     background-repeat: no-repeat, no-repeat;
-    
     .box {
         background-color: #F9F7F3;
         left: 50%;
@@ -24,7 +23,7 @@
                 }
             }
         }
-        
+
         .contain {
             h2 {
                 font-size: 1.6em;
@@ -39,14 +38,7 @@
                 &:hover {
                     box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
                 }
-<<<<<<< HEAD:src/Pages/Website/register/Work.scss
-            }
-            .payment{
-                width: 100%;
-            }
-=======
             }   
->>>>>>> aymen:src/Pages/Website/register/work/Work.scss
 
             .forget {
                 a {

@@ -2,7 +2,7 @@ import Button from "../../../Components/Button/Button";
 import Footer from "../../../Components/footer/Footer";
 import Header from "../../../Components/header/Header";
 import './LandingPage.scss';
-import { secondaryColor } from "../../../Components/Variables/VariablesColors";
+import { secondaryColor } from "../../../Components/Variables/Variables";
 import TextGradient from "../../../Components/textGradient/TextGradient";
 import image1 from '../../../assets/mastercard.png'
 import image2 from '../../../assets/pexels-tima-miroshnichenko-6694543 1.png'

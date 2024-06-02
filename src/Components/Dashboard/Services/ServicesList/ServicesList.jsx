@@ -1,21 +1,51 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Service from "./Service"
+import { faAdd } from "@fortawesome/free-solid-svg-icons"
+import { Link } from "react-router-dom"
+import AddService from "../addService/AddService"
+import { useEffect, useState } from "react"
+import { baseURL, GET_SERVICES } from "../../../Variables/Variables"
+import axios from "axios"
 
-const dataPiece = {
-    title : "Lorem ipsum dolor sit amet, elit elit elit elit ",
-    description : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    skills : ["Packaging Design", "Design", "Packaging Design"],
-    cost : "120",
-    sold : "4",
-    totalProfit : "480"
-}
+const ServicesList = () => {
+    const [servicesList, setServicesList] = useState([]);
 
-const ServicesList = ({data}) => {
+    useEffect(() => {
+        const getServices = async () => {
+            try {
+                const response = await axios.get(`${baseURL}/${GET_SERVICES}`, {
+                    withCredentials: true,
+                }).then((res) => {
+                    setServicesList(res.data.services);
+                });
+            } catch (error) {
+                console.error("Error:", error);
+            }
+        };
+        getServices()
+    }, [])
+
     return (
-        <div className="shadow-xl rounded-2xl p-5">
-            <p className="text-PrimColor text-opacity-60 font-semibold pb-3">Services</p>
-            <Service dataPiece={dataPiece} />
+        <div className="shadow-xl rounded-2xl my-10 p-5">
+            <div className="flex items-center justify-between">
+                <p className="text-PrimColor text-opacity-60 px-4 font-Unbounded font-semibold pb-3">Services</p>
+                { servicesList?.length > 0 &&
+                    <Link to={'/work/addService'} className="pr-10">
+                        <button> <FontAwesomeIcon icon={faAdd} className="p-3 bg-PrimColor text-white text-lg rounded-full" /> </button>
+                    </Link>
+                }
+            </div>
+            <div className={servicesList?.length > 0 ? '' : ''}>
+                {
+                    servicesList && servicesList.length > 0 ? servicesList.map((dataPiece, index) => {
+                        return (
+                            <Service dataPiece={dataPiece} key={index} />
+                        )
+                    }) : <AddService />
+                }
+            </div>    
         </div>
-    )
+        )
 }
 
 export default ServicesList

@@ -18,7 +18,7 @@ const NotFound = () => {
                 <p className="font-Unbounded font-bold text-lg ">WorkWave</p>
             </div>
             <div className="h-screen w-screen bg-black absolute left-0 top-0 z-10 bg-gradient-to-r from-gradientDark bg-opacity-20 "></div>
-            <h1 className=" z-10 text-[200px] text-yellow-400 font-bold">404!</h1>
+            <h1 className=" z-10 text-[12rem] max-md:text-[9rem] max-sm:text-[6rem] text-yellow-400 font-bold">404!</h1>
             <img className=" pointer-events-none z-20  absolute bottom-0 left-0 w-full  h-screen object-cover"  src={bnadem} alt="" />
             <img className=" pointer-events-none -z-0  absolute bottom-0 w-full left-0 h-screen object-cover" src={bg} alt="" />
 

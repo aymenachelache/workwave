@@ -10,11 +10,10 @@ const projects = {
 
 const ProjectsHistory = () => {
     return(
-            <div className="">
-                <div className="flex gap-5">
+            <div className="flex flex-col gap-20">
+                <div className="flex gap-5 flex-wrap">
                     <Card profit={projects}/>
                     <ProjectsByMonths data={barsData} />
-                    <SkillsByProjectsRatio isHistory={true} />
                 </div> 
                 <ProjectsHistoryComp />
             </div> 

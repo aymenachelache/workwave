@@ -1,12 +1,9 @@
 import { Navigate, Outlet } from 'react-router-dom';
-import Cookie from "cookie-universal";
-
-
 
 export default function RequireAuth() {
-  const cookie = Cookie();
-  const user = cookie.get("email");
-  return (
-    user ? <Outlet /> : <Navigate to="/login" />
-  )
+  const user = localStorage.getItem("email");
+  const isVerified = localStorage.getItem("verified") === 'true'; // Check for the string 'true'
+
+  // Redirect to "/" if user is not found, otherwise check verification status
+  return user ? <Outlet /> : <Navigate to="/" />
 }

@@ -5,22 +5,19 @@ import Button from './../../../Components/Button/Button';
 import BackButton from '../../../Components/backButton/BackButton';
 import TextGradient from '../../../Components/textGradient/TextGradient';
 import { Link } from 'react-router-dom';
-import Cookie from "cookie-universal";
 
 export default function Register() {
-  const cookie = Cookie();
   function handleClient() {
-    cookie.set("role", 'user');
+    localStorage.setItem("role", 'user');
   }
   function handleFreelancer() {
-    cookie.set("role", 'freelancer');
+    localStorage.setItem("role", 'freelencer');
   }
   return (
     <>
       <div className="register p-5">
         <Logo />
         <div className="box sm:w-8/12 md:w-7/12 mx-auto mt-5">
-          <BackButton />
           <div className="title my-10">
             <h2 className='text-center'><TextGradient size='26px' weight='900' text='Welcome to WorkWave!' /></h2>
             <p className='text-sm text-center text-[#777775] mb-10'>What brings you here?</p>
@@ -44,9 +41,7 @@ export default function Register() {
             </Link>
           </div>
         </div>
-        <div className="note sm:w-8/12 md:w-7/12 mx-auto">
-          <p className='text-xs text-right mt-10 text-[#777775]'>Already have an account? <span className='font-bold'><Link to='/login'>Log in</Link></span></p>
-        </div>
+
 
       </div>
     </>

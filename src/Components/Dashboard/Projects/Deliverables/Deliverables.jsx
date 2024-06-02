@@ -19,25 +19,6 @@ export const deliver = [
 
 const Deliverables = () => {
 
-
-    function handleSubmit(event) {
-        // Prevent the default form submission behavior
-        event.preventDefault();
-    
-        // Your form submission logic here
-        // For example, you can use fetch() to send the form data to a server
-        // fetch('/submit', {
-        //   method: 'POST',
-        //   body: new FormData(event.target)
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //   console.log('Success:', data);
-        // })
-        // .catch((error) => {
-        //   console.error('Error:', error);
-        // });
-      }
     return (
         <div className="cursor-pointer shadow-xl transition-all duration-300 w-full lg:mt-4 rounded-2xl p-8 mt-4">
             <h1 className="text-PrimColor text-opacity-60 font-semibold mb-4">Deliverables</h1>
@@ -52,11 +33,11 @@ const Deliverables = () => {
                     </div>
                     {delivery[2].toLowerCase() === "pending" && (
                         <form onSubmit={() => handleSubmit(e)} className="flex gap-6 max-lg:flex-col">
-                            <div className="bg-white flex justify-between rounded-full">
+                            <div className="bg-white flex justify-between rounded-full max-sm:flex-col max-sm:bg-transparent">
                                 <input type="text" placeholder="Deliverable Link" className="outline-none rounded-full px-5 py-3" />
                                 <SendBtn />
                             </div>
-                            <div className="bg-white flex justify-between rounded-full">
+                            <div className="bg-white flex justify-between rounded-full max-sm:flex-col max-sm:bg-transparent">
                                 <input type="text" placeholder="Preview Link" className="outline-none rounded-full px-5 py-3" />
                                 <SendBtn />
                             </div>

@@ -7,7 +7,7 @@ import BackButton from '../../../../../Components/backButton/BackButton';
 import InputComp from '../../../../../Components/input/InputComp';
 import TextGradient from '../../../../../Components/textGradient/TextGradient';
 import Button from "../../../../../Components/Button/Button";
-import { greyColor } from '../../../../../Components/Variables/VariablesColors';
+import { greyColor } from '../../../../../Components/Variables/Variables';
 import { motion } from 'framer-motion';
 import Cookie from 'cookie-universal';
 
@@ -15,6 +15,17 @@ import Cookie from 'cookie-universal';
 export default function CongratulationsPage() {
     const cookie = Cookie();
     const firstName = cookie.get("firstName");
+
+
+    
+    const handleClick = () => {
+        window.location.pathname = "/";
+    }
+
+    const postFirstService = () => {
+        window.location.pathname = "/work/addService";
+    }
+
     return (
         <>
             <motion.div
@@ -53,9 +64,9 @@ export default function CongratulationsPage() {
                         Now, you are officially a freelancer at WorkWave!<br></br>
                         Start working in the freelance market by posting your own services and getting paid like a professional!
                     </p>
-                    <Link to={'/'} className={'btn-gradient block w-3/4 mx-auto mt-5 capitalize'} ><span className='text-lg font-extrabold primaryfont block'>Post your first service</span></Link>
+                    <button onClick={postFirstService} className={'btn-gradient block w-3/4 mx-auto mt-5 capitalize'} ><span className='text-lg font-extrabold primaryfont block'>Post your first service</span></button>
                     <div className='text-right mt-8'>
-                        <Button link='/' text='Proceed to WorkWave' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
+                        <Button onClick={handleClick} text='Proceed to WorkWave' color={greyColor} classes='font-extrabold text-xs tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '5px' }} />} clicked />
                     </div>
                 </div>
             </motion.div >

@@ -1,113 +1,70 @@
-import ProjectItem from "../Projects/History/ProjectItem/ProjectItem"
+import { baseURL, GET_ACCEPTED_PROJECTS } from "../../Variables/Variables";
+import { useEffect, useState } from "react";
 
 
-export const projects = [
-    ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iste voluptatem dicta ea eligendi accusantium, deleniti corporis. Maxime exercitationem adipisci quibusdam tempore, incidunt magnam. Atque minima earum quo alias harum.",
-    "Done",
-    "Packaging Design",
-    "Oct 05 2024",
-    "Nov 19 2024",
-    "1000", //final cost
-    "Heythem Laouici",
-    "Nov 14 2024", //Delivered on
-    "None", //Delay time
-    "0", //Update times
-    "Service", //Type
-    ["link1", "link2", "link3"], //Deliverables
-    "1000", // initial cost
-    "0", //Delay tax
-    "0", //Updates cost
-    ],
-    ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iste voluptatem dicta ea eligendi accusantium, deleniti corporis. Maxime exercitationem adipisci quibusdam tempore, incidunt magnam. Atque minima earum quo alias harum.",
-    "Done",
-    "Packaging Design",
-    "Oct 05 2024",
-    "Nov 19 2024",
-    "1000", //final cost
-    "Heythem Laouici",
-    "Nov 14 2024", //Delivered on
-    "None", //Delay time
-    "0", //Update times
-    "Service", //Type
-    ["link1", "link2", "link3"], //Deliverables
-    "1000", // initial cost
-    "0", //Delay tax
-    "0", //Updates cost
-    ],
 
-    ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iste voluptatem dicta ea eligendi accusantium, deleniti corporis. Maxime exercitationem adipisci quibusdam tempore, incidunt magnam. Atque minima earum quo alias harum.",
-    "Pending",
-    "Packaging Design",
-    "Oct 05 2024",
-    "Nov 19 2024",
-    "1000", //final cost
-    "Heythem Laouici",
-    "Nov 14 2024", //Delivered on
-    "None", //Delay time
-    "0", //Update times
-    "Service", //Type
-    ["link1", "link2", "link3"], //Deliverables
-    "1000", // initial cost
-    "0", //Delay tax
-    "0", //Updates cost
-    ],
 
-    ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iste voluptatem dicta ea eligendi accusantium, deleniti corporis. Maxime exercitationem adipisci quibusdam tempore, incidunt magnam. Atque minima earum quo alias harum.",
-    "Done",
-    "Packaging Design",
-    "Oct 05 2024",
-    "Nov 19 2024",
-    "1000", //final cost
-    "Heythem Laouici",
-    "Nov 14 2024", //Delivered on
-    "None", //Delay time
-    "0", //Update times
-    "Service", //Type
-    ["link1", "link2", "link3"], //Deliverables
-    "1000", // initial cost
-    "0", //Delay tax
-    "0", //Updates cost
-    ],
 
-    ["Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur iste voluptatem dicta ea eligendi accusantium, deleniti corporis. Maxime exercitationem adipisci quibusdam tempore, incidunt magnam. Atque minima earum quo alias harum.",
-    "Pending",
-    "Packaging Design",
-    "Oct 05 2024",
-    "Nov 19 2024",
-    "1000", //final cost
-    "Heythem Laouici",
-    "Nov 14 2024", //Delivered on
-    "None", //Delay time
-    "0", //Update times
-    "Service", //Type
-    ["link1", "link2", "link3"], //Deliverables
-    "1000", // initial cost
-    "0", //Delay tax
-    "0", //Updates cost
-    ],
+const AcceptedProjects = () => {
+    const [acceptedProjects, setAcceptedProjects] = useState([]);
+    useEffect (() => {
+        const getAcceptedProjects = async(e) => {
+            try {
+                const data = await axios.get(`${baseURL}/${GET_ACCEPTED_PROJECTS}`, {
+                    withCredentials: true,
+                }).then((res) => {
+                        console.log(res);
+                    });
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getAcceptedProjects()
+    } , [])
+        
+    if (acceptedProjects.length > 0) {
+        return (
+            <div className="bg-white p-4 rounded-xl shadow-xl">
+                <p className="text-PrimColor px-2 text-opacity-70 font-Unbounded font-semibold px-1">
+                    Accepted Projects
+                </p>
 
-    
-]
-const LatestProjects = () => {
-    return (
-        <div className=" container cursor-pointer shadow-xl pt-6 transition-all duration-300 max-h-[600px] rounded-3xl p-8 overflow-auto font-Unbounded">
-            <h1 className="text-PrimColor text-opacity-60 font-semibold px-1 mb-6">Latest Projects</h1>
-            <ul className="flex px-4 pb-4">
-                <li className="text-xs text-gray-400 w-[15%] ">Project Name</li>
-                <li className="text-xs text-gray-400 w-[8%]">Status </li>
-                <li className="text-xs text-gray-400 w-[15%] ml-10 ">Skill</li>
-                <li className="text-xs text-gray-400 w-[20%] ">Start Date</li>
-                <li className="text-xs text-gray-400 w-[15%]">Deadline</li>
-                <li className="text-xs text-gray-400 w-[15%]">Final Cost</li>
-                <li className="text-xs text-gray-400 w-[15%]">Client</li>
-            </ul>
-            {projects.map((project, index) => {
-                return (
-                    <ProjectItem project={project} key={index} />
-                )
-            })}
-        </div>
-    )
+                <table className="mt-6 w-full">
+                    <thead className="text-left">
+                    <tr>
+                        <th className="p-3 px-5 text-sm text-gray-400">Title</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Description</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Amount</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">Status</th>
+                        <th className="p-3 px-5 text-sm text-gray-400">userID</th>
+                    </tr>
+                    </thead>
+                    <tbody className="w-full">
+                    {/* Assuming 'data' is your array of objects */}
+                    {acceptedProjects.map((item, index) => (
+                        <tr key={index} className="">
+                        <td className="p-3 px-5 font-semibold">{item.title}</td>
+                        <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
+                            ${item.description}
+                        </td>
+                        <td className="p-3 px-5 font-semibold">
+                            {item.amount}
+                        </td>
+                        <td className="p-3 px-5 font-semibold">{item.status}</td>
+                        <td className="p-3 px-5 font-semibold">{item.user}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            </div>
+        )
+    } else {
+        return (
+            <div className="cursor-pointer shadow-xl w-full pt-6 transition-all duration-300 max-h-[600px] rounded-3xl p-8 overflow-auto font-Unbounded">
+                <p className="font-Unbounded text-lg text-center">There is no accepted projects yet</p>
+            </div>
+        )
+    }
 }
 
-export default LatestProjects
+export default AcceptedProjects
