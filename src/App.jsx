@@ -50,6 +50,8 @@ import Admin from './Pages/Website/admin/Admin'
 import Users from './Components/admin/users/Users'
 import AdminFreelancers from './Components/admin/users/AdminFreelancers'
 import AdminClients from './Components/admin/users/AdminClients'
+import Reports from './Components/admin/reports/Reports'
+import BannedUsers from './Components/admin/bannedUsers/BannedUsers'
 
 function App() {
   return (
@@ -66,12 +68,18 @@ function App() {
           <Route path='' element={<CreateAccount />} />
           <Route path='phoneandpassword' element={<PhoneAndPassword />} />
         </Route>
+
+
         <Route path='admin' element={<Admin />} >
           <Route path='users' element={<Users />} >
             <Route path='freelancers' element={<AdminFreelancers />} />
             <Route path='clients' element={<AdminClients />} />
           </Route>
+          <Route path='reports' element={<Reports />} />
+          <Route path='banned' element={<BannedUsers />} />
         </Route>
+
+
           {/* PRIVATE ROUTES */}
         <Route element={<RequireAuth />}>
         <Route path='/choice' element={<Register />} />

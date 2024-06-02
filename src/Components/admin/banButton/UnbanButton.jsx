@@ -2,11 +2,11 @@ import React from 'react'
 import { baseURL } from '../../Variables/Variables';
 import axios from 'axios';
 
-const BanButton = ({id}) => {
+const UnbanButton = ({id}) => {
 
     const Block = async () => {
         try {
-            const response = await axios.put(`${baseURL}/api/admin/block/${id}`, {} , {
+            const response = await axios.put(`${baseURL}/api/admin/deblock/${id}`, {} , {
                 withCredentials: true,
             });
             console.log(response);
@@ -19,9 +19,9 @@ const BanButton = ({id}) => {
     <button 
     onClick={Block}
     className='border-2 border-red-500 px-3 py-2 text-red-500 font-Unbounded rounded-xl hover:bg-red-500 hover:text-white'>
-        Ban
+        Enable
     </button>
   )
 }
 
-export default BanButton
+export default UnbanButton
