@@ -1,0 +1,222 @@
+// Globa Class
+.border-3 {
+    border-width: 3px !important;
+}
+// Animation
+@keyframes ChangeBackground {
+    0% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+    16% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+    32% {
+        background-image: url('/src/assets/bghero2.jpg');
+    }
+    48% {
+        background-image: url('/src/assets/bghero2.jpg');
+    }
+    64% {
+        background-image: url('/src/assets/bghero3.jpg');
+    }
+    80% {
+        background-image: url('/src/assets/bghero3.jpg');
+    }
+    100% {
+        background-image: url('/src/assets/bghero1.jpg');
+    }
+}
+@keyframes ChangeBackgroundHire {
+    0% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+    16% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+    32% {
+        background-image: url('/src/assets/bghire2.jpg');
+    }
+    48% {
+        background-image: url('/src/assets/bghire2.jpg');
+    }
+    64% {
+        background-image: url('/src/assets/bghire3.jpg');
+    }
+    80% {
+        background-image: url('/src/assets/bghire3.jpg');
+    }
+    100% {
+        background-image: url('/src/assets/bghire1.jpg');
+    }
+}
+
+// Landing Style
+.landing {
+    .hero {
+        width: 100%;
+        height: 100vh;
+        background-image: url('/src/assets/bghero1.jpg');
+        background-size: cover;
+        border-radius: 0px 0px 40px 40px;
+        position: relative;
+        z-index: 999;
+        &.hero-work {
+            animation: ChangeBackground 20s infinite ease-in-out forwards;
+        }
+        &.hero-hire {
+            animation: ChangeBackgroundHire 20s infinite ease-in-out forwards;
+        }
+        .container {
+            z-index: 5;
+
+            .text {
+                @media (min-width: 768px) {
+                    width: 50%;
+                }
+
+                h1 {
+                    line-height: 50px;
+                }
+            }
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgb(0 0 0 / 40%);
+            z-index: -1;
+            border-radius: 0 0 40px 40px;
+        }
+    }
+
+
+    .advantages {
+        &.advantages1 {
+            .container {
+                .boxes {
+                    @media (min-width: 1024px) {
+                        .box {
+                            height: 155px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .container {
+            .boxes {
+                .box {
+                    border-radius: 40px;
+                    overflow: hidden;
+                }
+            }
+        }
+
+        &.advantages2 {
+            .container {
+                .box {
+                    background-repeat: no-repeat;
+                    background-position: 85%;
+                }
+
+                .box1 {
+                    background-image: url('../../../assets/1.svg');
+                    background-size: 100px;
+                }
+
+                .box2 {
+                    background-image: url('../../../assets/2.svg');
+                    background-size: 150px;
+                }
+
+                .box3 {
+                    background-image: url('../../../assets/3.svg');
+                    background-size: 150px;
+                }
+
+                .box4 {
+                    background-image: url('../../../assets/1-Blue.svg');
+                    background-size: 100px;
+                }
+
+                .box5 {
+                    background-image: url('../../../assets/2-Blue.svg');
+                    background-size: 150px;
+                }
+
+                .box6 {
+                    background-image: url('../../../assets/3-Blue.svg');
+                    background-size: 150px;
+                }
+            }
+        }
+    }
+
+    .categories {
+        &.hire {
+            .container {
+                background: linear-gradient(99.7deg, #00AEEF 0%, #0D5773 100%);
+            }
+        }
+        .container {
+            background: linear-gradient(99.7deg, #37B778 0%, #206A45 100%);
+            overflow: hidden;
+            border-radius: 40px;
+            
+
+            .right {
+                .box {
+                    background-color: rgb(249 247 243 / 5%);
+                    border-radius: 40px;
+                    transition: all 0.3s ease;
+
+                    img {
+                        width: 80px;
+                        height: 80px;
+                    }
+
+                    &:last-child {
+                        background-color: transparent;
+                    }
+
+                    &:hover:not(:last-child) {
+                        background-color: #fff;
+                        transform: translateY(-5px);
+
+                        h5 {
+                            color: var(--primary-color);
+                        }
+                    }
+
+                    h5 {
+                        font-size: 0.66rem;
+                    }
+                }
+            }
+
+            .cont {
+                background-image: url('../../../assets/background.svg');
+
+                .box {
+                    background-color: #f9f7f322;
+                    border-radius: 40px;
+                }
+            }
+        }
+    }
+    .btn-hover-white {
+        transition: all 0.4s ease;
+        &:hover {
+            color: var(--primary-color) !important;
+            background-color: #fff !important;
+        }
+        &.hire:hover {
+            color: var(--secondary-color) !important;
+            background-color: #fff !important;
+        }
+    }
+}

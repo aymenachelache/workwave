@@ -1,0 +1,18 @@
+
+.Client-Card{
+    border: 2px solid rgb(242, 242, 242);
+    h1, h2, #price{
+        color: #00afefce !important;
+    }
+    #buttons{
+        #place-a-bid{
+            background-color: #00afefce !important;
+        }
+    }
+    #tag{
+        background-color: hsla(196, 100%, 47%, 0.3) !important;
+        &:hover{
+            background-color: hsl(196, 100%, 47%, 0.4) !important;
+        }
+    }
+}
