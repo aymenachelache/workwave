@@ -68,7 +68,7 @@ const ClientCard = ({ props, isSlides }) => {
                     </div>
                 </Link>
                 <div id="buttons" className="flex items-center justify-center">
-                    <Link to={"/report"} id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">
+                    <Link to={`/report/${freelancer._id}`} id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">
                         {isSlides ? <h3 className='text-sm mr-2 max-md:hidden'>Report</h3> : ""}
                         <FontAwesomeIcon icon={faCircleExclamation} />
                     </Link>

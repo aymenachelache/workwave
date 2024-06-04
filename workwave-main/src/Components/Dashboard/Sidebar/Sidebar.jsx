@@ -37,16 +37,6 @@ const Sidebar = ({isClient}) => {
                 </li>
 
 
-                <li>
-                    <SidebarBtn
-                        isClient={isClient}
-                        content={{ title: "My Finances", icon: faWallet }} 
-                        subtitles={[ 
-                            {title : "Payment Methods", icon: faHourglass2, to : "finances/maymethods" },
-                            {title : "Withdraw", icon: faClock, to: "finances/withdraw"},
-                            {title : "Movements", icon: faArrowRightArrowLeft, to: "finances/movs"} ]} 
-                    />   
-                </li>
 
                 <li>
                     <SimpleSidebarBtn content={ {to: "settings/modifyaccount", icon: faSliders, title: "Modify Account" } } isClient={isClient} />

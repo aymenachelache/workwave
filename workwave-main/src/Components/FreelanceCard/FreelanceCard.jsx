@@ -57,7 +57,7 @@ const FreelanceCard = ({ props, isSlides }) => {
                     <div id="client-name" className="mx-2 font-bold"> {props.user?.firstName} {props.user?.lastName} </div>
                 </Link>
                 <div id="buttons" className="flex items-center justify-center">
-                    <Link to={"/report"} id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">
+                    <Link to={`/report/${props.user?._id}`} id="report" className="text-red-500 max-sm:hidden border-2 border-red-500 hover:bg-red-500 transition-all duration-200 hover:text-gray-50 rounded-xl flex justify-between items-center px-2 py-2">
                         {isSlides ? <h3 className='text-sm mr-2 max-md:hidden'>Report</h3> : ""}
                         <FontAwesomeIcon icon={faCircleExclamation} />
                     </Link>

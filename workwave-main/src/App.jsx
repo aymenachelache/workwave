@@ -134,7 +134,7 @@ function App() {
         </Route>
 
         {/* Contact US */}
-        <Route path='/report' element={<ContactUs />} />
+        <Route path='/report/:id' element={<ContactUs />} />
         {/* 404 Not found */}
         <Route path='*' element={<NotFound />} />
 

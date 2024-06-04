@@ -1,31 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TextGradient from '../../../Components/textGradient/TextGradient';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Header from '../../../Components/header/Header';
 import InputComp from '../../../Components/input/InputComp';
 import axios from 'axios';
-import { CREATE_REPORT, baseURL } from '../../../Components/Variables/Variables';
+import { baseURL } from '../../../Components/Variables/Variables';
 
 export default function ContactUs() {
+    const navigate = useNavigate()
     const [message, setMessage] = useState("");
     const [projectId, setProjectId] = useState("");
     const [serviceId, setServiceId] = useState("");
+    const { id } = useParams();
+
+    useEffect(() => {
+        setProjectId(id);
+        setServiceId(id);
+    }, []);
+
+    console.log(id);
 
     const createReport = async (msg, projId, servId) => {
         try {
-            console.log("Request payload:", { comment: msg, projectId: projId, serviceId: servId }); // Log the request payload
-            const response = await axios.post(`${baseURL}/${CREATE_REPORT}`,
+            console.log("Request payload:", { comment: message, projectId: projId, serviceId: servId }); // Log the request payload
+            const response = await axios.post(`${baseURL}/api/enquiry/create`,
             {
-                comment: msg,
-                projectId: projId || null,
-                serviceId: servId || null
+                comment: message,
+                projectId: projId,
+                serviceId: servId
             },
             {
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 withCredentials: true,
-            });
+            }).then( () => navigate("/") );
+            console.log(message)
             console.log(response.data);
         } catch (error) {
             console.error("Error:", error.response ? error.response.data : error.message);
@@ -53,30 +63,10 @@ export default function ContactUs() {
                                 
                                 <div className="p-2 w-full">
                                     <div className="relative">
-                                        <InputComp type="text" name="message" id="message" className='w-full text-sm outline-none px-4 pt-3 pb-16 mx-auto' 
+                                        <InputComp type="text" name="comment" id="comment" className='w-full text-sm outline-none px-4 pt-3 pb-16 mx-auto' 
                                         placeholder='Message' 
                                         value={message} 
-                                        onChange={(e) => setMessage(e.target.value)} required />
-                                    </div>
-                                </div>
-
-                                {/* Optional projectId field */}
-                                <div className="p-2 w-full">
-                                    <div className="relative">
-                                        <InputComp type="text" name="projectId" id="projectId" className='w-full text-sm outline-none px-4 py-2 mx-auto' 
-                                        placeholder='Project ID (optional)' 
-                                        value={projectId} 
-                                        onChange={(e) => setProjectId(e.target.value)} />
-                                    </div>
-                                </div>
-
-                                {/* Optional serviceId field */}
-                                <div className="p-2 w-full">
-                                    <div className="relative">
-                                        <InputComp type="text" name="serviceId" id="serviceId" className='w-full text-sm outline-none px-4 py-2 mx-auto' 
-                                        placeholder='Service ID (optional)' 
-                                        value={serviceId} 
-                                        onChange={(e) => setServiceId(e.target.value)} />
+                                        onchange={(e) => setMessage(e.target.value)} required />
                                     </div>
                                 </div>
 

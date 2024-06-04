@@ -13,14 +13,6 @@ const CDashboard = () => {
   const [servicesAccepted, setServicesAccepted] = useState([]);
   const [servicesRefused, setServicesRefused] = useState([]);
 
-  const profit = {
-    amount: "$1700",
-    gain: "+25%",
-  };
-  const projects = {
-    amount: "214",
-    gain: "-14%",
-  };
   const [activeNeeds, setActiveNeeds] = useState([]);
 
   useEffect(() => {
@@ -66,13 +58,7 @@ const CDashboard = () => {
   
 
   return (
-    <>
-        <div className="flex gap-4 flex-wrap">
-            <Card profit={profit} />
-            <Card profit={projects} />
-            <ClientProjectsCount ActiveNeeds={1} PendingProjects={3} />
-        </div>
-       
+    <> 
         <div className="px-6 mt-10 bg-SecColor bg-opacity-25 py-3 rounded-xl">
                 <div className="font-semibold font-Unbounded text-sm py-1">Accepted Services :</div>
                 <table className="w-full text-center">

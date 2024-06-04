@@ -73,7 +73,7 @@ const [singleProject, setSingleProject] = useState({})
                 <td className="p-3 px-5 font-semibold">{item.title}</td>
                 <td className="p-3 px-5 font-semibold">{item.description}</td>
                 <td className="p-3 px-5 font-bold font-Unbounded text-sm text-SecColor">
-                  ${item.amount}
+                  {item.amount + " "}DA
                 </td>
                 <td className="p-3 px-5 font-semibold">
                   {new Date(item.createdAt).toLocaleDateString()}
@@ -122,6 +122,11 @@ const [singleProject, setSingleProject] = useState({})
                                 </div>
                             ) 
                           })
+                        }
+                        {
+                          singleProject?.reserved.length == 0 && (
+                            <div className="text-center">no freelancer applied for your project yet</div>
+                          )
                         }
                       </div>
           

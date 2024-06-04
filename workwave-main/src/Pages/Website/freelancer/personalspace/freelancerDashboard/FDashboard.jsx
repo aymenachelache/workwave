@@ -44,19 +44,7 @@ const FDashboard = () => {
 
 
   return (
-    <div className="pb-10 flex flex-col gap-8 max-md:px-10 max-sm:px-1">
-      <div className="flex flex-col lg:flex-row gap-8 max-lg:gap-0">
-        <div className="flex flex-col gap-8 w-full lg:w-4/6">
-          <div className="flex flex-col lg:flex-row gap-6">
-            <Card profit={profit} />
-            <Card profit={projects} />
-          </div>
-          <AcceptedProjects />
-        </div>
-        <SkillsByProjectsRatio />
-      </div>
-    </div>
-      
+    <AcceptedProjects />      
   );
 };
 
