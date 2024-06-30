@@ -1,18 +1,24 @@
-.active{
-    background-color: hsl(150, 54%, 47%);
-    #icon, #title {
+.sideBarBtn {
+  .active-link {
+    .Freelancer {
+      background-color: hsl(148, 78%, 20%);
+      color: white;
+    }
+    .Client{
+        background-color: #007dab;
         color: white;
     }
-}
-
-.button{
-    margin: 0;
+  }
 }
 
 .active-link {
-    background-color: hsl(150, 54%, 47%);
-    div {
-        background-color: hsl(150, 72%, 25%);
-        color: white;
-    }
+  .Freelancer {
+    background-color: hsl(148, 78%, 20%);
+    color: white;
+  }
+  .Client{
+    background-color: #007dab;
+    color: white;
+  }
 }
+

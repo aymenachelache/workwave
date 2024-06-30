@@ -2,8 +2,7 @@
     --primary-color: #37B778;
     --secondary-color: #00AEEF;
     --white-color: #F9F7F3;
-    --black-color: #1f1f1f;
-    --gradient-color : rgba(0, 0, 0, 0.312);
+    --black-color: #1F1F1F;
 }
 * {
     margin: 0;
@@ -51,3 +50,19 @@
 .global-radius {
     border-radius: 20px;
 }
+
+.my-border {
+    border: 1px solid #1F1F1F1A;
+}
+
+.btn-gradient {
+    color: #fff;
+    background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%) !important;
+    padding: 12px 0;
+    border-radius: 15px;
+    box-shadow: none;
+
+    &:hover {
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
+    }
+}  

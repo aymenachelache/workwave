@@ -1,35 +1,24 @@
 export const data = [
-    {
-      "id": "Skill1",
-      "label": "Skill1",
-      "value": 13,
-      "color": "hsl(89, 70%, 50%)"
-    },
-    {
-      "id": "javascript",
-      "label": "javascript",
-      "value": 174,
-      "color": "hsl(119, 70%, 50%)"
-    },
-    {
-      "id": "ruby",
-      "label": "ruby",
-      "value": 505,
-      "color": "hsl(112, 70%, 50%)"
-    },
-    {
-      "id": "css",
-      "label": "css",
-      "value": 170,
-      "color": "hsl(288, 70%, 50%)"
-    },
-    {
-      "id": "sass",
-      "label": "sass",
-      "value": 579,
-      "color": "hsl(21, 70%, 50%)"
-    }
-  ]
+  {
+    "id": "Skill 1",
+    "label": "Skill 1",
+    "value": 11,
+    "color": "hsl(150, 54%, 47%)"
+  },
+  {
+    "id": "Skill 2",
+    "label": "Skill 2",
+    "value": 5,
+    "color": "hsl(150, 54%, 47%)"
+  },
+  {
+    "id": "Skill 3",
+    "label": "Skill 3",
+    "value": 2,
+    "color": "hsl(0, 100%, 50%)"
+  }
+
+]
 
 export const barsData = [
   {

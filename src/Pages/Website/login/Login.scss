@@ -30,19 +30,18 @@
                 font-size: 1.6em;
             }
             form {
-                .btn {
-                    color: #fff;
-                    background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
-                    padding: 12px 0;
-                    border-radius: 15px;
-                    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
-
-                    &:hover {
-                        box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
-                    }
-                }
+                // .btn-gradient {
+                //     color: #fff;
+                //     background: linear-gradient(90deg, #00AEEF 0%, #37B778 100%);
+                //     padding: 12px 0;
+                //     border-radius: 15px;
+                //     box-shadow: none;
+    
+                //     &:hover {
+                //         box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 10px;
+                //     }
+                // }   
             }
-
             .forget {
                 a {
                     transition: all 0.3s ease;
@@ -66,6 +65,18 @@
                 .social {
                     padding: 12px 16px;
                     border-radius: 20px;
+                    transition: all 0.5 ease-in-out;
+                    width: fit-content;
+                    &.google {
+                        transition: all 0.5 ease-in-out;
+                        &:hover {
+                            width: 100%;
+                            
+                        }
+                        &:hover + .social {
+                            display: none;
+                        }
+                    }
                 }
             }
         }

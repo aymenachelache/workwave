@@ -5,6 +5,25 @@
 }
 // Header
 .header {
+    // Scrool Bar
+    ::-webkit-scrollbar {
+        width: 10px;
+    }
+    ::-webkit-scrollbar-track {
+        background: var(--secondary-color);
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: var(--primary-color);
+        border-radius: 5px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #0183b3;
+    }
+    min-height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
     position: fixed;
     width: 100%;
@@ -33,6 +52,9 @@
                 &.active.hire {
                     color: var(--secondary-color);
                 }
+                &.active.admin {
+                    color: red;
+                }
                 &.active::after {
                     content: "";
                     position: absolute;
@@ -47,6 +69,9 @@
                 }
                 &.active.hire::after {
                     background-color: var(--secondary-color);
+                }
+                &.active.admin::after {
+                    background-color: red;
                 }
             }
             

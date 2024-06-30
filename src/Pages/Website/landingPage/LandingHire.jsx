@@ -2,7 +2,7 @@ import Button from "../../../Components/Button/Button";
 import Footer from "../../../Components/footer/Footer";
 import Header from "../../../Components/header/Header";
 import './LandingPage.scss';
-import { secondaryColor } from "../../../Components/Variables/VariablesColors";
+import { secondaryColor } from "../../../Components/Variables/Variables";
 import TextGradient from "../../../Components/textGradient/TextGradient";
 import image1 from '../../../assets/mastercard.png'
 import image2 from '../../../assets/pexels-tima-miroshnichenko-6694543 1.png'
@@ -80,15 +80,15 @@ export default function LandingHire() {
         <>
             <Header hire={true} />
             <div className="landing">
-                <div className="hero">
+                <div className="hero hero-hire">
                     <div className="container mx-auto pt-16 w-full h-screen flex flex-col justify-center">
                         <div className="text text-center md:text-left">
                             <h1 className="text-white font-extrabold text-3xl lg:text-4xl">Ride the WorkWave and Catch the Perfect <TextGradient text='Wave of Opportunities!' /></h1>
                             <p className="text-white mt-5 tracking-wider text-base">Connect with reliable talented freelances, and grow your business, just from home.</p>
                         </div>
                         <div className="buttons mt-7 flex justify-center items-center md:justify-start flex-col md:flex-row gap-6">
-                            <Button link='register' text='Find freelance services' classes='font-bold text-base tracking-wide' padding='8px 30px' clicked={false} color={secondaryColor} border />
-                            <Button link='hire' text='I want to work' color='#fff' classes='font-bold text-base tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '10px' }} />} clicked />
+                            <Button link='/register' text='Find freelance services' classes='font-bold text-base tracking-wide' padding='8px 30px' clicked={false} color={secondaryColor} border />
+                            <Button link='/' text='I want to work' color='#fff' classes='font-bold text-base tracking-wider' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '10px' }} />} clicked />
                         </div>
                     </div>
                 </div>
@@ -122,7 +122,7 @@ export default function LandingHire() {
                         <div className="left w-full lg:w-6/12 p-2 mb-10 lg:mb-0 text-center lg:text-left">
                             <h3 className="text-3xl font-bold mb-5 w-full lg:w-4/5">Many categories just to set you up!</h3>
                             <p className="mb-10">We offer all the categories and fields that are available on the freelance market, you can start working in the field that you are skilled in, in just few clicks.</p>
-                            <Button text="Join us" color='#fff' classes='font-bold text-xl border-3 btn-hover-white hire' padding='8px 20px' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
+                            <Button link='/register' text="Join us" color='#fff' classes='font-bold text-xl border-3 btn-hover-white hire' padding='8px 20px' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
                         </div>
                         <div className="right grid grid-cols-2 sm:grid-cols-3 gap-3">
                             <div className="box p-4 text-center cursor-pointer" onMouseEnter={e => changeImage(e, 1)} onMouseLeave={e => changeImageHover(e, 1)}>
@@ -146,7 +146,7 @@ export default function LandingHire() {
                                 <h5 className="mt-4">Development</h5>
                             </div>
                             <div className="box p-4 text-center cursor-pointer flex justify-center items-center">
-                                <Button text='View more' classes='' color='#f9f7f38a' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked />
+                                <Button link='/categories' text='View more' classes='' color='#f9f7f38a' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked />
                             </div>
 
                         </div>
@@ -174,7 +174,7 @@ export default function LandingHire() {
                                 <div className="left w-full mb-10 md:mb-0 md:w-3/6 p-2 text-center md:text-left">
                                     <h3 className="text-3xl font-bold mb-5 w-full md:w-4/5">WorkWave is totally free!</h3>
                                     <p className="mb-10 font-bold">And finally, you don’t have to pay on additional services on WorkWave. Every user gets the full functionalities of WorkWave platform, which means that every user has the same chances, no pay for certification, no advertising services, and more.</p>
-                                    <Button text="Join us now" classes='font-bold text-xl border-3 btn-hover-white hire' color='#fff' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
+                                    <Button link='/register' text="Join us now" classes='font-bold text-xl border-3 btn-hover-white hire' color='#fff' object={<FontAwesomeIcon icon={faArrowRight} style={{ marginLeft: '8px' }} />} clicked border />
                                 </div>
                                 <div className="right">
                                     <img src={require('../../../assets/freelogo.png')} className="ml-auto" style={{ width: '80%' }} alt="" />
